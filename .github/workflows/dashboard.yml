@@ -40,18 +40,11 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Prepare dashboard files
-        shell: bash
+      - name: Prepare dashboard HTML and assets
         run: |
           rm -rf public .dashboard-work
           mkdir -p public
-          cp dashboard/index.html public/index.html
-
-          if [ -f favicon.webp ]; then
-            cp favicon.webp public/favicon.webp
-          fi
-
-          touch public/.nojekyll
+          python scripts/prepare_dashboard_assets.py
 
       - name: Build GitHub Actions data and latest evidence
         env:
@@ -59,14 +52,30 @@ jobs:
         run: |
           python scripts/build_dashboard_data.py
 
-      - name: Show generated dashboard content
+      - name: Verify generated dashboard
         shell: bash
         run: |
+          test -f public/index.html
+          test -f public/data/dashboard.json
+
+          echo "Generated dashboard content:"
           find public \
             -maxdepth 4 \
             -type f \
             -printf '%p %k KB\n' \
             | sort
+
+          echo "Dashboard JSON preview:"
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          data = json.loads(Path("public/data/dashboard.json").read_text())
+          print("generated_at:", data.get("generated_at"))
+          for key, monitor in data.get("monitors", {}).items():
+              latest = monitor.get("latest_completed") or monitor.get("latest") or {}
+              print(key, latest.get("conclusion"), latest.get("updated_at"), len(monitor.get("history", [])))
+          PY
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
