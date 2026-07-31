@@ -1,4 +1,4 @@
-"""Send concise SMTP alerts with screenshots and video attachments."""
+"""Send concise, stateful SMTP alerts with screenshots and video attachments."""
 
 from __future__ import annotations
 
@@ -48,7 +48,7 @@ class FailureSummary:
     message: str
 
 
-@dataclass
+@dataclass(frozen=True)
 class AttachmentResult:
     attached: list[str]
     omitted: list[str]
@@ -77,6 +77,8 @@ def is_in_alert_window(
     start_hour: int,
     end_hour: int,
 ) -> bool:
+    """Return whether now is inside the configured UTC notification window."""
+
     hour = now.astimezone(timezone.utc).hour
 
     if start_hour == end_hour:
@@ -97,6 +99,12 @@ def decide_alert(
     start_hour_utc: int,
     end_hour_utc: int,
 ) -> AlertDecision:
+    """
+    Decide whether to send a failure, reminder, recovery, or no email.
+
+    Healthy scheduled runs do not send routine success emails.
+    """
+
     in_window = is_in_alert_window(
         now,
         start_hour_utc,
@@ -179,8 +187,7 @@ def load_state(path: Path) -> AlertState:
         json.JSONDecodeError,
     ) as exc:
         print(
-            f"WARNING: Ignoring invalid alert state "
-            f"at {path}: {exc}"
+            f"WARNING: Ignoring invalid alert state at {path}: {exc}"
         )
         return AlertState()
 
@@ -209,8 +216,8 @@ def required_env(name: str) -> str:
 
     if not value:
         raise RuntimeError(
-            "Missing required GitHub secret/"
-            f"environment variable: {name}"
+            "Missing required GitHub secret/environment variable: "
+            + name
         )
 
     return value
@@ -225,11 +232,26 @@ def infer_phase(
     phase_rules = [
         (
             "authentication",
-            ("login", "sign_in", "signin"),
+            (
+                "login",
+                "sign_in",
+                "signin",
+                "authentication",
+            ),
+        ),
+        (
+            "logout",
+            (
+                "logout",
+                "log out",
+            ),
         ),
         (
             "microphone check",
-            ("mic", "microphone"),
+            (
+                "mic",
+                "microphone",
+            ),
         ),
         (
             "consultation start",
@@ -243,34 +265,76 @@ def infer_phase(
             (
                 "audio",
                 "transcription api",
+                "audio upload",
             ),
         ),
         (
             "transcription processing",
-            ("processed transcription",),
+            (
+                "processed transcription",
+                "transcription processing",
+            ),
         ),
         (
             "note generation and validation",
             (
                 "generated note",
-                "loader",
+                "generation loader",
                 "note did not",
                 "note generation",
             ),
         ),
         (
             "note approval",
-            ("approve", "save note"),
+            (
+                "approve",
+                "save note",
+            ),
         ),
         (
             "feedback",
-            ("feedback", "rating"),
+            (
+                "feedback",
+                "rating",
+            ),
         ),
         (
             "dashboard verification",
             (
                 "dashboard",
                 "recent consultation",
+            ),
+        ),
+        (
+            "FNX parser upload",
+            (
+                "fnx parser",
+                "patient fields",
+                "parser upload",
+            ),
+        ),
+        (
+            "FNX analytics upload",
+            (
+                "fnx analytics",
+                "analytics upload",
+            ),
+        ),
+        (
+            "FNX summary",
+            (
+                "fnx summary",
+                "journal summary",
+                "patient summary",
+            ),
+        ),
+        (
+            "FNX chatbot",
+            (
+                "ai response",
+                "chat turn",
+                "contextual follow",
+                "prompt",
             ),
         ),
     ]
@@ -284,10 +348,10 @@ def infer_phase(
 
 def clean_failure_text(text: str) -> str:
     """
-    Extract only the main exception.
+    Keep only the main exception message.
 
-    Remove Playwright call logs, accessibility snapshots, pytest source
-    excerpts, and repeated stack-trace content.
+    Removes Playwright call logs, ARIA snapshots, repeated pytest sections,
+    source excerpts, and excessive internal traceback details.
     """
 
     text = text.strip()
@@ -297,12 +361,30 @@ def clean_failure_text(text: str) -> str:
         "\nAria snapshot:",
         "\nCaptured stdout",
         "\nCaptured stderr",
+        "\nCaptured log",
         "\n===========================",
+        "\n---------------------------",
     ):
         if marker in text:
-            text = text.split(marker, 1)[0].strip()
+            text = text.split(
+                marker,
+                1,
+            )[0].strip()
 
     cleaned: list[str] = []
+
+    ignored_prefixes = (
+        "self =",
+        "oracle =",
+        "page =",
+        "app_session_factory =",
+        "stage_evidence =",
+        "request =",
+        "pytestconfig =",
+        "E   File ",
+        "File ",
+        "Traceback ",
+    )
 
     for line in text.splitlines():
         line = re.sub(
@@ -314,13 +396,10 @@ def clean_failure_text(text: str) -> str:
         if not line:
             continue
 
-        if line.startswith(
-            (
-                "self = ",
-                "oracle = ",
-                "page = ",
-            )
-        ):
+        if line.startswith(ignored_prefixes):
+            continue
+
+        if line.startswith("_ _ _ _"):
             continue
 
         if line not in cleaned:
@@ -419,10 +498,13 @@ def read_junit_summary(
 def collect_evidence_files(
     evidence_root: Path | None,
 ) -> list[Path]:
-    if evidence_root is None:
-        return []
+    """
+    Collect screenshots and the newest recorded video.
 
-    if not evidence_root.exists():
+    Stage screenshots are included in execution order.
+    """
+
+    if evidence_root is None or not evidence_root.exists():
         return []
 
     stage_screenshots = sorted(
@@ -448,8 +530,6 @@ def collect_evidence_files(
         reverse=True,
     )
 
-    # Attach all stage screenshots, failure screenshots,
-    # and the newest video from the failed run.
     return [
         *stage_screenshots,
         *failure_screenshots,
@@ -474,16 +554,22 @@ def add_bytes_attachment(
     )
 
 
-def attach_evidence(
-    message: EmailMessage,
+def estimate_attachment_selection(
     paths: list[Path],
     *,
     max_total_bytes: int,
-    initial_bytes: int = 0,
-) -> AttachmentResult:
-    attached: list[str] = []
+    initial_bytes: int,
+) -> tuple[list[Path], list[str]]:
+    """
+    Determine which files fit before building the email body.
+
+    The body must be finalized before attachments convert the message to
+    multipart.
+    """
+
+    selected: list[Path] = []
     omitted: list[str] = []
-    total_bytes = initial_bytes
+    running_total = initial_bytes
 
     for path in paths:
         if not path.is_file():
@@ -491,13 +577,29 @@ def attach_evidence(
 
         file_size = path.stat().st_size
 
-        if total_bytes + file_size > max_total_bytes:
+        if running_total + file_size > max_total_bytes:
             omitted.append(
                 f"{path.name} "
                 f"({file_size / 1024 / 1024:.1f} MB)"
             )
             continue
 
+        selected.append(path)
+        running_total += file_size
+
+    return selected, omitted
+
+
+def attach_selected_files(
+    message: EmailMessage,
+    paths: list[Path],
+    *,
+    initial_bytes: int,
+) -> AttachmentResult:
+    attached: list[str] = []
+    total_bytes = initial_bytes
+
+    for path in paths:
         content_type, _encoding = mimetypes.guess_type(
             path.name
         )
@@ -505,19 +607,21 @@ def attach_evidence(
         if not content_type:
             content_type = "application/octet-stream"
 
+        content = path.read_bytes()
+
         add_bytes_attachment(
             message,
-            content=path.read_bytes(),
+            content=content,
             filename=path.name,
             content_type=content_type,
         )
 
         attached.append(path.name)
-        total_bytes += file_size
+        total_bytes += len(content)
 
     return AttachmentResult(
         attached=attached,
-        omitted=omitted,
+        omitted=[],
         total_bytes=total_bytes,
     )
 
@@ -529,6 +633,13 @@ def build_message(
     failure: FailureSummary | None,
     evidence_root: Path | None,
 ) -> EmailMessage:
+    """
+    Build the email body first, then add attachments.
+
+    Calling set_content after add_attachment would raise:
+    TypeError: set_content not valid on multipart
+    """
+
     labels = {
         "failure": (
             "❌ FAILED",
@@ -544,8 +655,7 @@ def build_message(
         ),
         "test": (
             "✅ EMAIL TEST",
-            "The monitoring email alarm "
-            "is configured correctly.",
+            "The monitoring email alarm is configured correctly.",
         ),
     }
 
@@ -561,13 +671,69 @@ def build_message(
         "unknown repository",
     )
 
-    run_id = os.getenv("GITHUB_RUN_ID", "")
+    run_id = os.getenv(
+        "GITHUB_RUN_ID",
+        "",
+    )
 
     run_url = (
         f"{server_url}/{repository}/actions/runs/{run_id}"
         if run_id
         else "Unavailable"
     )
+
+    max_attachment_mb = int(
+        os.getenv(
+            "MAX_EMAIL_ATTACHMENT_MB",
+            "20",
+        )
+    )
+
+    max_total_bytes = (
+        max_attachment_mb
+        * 1024
+        * 1024
+    )
+
+    evidence_files: list[Path] = []
+    selected_evidence: list[Path] = []
+    omitted_evidence: list[str] = []
+    main_error_text = ""
+    main_error_bytes = b""
+
+    if (
+        failure is not None
+        and event in {"failure", "reminder"}
+    ):
+        main_error_text = "\n".join(
+            [
+                f"Monitor: {monitor}",
+                f"Test: {failure.test_name}",
+                f"Phase: {failure.phase}",
+                f"Failure type: {failure.exception_type}",
+                "",
+                "Main issue:",
+                failure.message,
+                "",
+                f"GitHub run: {run_url}",
+            ]
+        )
+
+        main_error_bytes = main_error_text.encode(
+            "utf-8"
+        )
+
+        evidence_files = collect_evidence_files(
+            evidence_root
+        )
+
+        selected_evidence, omitted_evidence = (
+            estimate_attachment_selection(
+                evidence_files,
+                max_total_bytes=max_total_bytes,
+                initial_bytes=len(main_error_bytes),
+            )
+        )
 
     lines = [
         summary,
@@ -593,8 +759,37 @@ def build_message(
                 "",
                 "Main issue:",
                 failure.message,
+                "",
+                "Email attachments:",
+                "- main-error.txt",
             ]
         )
+
+        if selected_evidence:
+            lines.extend(
+                f"- {path.name}"
+                for path in selected_evidence
+            )
+        else:
+            lines.append(
+                "- No screenshot or video files were available."
+            )
+
+        if omitted_evidence:
+            lines.extend(
+                [
+                    "",
+                    "Omitted because the email attachment limit "
+                    "would be exceeded:",
+                    *[
+                        f"- {name}"
+                        for name in omitted_evidence
+                    ],
+                    "",
+                    "Omitted files remain available in the "
+                    "GitHub Actions artifact.",
+                ]
+            )
 
     elif event == "recovery":
         lines.extend(
@@ -630,101 +825,64 @@ def build_message(
         "MAIL_RECIPIENT_ADDRESS"
     )
 
-    message.set_content("\n".join(lines))
+    # This must happen before add_attachment.
+    message.set_content(
+        "\n".join(lines)
+    )
 
     if (
         failure is not None
         and event in {"failure", "reminder"}
     ):
-        main_error_text = "\n".join(
-            [
-                f"Monitor: {monitor}",
-                f"Test: {failure.test_name}",
-                f"Phase: {failure.phase}",
-                f"Failure type: {failure.exception_type}",
-                "",
-                "Main issue:",
-                failure.message,
-                "",
-                f"GitHub run: {run_url}",
-            ]
-        )
-
-        error_bytes = main_error_text.encode("utf-8")
-
         add_bytes_attachment(
             message,
-            content=error_bytes,
+            content=main_error_bytes,
             filename="main-error.txt",
             content_type="text/plain",
         )
 
-        max_attachment_mb = int(
-            os.getenv(
-                "MAX_EMAIL_ATTACHMENT_MB",
-                "20",
-            )
-        )
-
-        evidence_files = collect_evidence_files(
-            evidence_root
-        )
-
-        attachment_result = attach_evidence(
+        result = attach_selected_files(
             message,
-            evidence_files,
-            max_total_bytes=(
-                max_attachment_mb
-                * 1024
-                * 1024
-            ),
-            initial_bytes=len(error_bytes),
+            selected_evidence,
+            initial_bytes=len(main_error_bytes),
         )
 
-        attachment_information = [
-            "",
-            "Email attachments:",
-        ]
-
-        if attachment_result.attached:
-            attachment_information.extend(
-                f"- Attached: {name}"
-                for name in attachment_result.attached
+        print(
+            "Attached evidence files: "
+            + (
+                ", ".join(
+                    [
+                        "main-error.txt",
+                        *result.attached,
+                    ]
+                )
+                if result.attached
+                else "main-error.txt"
             )
-        else:
-            attachment_information.append(
-                "- No screenshot or video files were available."
-            )
-
-        if attachment_result.omitted:
-            attachment_information.extend(
-                [
-                    "",
-                    "Omitted because the email attachment "
-                    "limit would be exceeded:",
-                    *[
-                        f"- {name}"
-                        for name in attachment_result.omitted
-                    ],
-                    "",
-                    "The omitted evidence remains available "
-                    "through the GitHub run link.",
-                ]
-            )
-
-        # Update the plain-text body after the attachments were selected.
-        message.set_content(
-            "\n".join(lines + attachment_information)
         )
+
+        if omitted_evidence:
+            print(
+                "Omitted evidence files because of size limit: "
+                + ", ".join(omitted_evidence)
+            )
 
     return message
 
 
 def send_message(message: EmailMessage) -> None:
-    host = required_env("MAIL_SERVER_ADDRESS")
-    port_text = required_env("MAIL_SERVER_PORT")
-    username = required_env("MAIL_USERNAME")
-    password = required_env("MAIL_PASSWORD")
+    host = required_env(
+        "MAIL_SERVER_ADDRESS"
+    )
+    port_text = required_env(
+        "MAIL_SERVER_PORT"
+    )
+    username = required_env(
+        "MAIL_USERNAME"
+    )
+    password = required_env(
+        "MAIL_PASSWORD"
+    )
 
     try:
         port = int(port_text)
@@ -743,8 +901,13 @@ def send_message(message: EmailMessage) -> None:
             timeout=60,
             context=context,
         ) as smtp:
-            smtp.login(username, password)
-            smtp.send_message(message)
+            smtp.login(
+                username,
+                password,
+            )
+            smtp.send_message(
+                message
+            )
 
     else:
         with smtplib.SMTP(
@@ -753,10 +916,17 @@ def send_message(message: EmailMessage) -> None:
             timeout=60,
         ) as smtp:
             smtp.ehlo()
-            smtp.starttls(context=context)
+            smtp.starttls(
+                context=context
+            )
             smtp.ehlo()
-            smtp.login(username, password)
-            smtp.send_message(message)
+            smtp.login(
+                username,
+                password,
+            )
+            smtp.send_message(
+                message
+            )
 
 
 def parse_args() -> argparse.Namespace:
@@ -769,7 +939,10 @@ def parse_args() -> argparse.Namespace:
 
     parser.add_argument(
         "--status",
-        choices=("success", "failure"),
+        choices=(
+            "success",
+            "failure",
+        ),
     )
 
     parser.add_argument(
@@ -821,20 +994,31 @@ def main() -> int:
         )
         return 0
 
-    if args.status is None or args.state_file is None:
+    if (
+        args.status is None
+        or args.state_file is None
+    ):
         raise SystemExit(
             "--status and --state-file are required "
             "unless --test-email is used"
         )
 
-    previous = load_state(args.state_file)
+    previous = load_state(
+        args.state_file
+    )
 
     start_hour = int(
-        os.getenv("ALERT_START_HOUR_UTC", "4")
+        os.getenv(
+            "ALERT_START_HOUR_UTC",
+            "4",
+        )
     )
 
     end_hour = int(
-        os.getenv("ALERT_END_HOUR_UTC", "17")
+        os.getenv(
+            "ALERT_END_HOUR_UTC",
+            "17",
+        )
     )
 
     decision = decide_alert(
@@ -854,6 +1038,7 @@ def main() -> int:
         ),
     )
 
+    # Save the observed state before SMTP.
     save_state(
         args.state_file,
         next_state,
@@ -861,8 +1046,14 @@ def main() -> int:
 
     if decision.event:
         failure = (
-            read_junit_summary(args.junit_file)
-            if decision.event in {"failure", "reminder"}
+            read_junit_summary(
+                args.junit_file
+            )
+            if decision.event
+            in {
+                "failure",
+                "reminder",
+            }
             else None
         )
 
@@ -874,14 +1065,19 @@ def main() -> int:
             args.evidence_root,
         )
 
-        send_message(message)
-
-        print(
-            f"Sent {decision.event} "
-            f"email for {args.monitor}."
+        send_message(
+            message
         )
 
-        if decision.event in {"failure", "reminder"}:
+        print(
+            f"Sent {decision.event} email "
+            f"for {args.monitor}."
+        )
+
+        if decision.event in {
+            "failure",
+            "reminder",
+        }:
             next_state.last_failure_notification_at = utc_text(
                 now
             )
@@ -906,4 +1102,6 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    raise SystemExit(
+        main()
+    )
