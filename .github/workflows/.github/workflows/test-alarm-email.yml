@@ -1,0 +1,85 @@
+name: Test Alarm Email Delivery
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: clinic-monitoring-alarm-email-test
+  cancel-in-progress: true
+
+jobs:
+  test-email:
+    name: Test screenshots, video, and concise error email
+
+    runs-on: ubuntu-22.04
+
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          playwright install --with-deps chromium
+
+      - name: Create synthetic evidence and send alarm email
+        env:
+          BASE_APP_URL: https://clinic.peoplesdoctor.ai
+
+          MAIL_SERVER_ADDRESS: ${{ secrets.MAIL_SERVER_ADDRESS }}
+          MAIL_SERVER_PORT: ${{ secrets.MAIL_SERVER_PORT }}
+          MAIL_USERNAME: ${{ secrets.MAIL_USERNAME }}
+          MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
+          MAIL_SENDER_ADDRESS: ${{ secrets.MAIL_SENDER_ADDRESS }}
+          MAIL_RECIPIENT_ADDRESS: ${{ secrets.MAIL_RECIPIENT_ADDRESS }}
+
+          MAX_EMAIL_ATTACHMENT_MB: "20"
+
+          # Allow the test email at any UTC hour.
+          ALERT_START_HOUR_UTC: "0"
+          ALERT_END_HOUR_UTC: "0"
+
+        run: |
+          rm -rf test-results
+          rm -f results/alarm-test-state.json
+          rm -f results/alarm-test-junit.xml
+
+          python scripts/test_alarm_email.py
+
+      - name: Show generated evidence
+        if: always()
+        run: |
+          find test-results \
+            -type f \
+            -printf '%p %k KB\n' \
+            2>/dev/null || true
+
+          find results \
+            -type f \
+            -printf '%p %k KB\n' \
+            2>/dev/null || true
+
+      - name: Upload alarm test evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: alarm-email-test-${{ github.run_id }}
+
+          path: |
+            test-results/
+            results/alarm-test-junit.xml
+
+          if-no-files-found: error
+          retention-days: 7
