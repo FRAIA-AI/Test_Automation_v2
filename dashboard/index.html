@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="People's Clinic monitoring dashboard for Smoke, Regression, and FNX automation.">
+  <title>People's Clinic Monitoring</title>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.179.1/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.6.0/dist/echarts.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/echarts-gl@2.0.9/dist/echarts-gl.min.js"></script>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #07101f;
+      --panel: rgba(12, 23, 42, .86);
+      --panel-strong: rgba(13, 26, 48, .96);
+      --text: #eef4ff;
+      --muted: #9fb0c9;
+      --border: rgba(164, 190, 230, .18);
+      --accent: #69a7ff;
+      --success: #2ed59b;
+      --danger: #ff6b7d;
+      --warning: #ffca62;
+      --unknown: #9aa9c1;
+      --shadow: 0 18px 50px rgba(0, 0, 0, .28);
+    }
+    :root[data-theme="light"] {
+      color-scheme: light;
+      --bg: #eef4ff;
+      --panel: rgba(255, 255, 255, .88);
+      --panel-strong: rgba(255, 255, 255, .98);
+      --text: #11213a;
+      --muted: #5d6f89;
+      --border: rgba(28, 59, 103, .14);
+      --accent: #236bd1;
+      --success: #087f5b;
+      --danger: #c92a3f;
+      --warning: #a35c00;
+      --unknown: #66758d;
+      --shadow: 0 18px 50px rgba(42, 68, 106, .15);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    button, select, input { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    a { color: inherit; }
+    #three-bg { position: fixed; inset: 0; z-index: -2; opacity: .54; }
+    .veil {
+      position: fixed; inset: 0; z-index: -1; pointer-events: none;
+      background: radial-gradient(circle at 18% 10%, rgba(59, 130, 246, .18), transparent 38%),
+                  radial-gradient(circle at 80% 25%, rgba(46, 213, 155, .10), transparent 35%),
+                  linear-gradient(180deg, rgba(7,16,31,.08), var(--bg));
+    }
+    .app { width: min(1600px, calc(100% - 28px)); margin: 0 auto; padding: 24px 0 52px; }
+    .topbar {
+      position: sticky; top: 12px; z-index: 20;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: 14px 16px; border: 1px solid var(--border); border-radius: 18px;
+      background: var(--panel-strong); backdrop-filter: blur(18px); box-shadow: var(--shadow);
+    }
+    .brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+    .brand-mark {
+      width: 42px; height: 42px; border-radius: 14px; display: grid; place-items: center;
+      background: linear-gradient(135deg, var(--accent), var(--success)); color: white; font-weight: 900;
+    }
+    .brand h1 { margin: 0; font-size: clamp(1rem, 2vw, 1.35rem); }
+    .brand p { margin: 2px 0 0; color: var(--muted); font-size: .82rem; }
+    .toolbar { display: flex; align-items: center; justify-content: flex-end; gap: 8px; flex-wrap: wrap; }
+    .control, .icon-btn {
+      border: 1px solid var(--border); color: var(--text); background: rgba(255,255,255,.04);
+      border-radius: 12px; min-height: 40px; padding: 0 12px; cursor: pointer;
+    }
+    .icon-btn { min-width: 42px; padding: 0 10px; }
+    .control:hover, .icon-btn:hover { border-color: var(--accent); }
+    .hero { display: grid; grid-template-columns: 1.6fr .8fr; gap: 16px; margin: 20px 0 16px; }
+    .panel {
+      border: 1px solid var(--border); border-radius: 20px; background: var(--panel);
+      backdrop-filter: blur(16px); box-shadow: var(--shadow);
+    }
+    .hero-main { padding: 24px; }
+    .eyebrow { color: var(--accent); text-transform: uppercase; letter-spacing: .14em; font-size: .75rem; font-weight: 800; }
+    .hero h2 { margin: 8px 0; font-size: clamp(1.6rem, 4vw, 3rem); line-height: 1.05; }
+    .hero p { margin: 0; max-width: 760px; color: var(--muted); }
+    .overall { padding: 20px; display: flex; flex-direction: column; justify-content: center; }
+    .overall-label { color: var(--muted); font-size: .82rem; text-transform: uppercase; letter-spacing: .1em; }
+    .overall-value { font-size: 2rem; font-weight: 900; margin: 6px 0; }
+    .overall-meta { color: var(--muted); font-size: .85rem; }
+    .grid { display: grid; gap: 16px; }
+    .status-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .monitor-card { padding: 18px; min-width: 0; position: relative; overflow: hidden; }
+    .monitor-card::after { content: ""; position: absolute; inset: auto -30px -45px auto; width: 120px; height: 120px; border-radius: 50%; background: currentColor; opacity: .06; }
+    .monitor-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+    .monitor-title { margin: 0; font-size: 1.05rem; }
+    .monitor-sub { color: var(--muted); font-size: .78rem; margin-top: 4px; }
+    .badge { display: inline-flex; align-items: center; gap: 7px; border-radius: 999px; padding: 6px 9px; font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; border: 1px solid currentColor; }
+    .badge::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; box-shadow: 0 0 12px currentColor; }
+    .success { color: var(--success); }
+    .failure { color: var(--danger); }
+    .stale, .cancelled, .timed_out { color: var(--warning); }
+    .running, .queued, .in_progress { color: var(--accent); }
+    .unknown, .skipped { color: var(--unknown); }
+    .metrics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 18px 0; }
+    .metric { border: 1px solid var(--border); border-radius: 14px; padding: 11px; background: rgba(255,255,255,.025); }
+    .metric span { display: block; color: var(--muted); font-size: .72rem; margin-bottom: 5px; }
+    .metric strong { display: block; font-size: .92rem; overflow-wrap: anywhere; }
+    .error-box { min-height: 68px; padding: 11px; border-radius: 13px; background: rgba(255,107,125,.08); border: 1px solid rgba(255,107,125,.18); color: var(--muted); font-size: .78rem; white-space: pre-wrap; overflow: hidden; }
+    .card-actions { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+    .card-actions a, .card-actions button { text-decoration: none; padding: 8px 10px; border-radius: 10px; border: 1px solid var(--border); background: rgba(255,255,255,.035); color: var(--text); cursor: pointer; font-size: .78rem; }
+    .section { margin-top: 16px; padding: 18px; }
+    .section-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
+    .section-head h3 { margin: 0; font-size: 1.05rem; }
+    .section-head p { margin: 2px 0 0; color: var(--muted); font-size: .78rem; }
+    .chart-grid { grid-template-columns: 1.45fr 1fr; }
+    .chart { width: 100%; height: 390px; }
+    .history-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; min-width: 860px; }
+    th, td { text-align: left; padding: 11px 10px; border-bottom: 1px solid var(--border); font-size: .8rem; }
+    th { color: var(--muted); font-weight: 700; position: sticky; top: 0; background: var(--panel-strong); }
+    td a { color: var(--accent); text-decoration: none; }
+    .evidence-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+    .thumb { position: relative; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; background: #000; cursor: pointer; aspect-ratio: 16/10; }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: .92; }
+    .thumb span { position: absolute; inset: auto 8px 8px; padding: 5px 7px; border-radius: 8px; background: rgba(0,0,0,.68); color: white; font-size: .68rem; max-width: calc(100% - 16px); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .empty { color: var(--muted); padding: 20px; text-align: center; border: 1px dashed var(--border); border-radius: 14px; }
+    .footer { color: var(--muted); text-align: center; padding: 24px 0 0; font-size: .75rem; }
+    dialog { width: min(1100px, calc(100% - 24px)); max-height: 92vh; border: 1px solid var(--border); border-radius: 20px; padding: 0; color: var(--text); background: var(--panel-strong); box-shadow: var(--shadow); }
+    dialog::backdrop { background: rgba(0,0,0,.72); backdrop-filter: blur(5px); }
+    .modal-head { padding: 14px 16px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
+    .modal-head h3 { margin: 0; font-size: 1rem; }
+    .modal-body { padding: 16px; overflow: auto; max-height: calc(92vh - 66px); }
+    .modal-body img, .modal-body video { display: block; max-width: 100%; max-height: 74vh; margin: auto; border-radius: 12px; }
+    .music-dock { position: fixed; right: 18px; bottom: 18px; z-index: 24; display: flex; align-items: center; gap: 8px; padding: 9px; border-radius: 16px; border: 1px solid var(--border); background: var(--panel-strong); box-shadow: var(--shadow); }
+    .music-bars { display: flex; align-items: end; gap: 2px; height: 20px; width: 24px; }
+    .music-bars i { width: 3px; height: 6px; background: var(--accent); border-radius: 3px; animation: bounce .8s infinite alternate; animation-play-state: paused; }
+    .music-bars i:nth-child(2) { animation-delay: .15s; }.music-bars i:nth-child(3) { animation-delay: .3s; }.music-bars i:nth-child(4) { animation-delay: .45s; }
+    .music-dock.playing .music-bars i { animation-play-state: running; }
+    @keyframes bounce { to { height: 20px; } }
+    .toast { position: fixed; left: 50%; bottom: 24px; z-index: 50; transform: translate(-50%, 120px); opacity: 0; transition: .25s ease; padding: 10px 14px; border-radius: 12px; background: var(--panel-strong); border: 1px solid var(--border); box-shadow: var(--shadow); }
+    .toast.show { transform: translate(-50%, 0); opacity: 1; }
+    @media (max-width: 1000px) { .status-grid, .chart-grid { grid-template-columns: 1fr; } .evidence-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 720px) { .app { width: min(100% - 16px, 1600px); padding-top: 8px; } .topbar { top: 6px; align-items: flex-start; } .brand p { display: none; } .hero { grid-template-columns: 1fr; } .toolbar .control-label { display: none; } .evidence-grid { grid-template-columns: 1fr; } .chart { height: 320px; } }
+  </style>
+</head>
+<body>
+  <canvas id="three-bg" aria-hidden="true"></canvas><div class="veil"></div>
+  <main class="app">
+    <header class="topbar">
+      <div class="brand"><div class="brand-mark">PC</div><div><h1>People's Clinic Monitoring</h1><p>Production test intelligence · Smoke · Regression · FNX</p></div></div>
+      <div class="toolbar">
+        <select class="control" id="range"><option value="1">24 hours</option><option value="7" selected>7 days</option><option value="14">14 days</option><option value="30">30 days</option><option value="all">All runs</option></select>
+        <button class="icon-btn" id="refresh" title="Refresh now">↻</button>
+        <button class="icon-btn" id="export" title="Export dashboard data">⇩</button>
+        <button class="icon-btn" id="theme" title="Toggle theme">◐</button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="panel hero-main"><div class="eyebrow">Operational visibility</div><h2>Every critical journey, visible.</h2><p>Live state, failure context, history, screenshots, videos, traces, timing, and stale-run detection—all generated from GitHub Actions without competing Pages deployments.</p></div>
+      <div class="panel overall"><span class="overall-label">Overall health</span><strong class="overall-value unknown" id="overall">Loading…</strong><span class="overall-meta" id="generated">Waiting for dashboard data</span></div>
+    </section>
+
+    <section class="grid status-grid" id="status-grid" aria-live="polite"></section>
+
+    <section class="grid chart-grid">
+      <article class="panel section"><div class="section-head"><div><h3>Run outcomes</h3><p>Success and failure trend over the selected period</p></div></div><div id="outcome-chart" class="chart"></div></article>
+      <article class="panel section"><div class="section-head"><div><h3>3D reliability view</h3><p>Monitor × run × duration, colored by conclusion</p></div></div><div id="three-chart" class="chart"></div></article>
+    </section>
+
+    <section class="panel section"><div class="section-head"><div><h3>Evidence gallery</h3><p>Latest screenshots and recordings from each monitor</p></div><select class="control" id="evidence-monitor"><option value="all">All monitors</option><option value="smoke">Smoke</option><option value="regression">Regression</option><option value="fnx">FNX</option></select></div><div class="evidence-grid" id="evidence-grid"></div></section>
+
+    <section class="panel section"><div class="section-head"><div><h3>Recent workflow history</h3><p>Filtered GitHub Actions execution history</p></div><span class="badge unknown" id="history-count">0 runs</span></div><div class="history-wrap"><table><thead><tr><th>Monitor</th><th>Run</th><th>Event</th><th>Conclusion</th><th>Started</th><th>Duration</th><th>Actor</th><th>Link</th></tr></thead><tbody id="history-body"></tbody></table></div></section>
+
+    <footer class="footer">Auto-refreshes every 5 minutes · Evidence remains available in GitHub artifacts · Dashboard generated by a single deployment workflow</footer>
+  </main>
+
+  <div class="music-dock" id="music-dock"><div class="music-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></div><button class="icon-btn" id="music" title="Toggle ambient audio">♪</button><input id="volume" type="range" min="0" max="0.15" step="0.01" value="0.04" title="Ambient volume"></div>
+  <dialog id="modal"><div class="modal-head"><h3 id="modal-title">Evidence</h3><button class="icon-btn" id="modal-close">×</button></div><div class="modal-body" id="modal-body"></div></dialog>
+  <div class="toast" id="toast" role="status"></div>
+
+  <script>
+    const state = { data: null, range: '7', evidenceMonitor: 'all', charts: {}, refreshTimer: null };
+    const $ = (id) => document.getElementById(id);
+    const esc = (value='') => String(value).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+    const relative = value => { if (!value) return 'Never'; const s = Math.max(0, (Date.now() - new Date(value).getTime()) / 1000); if (s < 60) return `${Math.round(s)}s ago`; if (s < 3600) return `${Math.round(s/60)}m ago`; if (s < 86400) return `${Math.round(s/3600)}h ago`; return `${Math.round(s/86400)}d ago`; };
+    const duration = value => value == null ? '—' : value < 60 ? `${Math.round(value)}s` : `${Math.floor(value/60)}m ${Math.round(value%60)}s`;
+    const isStale = m => { const run = m.latest_completed || m.latest; if (!run?.updated_at) return true; return Date.now() - new Date(run.updated_at).getTime() > m.threshold_minutes * 60000; };
+    const conclusion = m => { if (m.currently_running) return 'running'; if (!m.latest_completed) return 'unknown'; if (isStale(m)) return 'stale'; return m.latest_completed.conclusion || 'unknown'; };
+    const label = c => ({success:'Healthy', failure:'Failed', stale:'Stale', running:'Running', cancelled:'Cancelled', timed_out:'Timed out', skipped:'Skipped', unknown:'Unknown'}[c] || c);
+    const color = c => getComputedStyle(document.documentElement).getPropertyValue(c === 'success' ? '--success' : c === 'failure' ? '--danger' : c === 'stale' || c === 'cancelled' || c === 'timed_out' ? '--warning' : c === 'running' ? '--accent' : '--unknown').trim();
+    function toast(text){ $('toast').textContent=text; $('toast').classList.add('show'); clearTimeout(toast.t); toast.t=setTimeout(()=>$('toast').classList.remove('show'),2600); }
+
+    async function loadData(silent=false){
+      try {
+        const response = await fetch(`data/dashboard.json?ts=${Date.now()}`, {cache:'no-store'});
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        state.data = await response.json(); render(); if (!silent) toast('Dashboard refreshed');
+      } catch (error) {
+        $('overall').textContent='Data unavailable'; $('overall').className='overall-value failure';
+        $('generated').textContent=`Could not load dashboard data: ${error.message}`;
+        if (!silent) toast('Dashboard data could not be loaded');
+      }
+    }
+
+    function filteredRuns(){
+      if (!state.data) return [];
+      const cutoff = state.range === 'all' ? 0 : Date.now() - Number(state.range)*86400000;
+      return Object.values(state.data.monitors).flatMap(m => m.history.map(r => ({...r, monitor:m.key, label:m.label}))).filter(r => !cutoff || new Date(r.created_at).getTime() >= cutoff).sort((a,b)=>new Date(b.created_at)-new Date(a.created_at));
+    }
+
+    function render(){
+      const monitors = Object.values(state.data.monitors);
+      const states = monitors.map(conclusion);
+      const overall = states.includes('failure') ? 'failure' : states.includes('stale') || states.includes('timed_out') ? 'stale' : states.includes('running') ? 'running' : states.every(s=>s==='success') ? 'success' : 'unknown';
+      $('overall').textContent=label(overall); $('overall').className=`overall-value ${overall}`;
+      $('generated').textContent=`Generated ${relative(state.data.generated_at)} · ${state.data.repository}`;
+      $('status-grid').innerHTML = monitors.map(m => {
+        const c=conclusion(m), run=m.latest_completed || m.latest, error=m.main_error || (c==='success'?'No active incident.':'No concise error is available.');
+        return `<article class="panel monitor-card ${c}"><div class="monitor-head"><div><h3 class="monitor-title">${esc(m.label)}</h3><div class="monitor-sub">Every ${m.expected_interval_minutes} min · stale after ${m.threshold_minutes} min</div></div><span class="badge ${c}">${esc(label(c))}</span></div><div class="metrics"><div class="metric"><span>Last completed</span><strong>${esc(relative(run?.updated_at))}</strong></div><div class="metric"><span>Duration</span><strong>${esc(duration(run?.duration_seconds))}</strong></div><div class="metric"><span>Trigger</span><strong>${esc(run?.event || '—')}</strong></div><div class="metric"><span>Run number</span><strong>#${esc(run?.number || '—')}</strong></div></div><div class="error-box">${esc(error)}</div><div class="card-actions"><a href="${esc(run?.url || m.workflow_url)}" target="_blank" rel="noopener">Open latest run</a><a href="${esc(m.workflow_url)}" target="_blank" rel="noopener">Workflow</a><button data-evidence="${esc(m.key)}">Evidence</button></div></article>`;
+      }).join('');
+      document.querySelectorAll('[data-evidence]').forEach(b=>b.addEventListener('click',()=>{ $('evidence-monitor').value=b.dataset.evidence; state.evidenceMonitor=b.dataset.evidence; renderEvidence(); document.querySelector('#evidence-grid').scrollIntoView({behavior:'smooth'}); }));
+      renderHistory(); renderEvidence(); renderCharts();
+    }
+
+    function renderHistory(){
+      const runs=filteredRuns(); $('history-count').textContent=`${runs.length} runs`;
+      $('history-body').innerHTML = runs.length ? runs.map(r=>`<tr><td>${esc(r.label)}</td><td>#${esc(r.number)}</td><td>${esc(r.event)}</td><td><span class="badge ${esc(r.conclusion||r.status||'unknown')}">${esc(label(r.conclusion||r.status||'unknown'))}</span></td><td>${esc(new Date(r.started_at||r.created_at).toLocaleString())}</td><td>${esc(duration(r.duration_seconds))}</td><td>${esc(r.actor||'—')}</td><td><a href="${esc(r.url)}" target="_blank" rel="noopener">Open</a></td></tr>`).join('') : `<tr><td colspan="8"><div class="empty">No runs in this period.</div></td></tr>`;
+    }
+
+    function renderEvidence(){
+      if (!state.data) return;
+      const entries=[];
+      Object.values(state.data.monitors).filter(m=>state.evidenceMonitor==='all'||m.key===state.evidenceMonitor).forEach(m=>{
+        (m.evidence?.screenshots||[]).forEach(path=>entries.push({type:'image',path,label:m.label}));
+        (m.evidence?.videos||[]).forEach(path=>entries.push({type:'video',path,label:m.label}));
+      });
+      $('evidence-grid').innerHTML = entries.length ? entries.map((e,i)=> e.type==='image' ? `<button class="thumb" data-media="${i}"><img src="${esc(e.path)}" alt="${esc(e.label)} test screenshot" loading="lazy"><span>${esc(e.label)} · ${esc(e.path.split('/').pop())}</span></button>` : `<button class="thumb" data-media="${i}"><div style="display:grid;place-items:center;height:100%;font-size:3rem;color:white">▶</div><span>${esc(e.label)} · ${esc(e.path.split('/').pop())}</span></button>`).join('') : `<div class="empty" style="grid-column:1/-1">No screenshot or video was found in the latest artifacts.</div>`;
+      document.querySelectorAll('[data-media]').forEach(button=>button.addEventListener('click',()=>openMedia(entries[Number(button.dataset.media)])));
+    }
+
+    function openMedia(entry){ $('modal-title').textContent=`${entry.label} evidence`; $('modal-body').innerHTML = entry.type==='image' ? `<img src="${esc(entry.path)}" alt="Test evidence screenshot">` : `<video src="${esc(entry.path)}" controls autoplay></video>`; $('modal').showModal(); }
+
+    function renderCharts(){
+      const runs=filteredRuns().slice().reverse();
+      if (!state.charts.outcome) state.charts.outcome=echarts.init($('outcome-chart'));
+      if (!state.charts.three) state.charts.three=echarts.init($('three-chart'));
+      const names=['smoke','regression','fnx'];
+      const days=[...new Set(runs.map(r=>new Date(r.created_at).toLocaleDateString()))];
+      const series=names.map(name=>({name:state.data.monitors[name].label,type:'line',smooth:true,showSymbol:false,data:days.map(day=>runs.filter(r=>r.monitor===name&&new Date(r.created_at).toLocaleDateString()===day).reduce((sum,r)=>sum+(r.conclusion==='success'?1:r.conclusion?0:null),0)),areaStyle:{opacity:.08}}));
+      state.charts.outcome.setOption({backgroundColor:'transparent',tooltip:{trigger:'axis'},legend:{textStyle:{color:getComputedStyle(document.documentElement).getPropertyValue('--muted')}},grid:{left:42,right:18,top:45,bottom:48},xAxis:{type:'category',data:days,axisLabel:{color:getComputedStyle(document.documentElement).getPropertyValue('--muted'),rotate:25},axisLine:{lineStyle:{color:getComputedStyle(document.documentElement).getPropertyValue('--border')}}},yAxis:{type:'value',min:0,axisLabel:{color:getComputedStyle(document.documentElement).getPropertyValue('--muted')},splitLine:{lineStyle:{color:getComputedStyle(document.documentElement).getPropertyValue('--border')}}},series});
+      const points=runs.slice(-60).map((r,i)=>[names.indexOf(r.monitor),i,r.duration_seconds||0,r.conclusion]);
+      state.charts.three.setOption({backgroundColor:'transparent',tooltip:{formatter:p=>`${names[p.value[0]]}<br>Duration: ${duration(p.value[2])}<br>${label(p.value[3])}`},xAxis3D:{type:'category',data:names,axisLabel:{color:getComputedStyle(document.documentElement).getPropertyValue('--muted')}},yAxis3D:{type:'value',name:'Run'},zAxis3D:{type:'value',name:'Seconds'},grid3D:{boxWidth:90,boxDepth:110,viewControl:{autoRotate:true,autoRotateSpeed:8,distance:180},light:{main:{intensity:1.2},ambient:{intensity:.45}}},series:[{type:'scatter3D',symbolSize:9,data:points,itemStyle:{color:p=>color(p.value[3]),opacity:.9}}]});
+    }
+
+    function exportData(){ const blob=new Blob([JSON.stringify(state.data,null,2)],{type:'application/json'}); const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download=`clinic-monitoring-${new Date().toISOString().slice(0,10)}.json`; a.click(); URL.revokeObjectURL(url); }
+
+    $('range').addEventListener('change',e=>{state.range=e.target.value;renderHistory();renderCharts();});
+    $('evidence-monitor').addEventListener('change',e=>{state.evidenceMonitor=e.target.value;renderEvidence();});
+    $('refresh').addEventListener('click',()=>loadData()); $('export').addEventListener('click',exportData);
+    $('modal-close').addEventListener('click',()=>$('modal').close()); $('modal').addEventListener('click',e=>{if(e.target===$('modal'))$('modal').close();});
+    $('theme').addEventListener('click',()=>{const light=document.documentElement.dataset.theme==='light'; document.documentElement.dataset.theme=light?'dark':'light'; renderCharts();});
+    window.addEventListener('resize',()=>Object.values(state.charts).forEach(c=>c.resize()));
+
+    let audioCtx, master, playing=false, timers=[];
+    function startMusic(){ audioCtx ||= new (window.AudioContext||window.webkitAudioContext)(); master ||= audioCtx.createGain(); master.gain.value=Number($('volume').value); master.connect(audioCtx.destination); const notes=[174.61,220,261.63,329.63]; notes.forEach((freq,i)=>{const osc=audioCtx.createOscillator(), gain=audioCtx.createGain(); osc.type=i%2?'sine':'triangle'; osc.frequency.value=freq/2; gain.gain.value=.018; osc.connect(gain).connect(master); osc.start(); timers.push(osc);}); playing=true; $('music-dock').classList.add('playing'); $('music').textContent='Ⅱ'; }
+    function stopMusic(){ timers.forEach(o=>{try{o.stop()}catch{}}); timers=[]; playing=false; $('music-dock').classList.remove('playing'); $('music').textContent='♪'; }
+    $('music').addEventListener('click',()=>playing?stopMusic():startMusic()); $('volume').addEventListener('input',e=>{if(master)master.gain.value=Number(e.target.value)});
+
+    (function initThree(){ const canvas=$('three-bg'), renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true}), scene=new THREE.Scene(), camera=new THREE.PerspectiveCamera(60,innerWidth/innerHeight,.1,1000); camera.position.z=34; const geometry=new THREE.BufferGeometry(), count=900, positions=new Float32Array(count*3); for(let i=0;i<count*3;i++)positions[i]=(Math.random()-.5)*70; geometry.setAttribute('position',new THREE.BufferAttribute(positions,3)); const material=new THREE.PointsMaterial({color:0x69a7ff,size:.08,transparent:true,opacity:.65}); const cloud=new THREE.Points(geometry,material); scene.add(cloud); function resize(){renderer.setSize(innerWidth,innerHeight,false);renderer.setPixelRatio(Math.min(devicePixelRatio,1.7));camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix()} addEventListener('resize',resize);resize(); (function tick(){cloud.rotation.y+=.0007;cloud.rotation.x+=.00015;renderer.render(scene,camera);requestAnimationFrame(tick)})();})();
+
+    loadData(true); state.refreshTimer=setInterval(()=>loadData(true),300000);
+  </script>
+</body>
+</html>
