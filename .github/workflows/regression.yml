@@ -81,6 +81,34 @@ jobs:
 
           exit 0
 
+      - name: Show captured evidence
+        if: always()
+        shell: bash
+        run: |
+          echo "Stage screenshots:"
+          find test-results/stage-screenshots \
+            -maxdepth 1 \
+            -type f \
+            -printf '%f %k KB\n' 2>/dev/null || true
+
+          echo "Failure screenshots:"
+          find test-results/failure-screenshots \
+            -maxdepth 1 \
+            -type f \
+            -printf '%f %k KB\n' 2>/dev/null || true
+
+          echo "Videos:"
+          find test-results/videos \
+            -maxdepth 1 \
+            -type f \
+            -printf '%f %k KB\n' 2>/dev/null || true
+
+          echo "Traces:"
+          find test-results/traces \
+            -maxdepth 1 \
+            -type f \
+            -printf '%f %k KB\n' 2>/dev/null || true
+
       - name: Upload regression evidence
         if: always()
 
@@ -109,12 +137,17 @@ jobs:
           MAIL_SENDER_ADDRESS: ${{ secrets.MAIL_SENDER_ADDRESS }}
           MAIL_RECIPIENT_ADDRESS: ${{ secrets.MAIL_RECIPIENT_ADDRESS }}
 
+          # Maximum combined attachment size.
+          # Lower this when your SMTP provider has a smaller limit.
+          MAX_EMAIL_ATTACHMENT_MB: "20"
+
         run: |
           python scripts/send_alert.py \
             --monitor "Peoples Clinic Consultation Regression" \
             --status "${{ steps.monitor.outputs.monitor_status || 'failure' }}" \
             --state-file results/alert-state-regression.json \
             --junit-file results/regression-junit.xml \
+            --evidence-root test-results \
             --cooldown-minutes 60
 
       - name: Save regression alert state
@@ -128,5 +161,4 @@ jobs:
 
       - name: Mark monitor run as failed
         if: steps.monitor.outputs.exit_code != '0'
-
         run: exit 1
