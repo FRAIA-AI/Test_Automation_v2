@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   test-email:
-    name: Test screenshots, video, and concise error email
+    name: Test screenshots, video and concise error email
 
     runs-on: ubuntu-22.04
 
@@ -21,6 +21,16 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+
+      - name: Verify required files exist
+        shell: bash
+        run: |
+          test -f scripts/send_alert.py
+          test -f scripts/test_alarm_email.py
+
+          echo "Alarm scripts found:"
+          ls -la scripts/send_alert.py
+          ls -la scripts/test_alarm_email.py
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -47,7 +57,7 @@ jobs:
 
           MAX_EMAIL_ATTACHMENT_MB: "20"
 
-          # Allow the test email at any UTC hour.
+          # Permit the synthetic test email at any UTC hour.
           ALERT_START_HOUR_UTC: "0"
           ALERT_END_HOUR_UTC: "0"
 
@@ -56,16 +66,29 @@ jobs:
           rm -f results/alarm-test-state.json
           rm -f results/alarm-test-junit.xml
 
+          mkdir -p results
+          mkdir -p test-results
+
           python scripts/test_alarm_email.py
 
       - name: Show generated evidence
         if: always()
+        shell: bash
         run: |
+          echo "Repository scripts:"
+          find scripts \
+            -maxdepth 1 \
+            -type f \
+            -printf '%p\n' \
+            2>/dev/null || true
+
+          echo "Generated test evidence:"
           find test-results \
             -type f \
             -printf '%p %k KB\n' \
             2>/dev/null || true
 
+          echo "Generated reports:"
           find results \
             -type f \
             -printf '%p %k KB\n' \
@@ -81,5 +104,8 @@ jobs:
             test-results/
             results/alarm-test-junit.xml
 
-          if-no-files-found: error
+          # Warning is preferable here so the upload problem
+          # does not hide the original script failure.
+          if-no-files-found: warn
+
           retention-days: 7
