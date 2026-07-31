@@ -2,9 +2,9 @@ name: Consultation Regression (v2)
 
 on:
   workflow_dispatch:
-  # Enable after repository secrets are configured:
-  # schedule:
-  #   - cron: "0 * * * *"
+
+  schedule:
+    - cron: "0 * * * *"
 
 permissions:
   contents: read
@@ -16,7 +16,9 @@ concurrency:
 jobs:
   regression:
     name: Direct consultation and note journey
+
     runs-on: ubuntu-22.04
+
     timeout-minutes: 15
 
     steps:
@@ -46,29 +48,59 @@ jobs:
       - name: Run consultation regression
         id: monitor
         continue-on-error: true
+
         env:
           BASE_APP_URL: https://clinic.peoplesdoctor.ai
           ADMIN_USERNAME: ${{ secrets.ADMIN_USERNAME }}
           ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
           AUTH_COOKIE_NAME: ${{ secrets.AUTH_COOKIE_NAME }}
+
+        shell: bash
+
         run: |
           mkdir -p results
-          set -o pipefail
-          pytest tests/regression/test_consultation.py -v 2>&1 | tee results/regression-output.txt
+          mkdir -p test-results
 
-      - name: Upload failure evidence
-        if: steps.monitor.outcome == 'failure'
+          set +e
+          set -o pipefail
+
+          pytest tests/regression/test_consultation.py \
+            -v \
+            --junitxml=results/regression-junit.xml \
+            2>&1 | tee results/regression-output.txt
+
+          TEST_EXIT_CODE=${PIPESTATUS[0]}
+
+          echo "exit_code=$TEST_EXIT_CODE" >> "$GITHUB_OUTPUT"
+
+          if [ "$TEST_EXIT_CODE" -eq 0 ]; then
+            echo "monitor_status=success" >> "$GITHUB_OUTPUT"
+          else
+            echo "monitor_status=failure" >> "$GITHUB_OUTPUT"
+          fi
+
+          exit 0
+
+      - name: Upload regression evidence
+        if: always()
+
         uses: actions/upload-artifact@v4
+
         with:
-          name: regression-v2-failure-evidence
+          name: regression-v2-evidence-${{ github.run_id }}
+
           path: |
             test-results/
             results/regression-output.txt
+            results/regression-junit.xml
+
           if-no-files-found: warn
+
           retention-days: 14
 
       - name: Process regression email alerts
         if: always()
+
         env:
           MAIL_SERVER_ADDRESS: ${{ secrets.MAIL_SERVER_ADDRESS }}
           MAIL_SERVER_PORT: ${{ secrets.MAIL_SERVER_PORT }}
@@ -76,22 +108,25 @@ jobs:
           MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
           MAIL_SENDER_ADDRESS: ${{ secrets.MAIL_SENDER_ADDRESS }}
           MAIL_RECIPIENT_ADDRESS: ${{ secrets.MAIL_RECIPIENT_ADDRESS }}
-          MONITOR_STATUS: ${{ steps.monitor.outcome == 'success' && 'success' || 'failure' }}
+
         run: |
           python scripts/send_alert.py \
             --monitor "Peoples Clinic Consultation Regression" \
-            --status "$MONITOR_STATUS" \
+            --status "${{ steps.monitor.outputs.monitor_status || 'failure' }}" \
             --state-file results/alert-state-regression.json \
-            --details-file results/regression-output.txt \
+            --junit-file results/regression-junit.xml \
             --cooldown-minutes 60
 
       - name: Save regression alert state
         if: always()
+
         uses: actions/cache/save@v4
+
         with:
           path: results/alert-state-regression.json
           key: clinic-monitoring-alert-regression-${{ github.run_id }}
 
       - name: Mark monitor run as failed
-        if: steps.monitor.outcome == 'failure'
+        if: steps.monitor.outputs.exit_code != '0'
+
         run: exit 1
