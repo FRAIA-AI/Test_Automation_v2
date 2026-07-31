@@ -2,21 +2,27 @@ name: Smoke Monitor (v2)
 
 on:
   workflow_dispatch:
-  # Enable after repository secrets are configured:
-  # schedule:
-  #   - cron: "*/10 * * * *"
+
+  schedule:
+    # GitHub cron uses UTC.
+    # Run every 10 minutes.
+    - cron: "*/10 * * * *"
 
 permissions:
   contents: read
 
 concurrency:
   group: clinic-monitoring-v2-smoke
+
+  # A new scheduled Smoke run may replace an older unfinished Smoke run.
   cancel-in-progress: true
 
 jobs:
   smoke:
     name: Login and logout smoke test
+
     runs-on: ubuntu-22.04
+
     timeout-minutes: 10
 
     steps:
@@ -35,39 +41,104 @@ jobs:
           pip install -r requirements.txt
           playwright install --with-deps chromium
 
-      - name: Restore smoke alert state
+      - name: Restore Smoke alert state
         uses: actions/cache/restore@v4
         with:
           path: results/alert-state-smoke.json
-          key: clinic-monitoring-alert-smoke-${{ github.run_id }}
+
+          key: >-
+            clinic-monitoring-alert-smoke-${{ github.run_id }}
+
           restore-keys: |
             clinic-monitoring-alert-smoke-
 
-      - name: Run smoke monitor
+      - name: Run Smoke monitor
         id: monitor
+
+        # Continue so evidence and email steps can still run.
         continue-on-error: true
+
         env:
           BASE_APP_URL: https://clinic.peoplesdoctor.ai
           TEST_USERNAME: ${{ secrets.TEST_USERNAME }}
           TEST_PASSWORD: ${{ secrets.TEST_PASSWORD }}
+
+        shell: bash
+
         run: |
           mkdir -p results
-          set -o pipefail
-          pytest tests/smoke/test_login_logout.py -v 2>&1 | tee results/smoke-output.txt
+          mkdir -p test-results
 
-      - name: Upload failure evidence
-        if: steps.monitor.outcome == 'failure'
+          set +e
+          set -o pipefail
+
+          pytest tests/smoke/test_login_logout.py \
+            -v \
+            --junitxml=results/smoke-junit.xml \
+            2>&1 | tee results/smoke-output.txt
+
+          TEST_EXIT_CODE=${PIPESTATUS[0]}
+
+          echo "exit_code=$TEST_EXIT_CODE" >> "$GITHUB_OUTPUT"
+
+          if [ "$TEST_EXIT_CODE" -eq 0 ]; then
+            echo "monitor_status=success" >> "$GITHUB_OUTPUT"
+          else
+            echo "monitor_status=failure" >> "$GITHUB_OUTPUT"
+          fi
+
+          exit 0
+
+      - name: Show captured Smoke evidence
+        if: always()
+
+        shell: bash
+
+        run: |
+          echo "Stage screenshots:"
+          find test-results/stage-screenshots \
+            -maxdepth 1 \
+            -type f \
+            -printf '%f %k KB\n' 2>/dev/null || true
+
+          echo "Failure screenshots:"
+          find test-results/failure-screenshots \
+            -maxdepth 1 \
+            -type f \
+            -printf '%f %k KB\n' 2>/dev/null || true
+
+          echo "Videos:"
+          find test-results/videos \
+            -maxdepth 1 \
+            -type f \
+            -printf '%f %k KB\n' 2>/dev/null || true
+
+          echo "Traces:"
+          find test-results/traces \
+            -maxdepth 1 \
+            -type f \
+            -printf '%f %k KB\n' 2>/dev/null || true
+
+      - name: Upload Smoke evidence
+        if: always()
+
         uses: actions/upload-artifact@v4
+
         with:
-          name: smoke-v2-failure-evidence
+          name: smoke-v2-evidence-${{ github.run_id }}
+
           path: |
             test-results/
             results/smoke-output.txt
+            results/smoke-junit.xml
+
           if-no-files-found: warn
+
           retention-days: 14
 
-      - name: Process smoke email alerts
+      - name: Process Smoke email alerts
         if: always()
+
         env:
           MAIL_SERVER_ADDRESS: ${{ secrets.MAIL_SERVER_ADDRESS }}
           MAIL_SERVER_PORT: ${{ secrets.MAIL_SERVER_PORT }}
@@ -75,22 +146,31 @@ jobs:
           MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
           MAIL_SENDER_ADDRESS: ${{ secrets.MAIL_SENDER_ADDRESS }}
           MAIL_RECIPIENT_ADDRESS: ${{ secrets.MAIL_RECIPIENT_ADDRESS }}
-          MONITOR_STATUS: ${{ steps.monitor.outcome == 'success' && 'success' || 'failure' }}
+
+          # Maximum combined attachments in a failure email.
+          MAX_EMAIL_ATTACHMENT_MB: "20"
+
         run: |
           python scripts/send_alert.py \
             --monitor "Peoples Clinic Smoke Monitor" \
-            --status "$MONITOR_STATUS" \
+            --status "${{ steps.monitor.outputs.monitor_status || 'failure' }}" \
             --state-file results/alert-state-smoke.json \
-            --details-file results/smoke-output.txt \
+            --junit-file results/smoke-junit.xml \
+            --evidence-root test-results \
             --cooldown-minutes 60
 
-      - name: Save smoke alert state
+      - name: Save Smoke alert state
         if: always()
+
         uses: actions/cache/save@v4
+
         with:
           path: results/alert-state-smoke.json
-          key: clinic-monitoring-alert-smoke-${{ github.run_id }}
 
-      - name: Mark monitor run as failed
-        if: steps.monitor.outcome == 'failure'
+          key: >-
+            clinic-monitoring-alert-smoke-${{ github.run_id }}
+
+      - name: Mark Smoke monitor as failed
+        if: steps.monitor.outputs.exit_code != '0'
+
         run: exit 1
