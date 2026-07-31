@@ -1,21 +1,40 @@
-"""Send stateful SMTP failure and recovery alerts for a monitor."""
+"""Send concise, stateful SMTP failure and recovery alerts."""
 
 from __future__ import annotations
 
 import argparse
 import json
 import os
+import re
 import smtplib
 import ssl
-from dataclasses import asdict, dataclass
-from datetime import datetime, timedelta, timezone
+import xml.etree.ElementTree as ET
+
+from dataclasses import (
+    asdict,
+    dataclass,
+)
+from datetime import (
+    datetime,
+    timedelta,
+    timezone,
+)
 from email.message import EmailMessage
 from pathlib import Path
 from typing import Literal
 
 
-Status = Literal["success", "failure"]
-Event = Literal["failure", "reminder", "recovery", "test"]
+Status = Literal[
+    "success",
+    "failure",
+]
+
+Event = Literal[
+    "failure",
+    "reminder",
+    "recovery",
+    "test",
+]
 
 
 @dataclass
@@ -31,24 +50,69 @@ class AlertDecision:
     reason: str
 
 
-def parse_utc(value: str | None) -> datetime | None:
+@dataclass(frozen=True)
+class FailureSummary:
+    test_name: str
+    exception_type: str
+    phase: str
+    message: str
+
+
+def parse_utc(
+    value: str | None,
+) -> datetime | None:
     if not value:
         return None
-    return datetime.fromisoformat(value.replace("Z", "+00:00")).astimezone(timezone.utc)
+
+    return datetime.fromisoformat(
+        value.replace(
+            "Z",
+            "+00:00",
+        )
+    ).astimezone(
+        timezone.utc
+    )
 
 
-def utc_text(value: datetime) -> str:
-    return value.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+def utc_text(
+    value: datetime,
+) -> str:
+    return (
+        value
+        .astimezone(timezone.utc)
+        .isoformat()
+        .replace(
+            "+00:00",
+            "Z",
+        )
+    )
 
 
-def is_in_alert_window(now: datetime, start_hour: int, end_hour: int) -> bool:
-    """Return whether now is inside a UTC hour window; the end is exclusive."""
-    hour = now.astimezone(timezone.utc).hour
+def is_in_alert_window(
+    now: datetime,
+    start_hour: int,
+    end_hour: int,
+) -> bool:
+    hour = (
+        now
+        .astimezone(timezone.utc)
+        .hour
+    )
+
     if start_hour == end_hour:
         return True
+
     if start_hour < end_hour:
-        return start_hour <= hour < end_hour
-    return hour >= start_hour or hour < end_hour
+        return (
+            start_hour
+            <= hour
+            < end_hour
+        )
+
+    return (
+        hour >= start_hour
+        or hour < end_hour
+    )
 
 
 def decide_alert(
@@ -60,157 +124,682 @@ def decide_alert(
     start_hour_utc: int,
     end_hour_utc: int,
 ) -> AlertDecision:
-    in_window = is_in_alert_window(now, start_hour_utc, end_hour_utc)
+    in_window = is_in_alert_window(
+        now,
+        start_hour_utc,
+        end_hour_utc,
+    )
 
     if status == "failure":
         if not in_window:
-            return AlertDecision(None, "failure outside configured notification window")
+            return AlertDecision(
+                None,
+                "failure outside configured notification window",
+            )
 
-        last_notification = parse_utc(previous.last_failure_notification_at)
+        last_notification = parse_utc(
+            previous.last_failure_notification_at
+        )
+
         if last_notification is None:
-            return AlertDecision("failure", "first notified failure in this incident")
-        if now - last_notification >= timedelta(minutes=cooldown_minutes):
-            return AlertDecision("reminder", "failure reminder cooldown elapsed")
-        return AlertDecision(None, "failure reminder cooldown has not elapsed")
+            return AlertDecision(
+                "failure",
+                "first notified failure in this incident",
+            )
 
-    if previous.status == "failure" and previous.last_failure_notification_at:
-        return AlertDecision("recovery", "monitor recovered after a notified failure")
-    return AlertDecision(None, "monitor is healthy and no notified incident is open")
+        if (
+            now - last_notification
+            >= timedelta(
+                minutes=cooldown_minutes
+            )
+        ):
+            return AlertDecision(
+                "reminder",
+                "failure reminder cooldown elapsed",
+            )
+
+        return AlertDecision(
+            None,
+            "failure reminder cooldown has not elapsed",
+        )
+
+    if (
+        previous.status == "failure"
+        and previous.last_failure_notification_at
+    ):
+        return AlertDecision(
+            "recovery",
+            "monitor recovered after a notified failure",
+        )
+
+    return AlertDecision(
+        None,
+        "monitor is healthy and no notified incident is open",
+    )
 
 
-def load_state(path: Path) -> AlertState:
+def load_state(
+    path: Path,
+) -> AlertState:
     if not path.is_file():
         return AlertState()
+
     try:
-        raw = json.loads(path.read_text(encoding="utf-8"))
-        status = raw.get("status", "success")
-        if status not in {"success", "failure"}:
-            raise ValueError(f"invalid status {status!r}")
+        raw = json.loads(
+            path.read_text(
+                encoding="utf-8"
+            )
+        )
+
+        status = raw.get(
+            "status",
+            "success",
+        )
+
+        if status not in {
+            "success",
+            "failure",
+        }:
+            raise ValueError(
+                f"invalid status {status!r}"
+            )
+
         return AlertState(
             status=status,
-            updated_at=raw.get("updated_at"),
-            last_failure_notification_at=raw.get("last_failure_notification_at"),
+            updated_at=raw.get(
+                "updated_at"
+            ),
+            last_failure_notification_at=raw.get(
+                "last_failure_notification_at"
+            ),
         )
-    except (OSError, ValueError, TypeError, json.JSONDecodeError) as exc:
-        print(f"WARNING: Ignoring invalid alert state at {path}: {exc}")
+
+    except (
+        OSError,
+        ValueError,
+        TypeError,
+        json.JSONDecodeError,
+    ) as exc:
+        print(
+            "WARNING: Ignoring invalid alert state "
+            f"at {path}: {exc}"
+        )
+
         return AlertState()
 
 
-def save_state(path: Path, state: AlertState) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(asdict(state), indent=2) + "\n", encoding="utf-8")
+def save_state(
+    path: Path,
+    state: AlertState,
+) -> None:
+    path.parent.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+
+    path.write_text(
+        json.dumps(
+            asdict(state),
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
 
 
-def required_env(name: str) -> str:
-    value = os.getenv(name, "").strip()
+def required_env(
+    name: str,
+) -> str:
+    value = os.getenv(
+        name,
+        "",
+    ).strip()
+
     if not value:
-        raise RuntimeError(f"Missing required GitHub secret/environment variable: {name}")
+        raise RuntimeError(
+            "Missing required GitHub secret/"
+            "environment variable: "
+            + name
+        )
+
     return value
 
 
-def read_details(path: Path | None, limit: int = 12_000) -> str:
-    if path is None or not path.is_file():
-        return "No test output file was available. Open the GitHub Actions run for details."
-    text = path.read_text(encoding="utf-8", errors="replace").strip()
-    if not text:
-        return "The test output file was empty. Open the GitHub Actions run for details."
-    if len(text) > limit:
-        return "[Earlier output omitted]\n" + text[-limit:]
-    return text
+def infer_phase(
+    test_name: str,
+    message: str,
+) -> str:
+    text = (
+        f"{test_name} {message}"
+    ).casefold()
+
+    phase_rules = [
+        (
+            "authentication",
+            (
+                "login",
+                "sign_in",
+                "signin",
+            ),
+        ),
+        (
+            "microphone check",
+            (
+                "mic",
+                "microphone",
+            ),
+        ),
+        (
+            "consultation start",
+            (
+                "start consultation",
+                "live consultation",
+            ),
+        ),
+        (
+            "audio upload",
+            (
+                "audio",
+                "transcription api",
+            ),
+        ),
+        (
+            "transcription processing",
+            (
+                "processed transcription",
+            ),
+        ),
+        (
+            "note generation and validation",
+            (
+                "generated note",
+                "loader",
+                "note did not",
+            ),
+        ),
+        (
+            "note approval",
+            (
+                "approve",
+                "save note",
+            ),
+        ),
+        (
+            "feedback",
+            (
+                "feedback",
+                "rating",
+            ),
+        ),
+        (
+            "dashboard verification",
+            (
+                "dashboard",
+                "recent consultation",
+            ),
+        ),
+    ]
+
+    for phase, terms in phase_rules:
+        if any(
+            term in text
+            for term in terms
+        ):
+            return phase
+
+    return "unknown"
 
 
-def build_message(monitor: str, event: Event, now: datetime, details: str) -> EmailMessage:
+def clean_failure_text(
+    text: str,
+) -> str:
+    text = text.strip()
+
+    for marker in (
+        "\nCall log:",
+        "\nAria snapshot:",
+        "\nCaptured stdout",
+        "\nCaptured stderr",
+        "\n===========================",
+    ):
+        if marker in text:
+            text = text.split(
+                marker,
+                1,
+            )[0].strip()
+
+    cleaned: list[str] = []
+
+    for line in text.splitlines():
+        line = re.sub(
+            r"^\s*E\s+",
+            "",
+            line,
+        ).strip()
+
+        if not line:
+            continue
+
+        if line not in cleaned:
+            cleaned.append(
+                line
+            )
+
+    result = "\n".join(
+        cleaned[:8]
+    )
+
+    return (
+        result[:1800]
+        or "No concise failure message was available."
+    )
+
+
+def read_junit_summary(
+    path: Path | None,
+) -> FailureSummary:
+    if (
+        path is None
+        or not path.is_file()
+    ):
+        return FailureSummary(
+            test_name="Unknown test",
+            exception_type="WorkflowFailure",
+            phase="infrastructure or test setup",
+            message=(
+                "No JUnit failure report was generated. "
+                "Open the GitHub Actions run "
+                "for the full log."
+            ),
+        )
+
+    try:
+        root = ET.parse(
+            path
+        ).getroot()
+
+    except (
+        OSError,
+        ET.ParseError,
+    ) as exc:
+        return FailureSummary(
+            test_name="Unknown test",
+            exception_type="JUnitParseError",
+            phase="reporting",
+            message=(
+                "Could not read JUnit report: "
+                f"{exc}"
+            ),
+        )
+
+    testcase = root.find(
+        ".//testcase[failure]"
+    )
+
+    failure_tag = "failure"
+
+    if testcase is None:
+        testcase = root.find(
+            ".//testcase[error]"
+        )
+
+        failure_tag = "error"
+
+    if testcase is None:
+        return FailureSummary(
+            test_name="Unknown test",
+            exception_type="WorkflowFailure",
+            phase="infrastructure or test setup",
+            message=(
+                "The workflow failed, but the JUnit report "
+                "contains no failed test case."
+            ),
+        )
+
+    node = testcase.find(
+        failure_tag
+    )
+
+    test_name = ".".join(
+        value
+        for value in (
+            testcase.attrib.get(
+                "classname",
+                "",
+            ),
+            testcase.attrib.get(
+                "name",
+                "",
+            ),
+        )
+        if value
+    ) or "Unknown test"
+
+    raw_message = ""
+    exception_type = "AssertionError"
+
+    if node is not None:
+        exception_type = node.attrib.get(
+            "type",
+            "AssertionError",
+        )
+
+        raw_message = (
+            node.attrib.get(
+                "message"
+            )
+            or node.text
+            or ""
+        )
+
+    message = clean_failure_text(
+        raw_message
+    )
+
+    return FailureSummary(
+        test_name=test_name,
+        exception_type=exception_type,
+        phase=infer_phase(
+            test_name,
+            message,
+        ),
+        message=message,
+    )
+
+
+def build_message(
+    monitor: str,
+    event: Event,
+    now: datetime,
+    failure: FailureSummary | None,
+) -> EmailMessage:
     labels = {
-        "failure": ("❌ FAILED", "A new monitor failure was confirmed."),
-        "reminder": ("⚠️ STILL FAILING", "The monitor remains unhealthy."),
-        "recovery": ("✅ RECOVERED", "The monitor is healthy again."),
-        "test": ("✅ EMAIL TEST", "The monitoring email alarm is configured correctly."),
+        "failure": (
+            "❌ FAILED",
+            "A new monitor failure was confirmed.",
+        ),
+        "reminder": (
+            "⚠️ STILL FAILING",
+            "The monitor remains unhealthy.",
+        ),
+        "recovery": (
+            "✅ RECOVERED",
+            "The monitor is healthy again.",
+        ),
+        "test": (
+            "✅ EMAIL TEST",
+            "The monitoring email alarm "
+            "is configured correctly.",
+        ),
     }
-    label, summary = labels[event]
-    server_url = os.getenv("GITHUB_SERVER_URL", "https://github.com").rstrip("/")
-    repository = os.getenv("GITHUB_REPOSITORY", "unknown repository")
-    run_id = os.getenv("GITHUB_RUN_ID", "")
-    run_url = f"{server_url}/{repository}/actions/runs/{run_id}" if run_id else "Unavailable"
 
-    message = EmailMessage()
-    message["Subject"] = f"{label}: {monitor}"
-    message["From"] = required_env("MAIL_SENDER_ADDRESS")
-    message["To"] = required_env("MAIL_RECIPIENT_ADDRESS")
-    message.set_content(
-        "\n".join(
+    label, summary = labels[
+        event
+    ]
+
+    server_url = os.getenv(
+        "GITHUB_SERVER_URL",
+        "https://github.com",
+    ).rstrip("/")
+
+    repository = os.getenv(
+        "GITHUB_REPOSITORY",
+        "unknown repository",
+    )
+
+    run_id = os.getenv(
+        "GITHUB_RUN_ID",
+        "",
+    )
+
+    run_url = (
+        f"{server_url}/"
+        f"{repository}/"
+        f"actions/runs/"
+        f"{run_id}"
+        if run_id
+        else "Unavailable"
+    )
+
+    lines = [
+        summary,
+        "",
+        f"Monitor: {monitor}",
+        f"Event: {event}",
+        f"Time (UTC): {utc_text(now)}",
+        f"Repository: {repository}",
+        f"Branch: {os.getenv('GITHUB_REF_NAME', 'unknown')}",
+        f"Commit: {os.getenv('GITHUB_SHA', 'unknown')}",
+    ]
+
+    if (
+        failure is not None
+        and event in {
+            "failure",
+            "reminder",
+        }
+    ):
+        lines.extend(
             [
-                summary,
                 "",
-                f"Monitor: {monitor}",
-                f"Event: {event}",
-                f"Time (UTC): {utc_text(now)}",
-                f"Repository: {repository}",
-                f"Branch: {os.getenv('GITHUB_REF_NAME', 'unknown')}",
-                f"Commit: {os.getenv('GITHUB_SHA', 'unknown')}",
-                f"GitHub run and artifacts: {run_url}",
+                f"Test: {failure.test_name}",
+                f"Phase: {failure.phase}",
+                f"Failure type: {failure.exception_type}",
                 "",
-                "Test output:",
-                details,
+                "Main issue:",
+                failure.message,
             ]
         )
+
+    elif event == "recovery":
+        lines.extend(
+            [
+                "",
+                "The latest monitor run "
+                "completed successfully.",
+            ]
+        )
+
+    elif event == "test":
+        lines.extend(
+            [
+                "",
+                "This was a manual email "
+                "configuration test.",
+            ]
+        )
+
+    lines.extend(
+        [
+            "",
+            "Full logs, screenshots, video and trace:",
+            run_url,
+        ]
     )
+
+    message = EmailMessage()
+
+    message["Subject"] = (
+        f"{label}: {monitor}"
+    )
+
+    message["From"] = required_env(
+        "MAIL_SENDER_ADDRESS"
+    )
+
+    message["To"] = required_env(
+        "MAIL_RECIPIENT_ADDRESS"
+    )
+
+    message.set_content(
+        "\n".join(lines)
+    )
+
     return message
 
 
-def send_message(message: EmailMessage) -> None:
-    host = required_env("MAIL_SERVER_ADDRESS")
-    port_text = required_env("MAIL_SERVER_PORT")
-    username = required_env("MAIL_USERNAME")
-    password = required_env("MAIL_PASSWORD")
+def send_message(
+    message: EmailMessage,
+) -> None:
+    host = required_env(
+        "MAIL_SERVER_ADDRESS"
+    )
+
+    port_text = required_env(
+        "MAIL_SERVER_PORT"
+    )
+
+    username = required_env(
+        "MAIL_USERNAME"
+    )
+
+    password = required_env(
+        "MAIL_PASSWORD"
+    )
+
     try:
-        port = int(port_text)
+        port = int(
+            port_text
+        )
+
     except ValueError as exc:
-        raise RuntimeError("MAIL_SERVER_PORT must be a number") from exc
+        raise RuntimeError(
+            "MAIL_SERVER_PORT must be a number"
+        ) from exc
 
     context = ssl.create_default_context()
+
     if port == 465:
-        with smtplib.SMTP_SSL(host, port, timeout=30, context=context) as smtp:
-            smtp.login(username, password)
-            smtp.send_message(message)
+        with smtplib.SMTP_SSL(
+            host,
+            port,
+            timeout=30,
+            context=context,
+        ) as smtp:
+            smtp.login(
+                username,
+                password,
+            )
+
+            smtp.send_message(
+                message
+            )
+
     else:
-        with smtplib.SMTP(host, port, timeout=30) as smtp:
+        with smtplib.SMTP(
+            host,
+            port,
+            timeout=30,
+        ) as smtp:
             smtp.ehlo()
-            smtp.starttls(context=context)
+            smtp.starttls(
+                context=context
+            )
             smtp.ehlo()
-            smtp.login(username, password)
-            smtp.send_message(message)
+
+            smtp.login(
+                username,
+                password,
+            )
+
+            smtp.send_message(
+                message
+            )
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--monitor", required=True)
-    parser.add_argument("--status", choices=("success", "failure"))
-    parser.add_argument("--state-file", type=Path)
-    parser.add_argument("--details-file", type=Path)
-    parser.add_argument("--cooldown-minutes", type=int, default=60)
-    parser.add_argument("--test-email", action="store_true")
+
+    parser.add_argument(
+        "--monitor",
+        required=True,
+    )
+
+    parser.add_argument(
+        "--status",
+        choices=(
+            "success",
+            "failure",
+        ),
+    )
+
+    parser.add_argument(
+        "--state-file",
+        type=Path,
+    )
+
+    parser.add_argument(
+        "--junit-file",
+        type=Path,
+    )
+
+    parser.add_argument(
+        "--cooldown-minutes",
+        type=int,
+        default=60,
+    )
+
+    parser.add_argument(
+        "--test-email",
+        action="store_true",
+    )
+
     return parser.parse_args()
 
 
 def main() -> int:
     args = parse_args()
-    now = datetime.now(timezone.utc)
+
+    now = datetime.now(
+        timezone.utc
+    )
+
     if args.test_email:
         message = build_message(
             args.monitor,
             "test",
             now,
-            "This was a manual configuration test. No product failure occurred.",
+            None,
         )
-        send_message(message)
-        print(f"Sent test email for {args.monitor}.")
-        return 0
-    if args.status is None or args.state_file is None:
-        raise SystemExit("--status and --state-file are required unless --test-email is used")
 
-    previous = load_state(args.state_file)
-    start_hour = int(os.getenv("ALERT_START_HOUR_UTC", "4"))
-    end_hour = int(os.getenv("ALERT_END_HOUR_UTC", "17"))
+        send_message(
+            message
+        )
+
+        print(
+            f"Sent test email for "
+            f"{args.monitor}."
+        )
+
+        return 0
+
+    if (
+        args.status is None
+        or args.state_file is None
+    ):
+        raise SystemExit(
+            "--status and --state-file are required "
+            "unless --test-email is used"
+        )
+
+    previous = load_state(
+        args.state_file
+    )
+
+    start_hour = int(
+        os.getenv(
+            "ALERT_START_HOUR_UTC",
+            "4",
+        )
+    )
+
+    end_hour = int(
+        os.getenv(
+            "ALERT_END_HOUR_UTC",
+            "17",
+        )
+    )
+
     decision = decide_alert(
         previous,
         args.status,
@@ -223,33 +812,74 @@ def main() -> int:
     next_state = AlertState(
         status=args.status,
         updated_at=utc_text(now),
-        last_failure_notification_at=previous.last_failure_notification_at,
+        last_failure_notification_at=(
+            previous.last_failure_notification_at
+        ),
     )
-    # Persist the observed status before SMTP. If delivery fails, the next run
-    # can restore the incident and retry because no notification time was set.
-    save_state(args.state_file, next_state)
+
+    save_state(
+        args.state_file,
+        next_state,
+    )
 
     if decision.event:
-        details = (
-            read_details(args.details_file)
-            if decision.event != "recovery"
-            else "The latest scheduled or manually triggered monitor run passed."
+        failure = (
+            read_junit_summary(
+                args.junit_file
+            )
+            if decision.event
+            in {
+                "failure",
+                "reminder",
+            }
+            else None
         )
-        message = build_message(args.monitor, decision.event, now, details)
-        send_message(message)
-        print(f"Sent {decision.event} email for {args.monitor}.")
-        if decision.event in {"failure", "reminder"}:
-            next_state.last_failure_notification_at = utc_text(now)
+
+        message = build_message(
+            args.monitor,
+            decision.event,
+            now,
+            failure,
+        )
+
+        send_message(
+            message
+        )
+
+        print(
+            f"Sent {decision.event} "
+            f"email for {args.monitor}."
+        )
+
+        if decision.event in {
+            "failure",
+            "reminder",
+        }:
+            next_state.last_failure_notification_at = utc_text(
+                now
+            )
         else:
             next_state.last_failure_notification_at = None
+
     else:
-        print(f"No email sent for {args.monitor}: {decision.reason}.")
+        print(
+            f"No email sent for "
+            f"{args.monitor}: "
+            f"{decision.reason}."
+        )
+
         if args.status == "success":
             next_state.last_failure_notification_at = None
 
-    save_state(args.state_file, next_state)
+    save_state(
+        args.state_file,
+        next_state,
+    )
+
     return 0
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    raise SystemExit(
+        main()
+    )
