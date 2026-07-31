@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+
+# Local configuration and secrets
+.env
+
+# Test evidence and machine-generated output
+test-results/
+results/*.json
+!results/.gitkeep
+
+# Local fixture source files and Windows metadata
+test_data/test-audio.wav
+*:Zone.Identifier
+*Zone.Identifier
+
+# Editor / OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,1 @@
+"""Clinic monitoring test package."""

@@ -1,0 +1,52 @@
+name: FNX Parser and AI (v2)
+
+on:
+  workflow_dispatch:
+  # Enable after repository secrets are configured:
+  # schedule:
+  #   - cron: "15 */2 * * *"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: clinic-monitoring-v2-fnx
+  cancel-in-progress: false
+
+jobs:
+  fnx:
+    name: FNX parsing, summary, and chat
+    runs-on: ubuntu-22.04
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install Python and browser dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          playwright install --with-deps chromium
+
+      - name: Run FNX monitors
+        env:
+          BASE_APP_URL: https://clinic.peoplesdoctor.ai
+          ADMIN_USERNAME: ${{ secrets.ADMIN_USERNAME }}
+          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
+        run: pytest tests/fnx
+
+      - name: Upload failure evidence
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fnx-v2-failure-evidence
+          path: test-results/
+          if-no-files-found: warn
+          retention-days: 14

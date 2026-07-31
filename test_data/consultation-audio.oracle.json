@@ -1,0 +1,21 @@
+{
+  "description": "Replace expected terms with stable words actually spoken in consultation-audio.webm.",
+  "transcription_expected_any": [
+    "patient",
+    "symptom"
+  ],
+  "expected_note_any": [
+    "assessment",
+    "plan",
+    "patient"
+  ],
+  "forbidden_note_terms": [
+    "not enough data",
+    "no transcription available",
+    "unable to generate",
+    "missing transcription",
+    "der mangler",
+    "ikke nok data"
+  ],
+  "minimum_note_words": 20
+}

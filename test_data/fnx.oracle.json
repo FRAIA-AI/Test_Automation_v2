@@ -1,0 +1,48 @@
+{
+  "patient": {
+    "name": "Nancy Ann Berggren",
+    "cpr_prefix": "251248"
+  },
+  "summary": {
+    "expected_any": [
+      "diabetes",
+      "Primcillin",
+      "Aktuelle Problemstillinger",
+      "No registered",
+      "Ingen registreret"
+    ],
+    "forbidden": [
+      "something went wrong",
+      "unable to analyze",
+      "analysis failed"
+    ]
+  },
+  "chat_turns": [
+    {
+      "prompt": "waht was the last record of deseas",
+      "expected_any": [
+        "acute tonsillitis",
+        "akut tonsillitis",
+        "Primcillin",
+        "heart failure",
+        "type 2 diabetes"
+      ],
+      "forbidden": [
+        "something went wrong",
+        "unable to answer",
+        "no patient selected"
+      ]
+    },
+    {
+      "prompt": "What medication was prescribed for that acute diagnosis?",
+      "expected_any": [
+        "Primcillin"
+      ],
+      "forbidden": [
+        "something went wrong",
+        "unable to answer",
+        "no patient selected"
+      ]
+    }
+  ]
+}
