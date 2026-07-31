@@ -129,9 +129,10 @@ Three independent workflows are included:
 .github/workflows/smoke.yml       intended every 10 minutes
 .github/workflows/regression.yml  intended hourly
 .github/workflows/fnx.yml         intended every 2 hours at minute 15
+.github/workflows/email-alert-test.yml  manual SMTP verification
 ```
 
-Each workflow uses Python 3.12, has a timeout and its own concurrency group, and uploads failure evidence for 14 days. They do not push to `gh-pages`, deploy a dashboard, or compete for a shared branch.
+Each workflow uses Python 3.12, has a timeout and its own concurrency group, uploads failure evidence for 14 days, and processes stateful email alerts. They do not push to `gh-pages`, deploy a dashboard, or compete for a shared branch.
 
 Scheduled triggers are initially commented out. Configure the repository secrets, run each workflow manually, and then enable the three schedules.
 
@@ -142,9 +143,46 @@ TEST_USERNAME
 TEST_PASSWORD
 ADMIN_USERNAME
 ADMIN_PASSWORD
+MAIL_SERVER_ADDRESS
+MAIL_SERVER_PORT
+MAIL_USERNAME
+MAIL_PASSWORD
+MAIL_SENDER_ADDRESS
+MAIL_RECIPIENT_ADDRESS
 ```
 
 `AUTH_COOKIE_NAME` defaults safely to `pc-accessToken`; add it as a secret if the application later renames that cookie.
+
+For Brevo SMTP, use:
+
+```text
+MAIL_SERVER_ADDRESS = smtp-relay.brevo.com
+MAIL_SERVER_PORT = 587
+MAIL_USERNAME = the Brevo SMTP login
+MAIL_PASSWORD = the active Brevo SMTP key
+MAIL_SENDER_ADDRESS = a sender verified in Brevo
+MAIL_RECIPIENT_ADDRESS = the address that should receive alerts
+```
+
+Enter secret values without surrounding quote marks. MailSlurp credentials are not used by this alert system.
+
+## Email alert behavior
+
+Each monitor keeps independent incident state in the GitHub Actions cache:
+
+```text
+First failure in the notification window -> failure email
+Continuing failure after 60 minutes       -> reminder email
+Continuing failure before 60 minutes      -> no duplicate email
+First successful run after a mailed alert -> recovery email
+Healthy run with no open incident         -> no email
+```
+
+Failure and reminder emails are sent from 04:00 up to 17:00 UTC (the end is exclusive), matching the previous daytime alert policy. A recovery email may be sent outside that window so an open incident is clearly closed. Emails include the captured pytest output and a direct link to the GitHub Actions run and its artifacts.
+
+If SMTP delivery fails, the workflow reports that configuration/delivery error and leaves the incident eligible for a retry on the next run. SMTP secrets are never printed.
+
+To verify the alarm after adding all six mail secrets, open **Actions → Email Alarm Test (v2) → Run workflow**. It sends a harmless message with the subject `✅ EMAIL TEST`; it does not run a production test or create an incident. Then run each real monitor manually. Do not invalidate production credentials merely to force a failure email.
 
 ## Selector and validation policy
 

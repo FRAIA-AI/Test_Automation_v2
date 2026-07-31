@@ -35,18 +35,62 @@ jobs:
           pip install -r requirements.txt
           playwright install --with-deps chromium
 
+      - name: Restore FNX alert state
+        uses: actions/cache/restore@v4
+        with:
+          path: results/alert-state-fnx.json
+          key: clinic-monitoring-alert-fnx-${{ github.run_id }}
+          restore-keys: |
+            clinic-monitoring-alert-fnx-
+
       - name: Run FNX monitors
+        id: monitor
+        continue-on-error: true
         env:
           BASE_APP_URL: https://clinic.peoplesdoctor.ai
           ADMIN_USERNAME: ${{ secrets.ADMIN_USERNAME }}
           ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
-        run: pytest tests/fnx
+        run: |
+          mkdir -p results
+          set -o pipefail
+          pytest tests/fnx -v 2>&1 | tee results/fnx-output.txt
 
       - name: Upload failure evidence
-        if: failure()
+        if: steps.monitor.outcome == 'failure'
         uses: actions/upload-artifact@v4
         with:
           name: fnx-v2-failure-evidence
-          path: test-results/
+          path: |
+            test-results/
+            results/fnx-output.txt
           if-no-files-found: warn
           retention-days: 14
+
+      - name: Process FNX email alerts
+        if: always()
+        env:
+          MAIL_SERVER_ADDRESS: ${{ secrets.MAIL_SERVER_ADDRESS }}
+          MAIL_SERVER_PORT: ${{ secrets.MAIL_SERVER_PORT }}
+          MAIL_USERNAME: ${{ secrets.MAIL_USERNAME }}
+          MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
+          MAIL_SENDER_ADDRESS: ${{ secrets.MAIL_SENDER_ADDRESS }}
+          MAIL_RECIPIENT_ADDRESS: ${{ secrets.MAIL_RECIPIENT_ADDRESS }}
+          MONITOR_STATUS: ${{ steps.monitor.outcome == 'success' && 'success' || 'failure' }}
+        run: |
+          python scripts/send_alert.py \
+            --monitor "Peoples Clinic FNX Parser and AI" \
+            --status "$MONITOR_STATUS" \
+            --state-file results/alert-state-fnx.json \
+            --details-file results/fnx-output.txt \
+            --cooldown-minutes 60
+
+      - name: Save FNX alert state
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: results/alert-state-fnx.json
+          key: clinic-monitoring-alert-fnx-${{ github.run_id }}
+
+      - name: Mark monitor run as failed
+        if: steps.monitor.outcome == 'failure'
+        run: exit 1

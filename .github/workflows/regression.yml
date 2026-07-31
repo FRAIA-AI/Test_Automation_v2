@@ -35,19 +35,63 @@ jobs:
           pip install -r requirements.txt
           playwright install --with-deps chromium
 
+      - name: Restore regression alert state
+        uses: actions/cache/restore@v4
+        with:
+          path: results/alert-state-regression.json
+          key: clinic-monitoring-alert-regression-${{ github.run_id }}
+          restore-keys: |
+            clinic-monitoring-alert-regression-
+
       - name: Run consultation regression
+        id: monitor
+        continue-on-error: true
         env:
           BASE_APP_URL: https://clinic.peoplesdoctor.ai
           ADMIN_USERNAME: ${{ secrets.ADMIN_USERNAME }}
           ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
           AUTH_COOKIE_NAME: ${{ secrets.AUTH_COOKIE_NAME }}
-        run: pytest tests/regression/test_consultation.py
+        run: |
+          mkdir -p results
+          set -o pipefail
+          pytest tests/regression/test_consultation.py -v 2>&1 | tee results/regression-output.txt
 
       - name: Upload failure evidence
-        if: failure()
+        if: steps.monitor.outcome == 'failure'
         uses: actions/upload-artifact@v4
         with:
           name: regression-v2-failure-evidence
-          path: test-results/
+          path: |
+            test-results/
+            results/regression-output.txt
           if-no-files-found: warn
           retention-days: 14
+
+      - name: Process regression email alerts
+        if: always()
+        env:
+          MAIL_SERVER_ADDRESS: ${{ secrets.MAIL_SERVER_ADDRESS }}
+          MAIL_SERVER_PORT: ${{ secrets.MAIL_SERVER_PORT }}
+          MAIL_USERNAME: ${{ secrets.MAIL_USERNAME }}
+          MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
+          MAIL_SENDER_ADDRESS: ${{ secrets.MAIL_SENDER_ADDRESS }}
+          MAIL_RECIPIENT_ADDRESS: ${{ secrets.MAIL_RECIPIENT_ADDRESS }}
+          MONITOR_STATUS: ${{ steps.monitor.outcome == 'success' && 'success' || 'failure' }}
+        run: |
+          python scripts/send_alert.py \
+            --monitor "Peoples Clinic Consultation Regression" \
+            --status "$MONITOR_STATUS" \
+            --state-file results/alert-state-regression.json \
+            --details-file results/regression-output.txt \
+            --cooldown-minutes 60
+
+      - name: Save regression alert state
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: results/alert-state-regression.json
+          key: clinic-monitoring-alert-regression-${{ github.run_id }}
+
+      - name: Mark monitor run as failed
+        if: steps.monitor.outcome == 'failure'
+        run: exit 1

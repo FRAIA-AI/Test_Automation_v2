@@ -35,18 +35,62 @@ jobs:
           pip install -r requirements.txt
           playwright install --with-deps chromium
 
+      - name: Restore smoke alert state
+        uses: actions/cache/restore@v4
+        with:
+          path: results/alert-state-smoke.json
+          key: clinic-monitoring-alert-smoke-${{ github.run_id }}
+          restore-keys: |
+            clinic-monitoring-alert-smoke-
+
       - name: Run smoke monitor
+        id: monitor
+        continue-on-error: true
         env:
           BASE_APP_URL: https://clinic.peoplesdoctor.ai
           TEST_USERNAME: ${{ secrets.TEST_USERNAME }}
           TEST_PASSWORD: ${{ secrets.TEST_PASSWORD }}
-        run: pytest tests/smoke/test_login_logout.py
+        run: |
+          mkdir -p results
+          set -o pipefail
+          pytest tests/smoke/test_login_logout.py -v 2>&1 | tee results/smoke-output.txt
 
       - name: Upload failure evidence
-        if: failure()
+        if: steps.monitor.outcome == 'failure'
         uses: actions/upload-artifact@v4
         with:
           name: smoke-v2-failure-evidence
-          path: test-results/
+          path: |
+            test-results/
+            results/smoke-output.txt
           if-no-files-found: warn
           retention-days: 14
+
+      - name: Process smoke email alerts
+        if: always()
+        env:
+          MAIL_SERVER_ADDRESS: ${{ secrets.MAIL_SERVER_ADDRESS }}
+          MAIL_SERVER_PORT: ${{ secrets.MAIL_SERVER_PORT }}
+          MAIL_USERNAME: ${{ secrets.MAIL_USERNAME }}
+          MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
+          MAIL_SENDER_ADDRESS: ${{ secrets.MAIL_SENDER_ADDRESS }}
+          MAIL_RECIPIENT_ADDRESS: ${{ secrets.MAIL_RECIPIENT_ADDRESS }}
+          MONITOR_STATUS: ${{ steps.monitor.outcome == 'success' && 'success' || 'failure' }}
+        run: |
+          python scripts/send_alert.py \
+            --monitor "Peoples Clinic Smoke Monitor" \
+            --status "$MONITOR_STATUS" \
+            --state-file results/alert-state-smoke.json \
+            --details-file results/smoke-output.txt \
+            --cooldown-minutes 60
+
+      - name: Save smoke alert state
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: results/alert-state-smoke.json
+          key: clinic-monitoring-alert-smoke-${{ github.run_id }}
+
+      - name: Mark monitor run as failed
+        if: steps.monitor.outcome == 'failure'
+        run: exit 1
