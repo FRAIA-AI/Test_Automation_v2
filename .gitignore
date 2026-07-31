@@ -10,6 +10,7 @@ __pycache__/
 # Test evidence and machine-generated output
 test-results/
 results/*.json
+results/*.txt
 !results/.gitkeep
 
 # Local fixture source files and Windows metadata
