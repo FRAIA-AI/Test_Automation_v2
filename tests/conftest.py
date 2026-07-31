@@ -39,7 +39,6 @@ class StageEvidence:
 
     def capture(self, stage: str) -> Path:
         self.counter += 1
-
         safe_stage = _safe_name(stage)
 
         path = self.screenshot_dir / (
@@ -71,7 +70,7 @@ def _safe_name(value: str) -> str:
 def browser_type_launch_args(
     browser_type_launch_args: dict,
 ) -> dict:
-    """Give deep tests deterministic fake camera/microphone devices."""
+    """Provide deterministic fake camera and microphone devices."""
 
     return {
         **browser_type_launch_args,
@@ -105,9 +104,9 @@ def app_session_factory(
     pytestconfig: pytest.Config,
 ) -> Callable[..., AppSession]:
     """
-    Create isolated browser contexts.
+    Create isolated browser contexts and preserve failure evidence.
 
-    Screenshots, traces, and videos are finalized during fixture teardown.
+    Videos are finalized when the browser context closes during teardown.
     """
 
     sessions: list[AppSession] = []
@@ -138,8 +137,8 @@ def app_session_factory(
     ) -> AppSession:
         context = browser.new_context(
             viewport={
-                "width": 1920,
-                "height": 1080,
+                "width": 1280,
+                "height": 720,
             },
             permissions=(
                 ["camera", "microphone"]
@@ -148,8 +147,8 @@ def app_session_factory(
             ),
             record_video_dir=str(video_dir),
             record_video_size={
-                "width": 1920,
-                "height": 1080,
+                "width": 1280,
+                "height": 720,
             },
         )
 
@@ -167,17 +166,12 @@ def app_session_factory(
         )
 
         sessions.append(session)
-
         return session
 
     yield create
 
     failed = bool(
-        getattr(
-            request.node,
-            "rep_call",
-            None,
-        )
+        getattr(request.node, "rep_call", None)
         and request.node.rep_call.failed
     )
 
@@ -185,9 +179,7 @@ def app_session_factory(
         sessions,
         start=1,
     ):
-        test_name = _safe_name(
-            request.node.name
-        )
+        test_name = _safe_name(request.node.name)
 
         video_handles = [
             page.video
@@ -196,10 +188,7 @@ def app_session_factory(
         ]
 
         try:
-            if (
-                failed
-                and not session.page.is_closed()
-            ):
+            if failed and not session.page.is_closed():
                 session.page.screenshot(
                     path=str(
                         failure_screenshot_dir
@@ -228,19 +217,17 @@ def app_session_factory(
             )
 
         finally:
-            # Video files are finalized only after context closure.
+            # Closing the context finalizes recorded WebM files.
             session.context.close()
 
+        # Keep video only when the test fails.
         if not failed:
             for video in video_handles:
                 try:
-                    Path(
-                        video.path()
-                    ).unlink(
+                    Path(video.path()).unlink(
                         missing_ok=True
                     )
                 except Exception:
-                    # Cleanup must never turn a passed test into a failure.
                     pass
 
 
@@ -249,15 +236,13 @@ def stage_evidence(
     request: pytest.FixtureRequest,
     pytestconfig: pytest.Config,
 ):
-    """Create stage evidence after a browser page exists."""
+    """Create a stage-evidence recorder for the active page."""
 
     output_dir = Path(
         str(pytestconfig.getoption("output"))
     )
 
-    def create(
-        page: Page,
-    ) -> StageEvidence:
+    def create(page: Page) -> StageEvidence:
         return StageEvidence(
             page=page,
             output_dir=output_dir,
