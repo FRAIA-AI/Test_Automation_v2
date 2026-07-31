@@ -2,22 +2,28 @@ name: FNX Parser and AI (v2)
 
 on:
   workflow_dispatch:
-  # Enable after repository secrets are configured:
-  # schedule:
-  #   - cron: "15 */2 * * *"
+
+  schedule:
+    # GitHub cron uses UTC.
+    # Run at minute 15 every two hours.
+    - cron: "15 */2 * * *"
 
 permissions:
   contents: read
 
 concurrency:
   group: clinic-monitoring-v2-fnx
+
+  # Do not cancel an FNX run because it may take several minutes.
   cancel-in-progress: false
 
 jobs:
   fnx:
     name: FNX parsing, summary, and chat
+
     runs-on: ubuntu-22.04
-    timeout-minutes: 15
+
+    timeout-minutes: 20
 
     steps:
       - name: Check out repository
@@ -37,37 +43,104 @@ jobs:
 
       - name: Restore FNX alert state
         uses: actions/cache/restore@v4
+
         with:
           path: results/alert-state-fnx.json
-          key: clinic-monitoring-alert-fnx-${{ github.run_id }}
+
+          key: >-
+            clinic-monitoring-alert-fnx-${{ github.run_id }}
+
           restore-keys: |
             clinic-monitoring-alert-fnx-
 
       - name: Run FNX monitors
         id: monitor
+
+        # Allow evidence and email processing after a failure.
         continue-on-error: true
+
         env:
           BASE_APP_URL: https://clinic.peoplesdoctor.ai
           ADMIN_USERNAME: ${{ secrets.ADMIN_USERNAME }}
           ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
+          AUTH_COOKIE_NAME: ${{ secrets.AUTH_COOKIE_NAME }}
+
+        shell: bash
+
         run: |
           mkdir -p results
-          set -o pipefail
-          pytest tests/fnx -v 2>&1 | tee results/fnx-output.txt
+          mkdir -p test-results
 
-      - name: Upload failure evidence
-        if: steps.monitor.outcome == 'failure'
+          set +e
+          set -o pipefail
+
+          pytest tests/fnx \
+            -v \
+            --junitxml=results/fnx-junit.xml \
+            2>&1 | tee results/fnx-output.txt
+
+          TEST_EXIT_CODE=${PIPESTATUS[0]}
+
+          echo "exit_code=$TEST_EXIT_CODE" >> "$GITHUB_OUTPUT"
+
+          if [ "$TEST_EXIT_CODE" -eq 0 ]; then
+            echo "monitor_status=success" >> "$GITHUB_OUTPUT"
+          else
+            echo "monitor_status=failure" >> "$GITHUB_OUTPUT"
+          fi
+
+          exit 0
+
+      - name: Show captured FNX evidence
+        if: always()
+
+        shell: bash
+
+        run: |
+          echo "Stage screenshots:"
+          find test-results/stage-screenshots \
+            -maxdepth 1 \
+            -type f \
+            -printf '%f %k KB\n' 2>/dev/null || true
+
+          echo "Failure screenshots:"
+          find test-results/failure-screenshots \
+            -maxdepth 1 \
+            -type f \
+            -printf '%f %k KB\n' 2>/dev/null || true
+
+          echo "Videos:"
+          find test-results/videos \
+            -maxdepth 1 \
+            -type f \
+            -printf '%f %k KB\n' 2>/dev/null || true
+
+          echo "Traces:"
+          find test-results/traces \
+            -maxdepth 1 \
+            -type f \
+            -printf '%f %k KB\n' 2>/dev/null || true
+
+      - name: Upload FNX evidence
+        if: always()
+
         uses: actions/upload-artifact@v4
+
         with:
-          name: fnx-v2-failure-evidence
+          name: fnx-v2-evidence-${{ github.run_id }}
+
           path: |
             test-results/
             results/fnx-output.txt
+            results/fnx-junit.xml
+
           if-no-files-found: warn
+
           retention-days: 14
 
       - name: Process FNX email alerts
         if: always()
+
         env:
           MAIL_SERVER_ADDRESS: ${{ secrets.MAIL_SERVER_ADDRESS }}
           MAIL_SERVER_PORT: ${{ secrets.MAIL_SERVER_PORT }}
@@ -75,22 +148,30 @@ jobs:
           MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
           MAIL_SENDER_ADDRESS: ${{ secrets.MAIL_SENDER_ADDRESS }}
           MAIL_RECIPIENT_ADDRESS: ${{ secrets.MAIL_RECIPIENT_ADDRESS }}
-          MONITOR_STATUS: ${{ steps.monitor.outcome == 'success' && 'success' || 'failure' }}
+
+          MAX_EMAIL_ATTACHMENT_MB: "20"
+
         run: |
           python scripts/send_alert.py \
             --monitor "Peoples Clinic FNX Parser and AI" \
-            --status "$MONITOR_STATUS" \
+            --status "${{ steps.monitor.outputs.monitor_status || 'failure' }}" \
             --state-file results/alert-state-fnx.json \
-            --details-file results/fnx-output.txt \
+            --junit-file results/fnx-junit.xml \
+            --evidence-root test-results \
             --cooldown-minutes 60
 
       - name: Save FNX alert state
         if: always()
+
         uses: actions/cache/save@v4
+
         with:
           path: results/alert-state-fnx.json
-          key: clinic-monitoring-alert-fnx-${{ github.run_id }}
 
-      - name: Mark monitor run as failed
-        if: steps.monitor.outcome == 'failure'
+          key: >-
+            clinic-monitoring-alert-fnx-${{ github.run_id }}
+
+      - name: Mark FNX monitor as failed
+        if: steps.monitor.outputs.exit_code != '0'
+
         run: exit 1
