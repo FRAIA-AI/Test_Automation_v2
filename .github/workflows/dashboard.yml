@@ -52,11 +52,17 @@ jobs:
         run: |
           python scripts/build_dashboard_data.py
 
+      - name: Apply final dashboard v3 UI and chart upgrades
+        run: |
+          python scripts/postprocess_dashboard.py
+
       - name: Verify generated dashboard
         shell: bash
         run: |
           test -f public/index.html
           test -f public/data/dashboard.json
+          grep -q "dashboard-v3-runtime" public/index.html
+          grep -q "Dashboard v3" public/index.html
 
           echo "Generated dashboard content:"
           find public \
