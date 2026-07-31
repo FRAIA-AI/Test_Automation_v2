@@ -1,0 +1,92 @@
+name: Monitoring Dashboard (v2)
+
+on:
+  workflow_dispatch:
+
+  schedule:
+    # Refresh public dashboard data every 15 minutes.
+    - cron: "7,22,37,52 * * * *"
+
+  workflow_run:
+    workflows:
+      - "Smoke Monitor (v2)"
+      - "Consultation Regression (v2)"
+      - "FNX Parser and AI (v2)"
+    types:
+      - completed
+
+permissions:
+  contents: read
+  actions: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: clinic-monitoring-v2-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build monitoring dashboard
+    runs-on: ubuntu-22.04
+    timeout-minutes: 12
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Prepare dashboard files
+        shell: bash
+        run: |
+          rm -rf public .dashboard-work
+          mkdir -p public
+          cp dashboard/index.html public/index.html
+
+          if [ -f favicon.webp ]; then
+            cp favicon.webp public/favicon.webp
+          fi
+
+          touch public/.nojekyll
+
+      - name: Build GitHub Actions data and latest evidence
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python scripts/build_dashboard_data.py
+
+      - name: Show generated dashboard content
+        shell: bash
+        run: |
+          find public \
+            -maxdepth 4 \
+            -type f \
+            -printf '%p %k KB\n' \
+            | sort
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  deploy:
+    name: Deploy monitoring dashboard
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-22.04
+    needs: build
+    timeout-minutes: 10
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
