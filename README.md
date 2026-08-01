@@ -1,27 +1,74 @@
 # People's Clinic Monitoring v2
 
-Production synthetic monitoring for the People's Clinic platform using **Python 3.12**, **pytest**, **Playwright**, GitHub Actions, SMTP incident alerts, retained test evidence, and a single GitHub Pages operations dashboard.
+<p align="center">
+  <a href="https://clinic.peoplesdoctor.ai/">
+    <img src="https://clinic.peoplesdoctor.ai/assets/images/peoples-doctor-logo-onboarding.png" alt="People's Clinic" width="150">
+  </a>
+</p>
+
+<p align="center">
+  Production synthetic monitoring for People's Clinic using <strong>Python 3.12</strong>, <strong>pytest</strong>, <strong>Playwright</strong>, GitHub Actions, SMTP incident alerts, retained evidence, and a GitHub Pages operations dashboard.
+</p>
+
+<p align="center">
+  <a href="https://github.com/FRAIA-AI/Test_Automation_v2/actions/workflows/smoke.yml"><img src="https://github.com/FRAIA-AI/Test_Automation_v2/actions/workflows/smoke.yml/badge.svg?branch=main" alt="Smoke Monitor"></a>
+  <a href="https://github.com/FRAIA-AI/Test_Automation_v2/actions/workflows/regression.yml"><img src="https://github.com/FRAIA-AI/Test_Automation_v2/actions/workflows/regression.yml/badge.svg?branch=main" alt="Consultation Regression"></a>
+  <a href="https://github.com/FRAIA-AI/Test_Automation_v2/actions/workflows/fnx.yml"><img src="https://github.com/FRAIA-AI/Test_Automation_v2/actions/workflows/fnx.yml/badge.svg?branch=main" alt="FNX Parser and AI"></a>
+  <a href="https://github.com/FRAIA-AI/Test_Automation_v2/actions/workflows/dashboard.yml"><img src="https://github.com/FRAIA-AI/Test_Automation_v2/actions/workflows/dashboard.yml/badge.svg?branch=main" alt="Monitoring Dashboard"></a>
+</p>
+
+<p align="center">
+  <a href="https://clinic.peoplesdoctor.ai/"><strong>Open People's Clinic</strong></a>
+  ·
+  <a href="https://fraia-ai.github.io/Test_Automation_v2/"><strong>Open Live Monitoring Dashboard</strong></a>
+  ·
+  <a href="https://github.com/FRAIA-AI/Test_Automation_v2/actions"><strong>View GitHub Actions</strong></a>
+</p>
 
 > **Production caution**
 >
-> The deep monitors create synthetic activity in the production application. Use only approved automation accounts, synthetic patient identifiers, and approved fixture files. Never use real patient data.
+> Deep monitors create synthetic activity in the production application. Use only approved automation accounts, synthetic patient identifiers, and approved fixture files. Never use real patient data.
 
-## Live services
+---
 
-- **Platform:** <https://clinic.peoplesdoctor.ai/>
-- **Monitoring dashboard:** <https://fraia-ai.github.io/Test_Automation_v2/>
-- **Repository:** `FRAIA-AI/Test_Automation_v2`
+## Live monitoring dashboard
 
-## What is monitored
+The public dashboard combines current health, stale-monitor detection, execution history, failure context, screenshots, videos, traces, timing, 2D trends, and a 3D reliability view.
+
+<p align="center">
+  <a href="https://fraia-ai.github.io/Test_Automation_v2/">
+    <img src="https://image.thum.io/get/width/1600/crop/900/noanimate/https://fraia-ai.github.io/Test_Automation_v2/" alt="People's Clinic monitoring dashboard live preview" width="100%">
+  </a>
+</p>
+
+> The image above is a live external preview of the deployed dashboard. Click it to open the interactive version.
+
+### Platform preview
+
+<p align="center">
+  <a href="https://clinic.peoplesdoctor.ai/">
+    <img src="https://image.thum.io/get/width/1400/crop/760/noanimate/https://clinic.peoplesdoctor.ai/" alt="People's Clinic platform sign-in page" width="85%">
+  </a>
+</p>
+
+The README intentionally shows only the public platform entry page. Authenticated consultation pages, transcripts, CPR values, generated notes, and medical content are excluded from repository documentation.
+
+---
+
+## Current monitor results
+
+The badges at the top of this README always reflect the latest workflow result on `main`.
 
 | Monitor | Scope | Schedule | Workflow |
 |---|---|---:|---|
-| Smoke | Sign in, confirm dashboard, sign out | Every 10 minutes | `Smoke Monitor (v2)` |
-| Regression | Sign in, microphone prerequisite, synthetic consultation, API audio upload, processed transcription, generated note, approval, feedback, dashboard verification | Hourly | `Consultation Regression (v2)` |
-| FNX | FNX parser validation plus analytics summary and multi-turn AI chat | Every 2 hours at minute 15 UTC | `FNX Parser and AI (v2)` |
-| Dashboard | Rebuild data, collect latest evidence, and deploy GitHub Pages | After monitor completion and four times per hour | `Monitoring Dashboard (v2)` |
+| Smoke | Sign in, confirm dashboard, sign out | Every 10 minutes | [`Smoke Monitor (v2)`](https://github.com/FRAIA-AI/Test_Automation_v2/actions/workflows/smoke.yml) |
+| Regression | Synthetic consultation, WebM API upload, transcription, clinical note, approval, feedback, dashboard verification | Hourly | [`Consultation Regression (v2)`](https://github.com/FRAIA-AI/Test_Automation_v2/actions/workflows/regression.yml) |
+| FNX | FNX parsing, patient summary, factual validation, and contextual AI chat | Every 2 hours at minute 15 UTC | [`FNX Parser and AI (v2)`](https://github.com/FRAIA-AI/Test_Automation_v2/actions/workflows/fnx.yml) |
+| Dashboard | Rebuild data, collect latest evidence, deploy GitHub Pages | After monitor completion and four times per hour | [`Monitoring Dashboard (v2)`](https://github.com/FRAIA-AI/Test_Automation_v2/actions/workflows/dashboard.yml) |
 
-GitHub scheduled workflows use UTC and may occasionally start several minutes late.
+GitHub scheduled workflows use UTC and may start several minutes late during periods of high platform load.
+
+---
 
 ## Test suite
 
@@ -41,9 +88,11 @@ tests/fnx/test_fnx_ai.py
   FNX analytics upload -> factual summary -> question -> contextual follow-up
 ```
 
-The FNX parser and AI journeys are intentionally separate. Parser behavior is deterministic; LLM output is validated through flexible factual anchors and forbidden-response checks.
+The parser and AI journeys are intentionally separate. Parser behavior is deterministic; LLM output is validated with flexible factual anchors and forbidden-response checks.
 
-Authentication retries exactly once only when the application explicitly reports `LOGIN_PROCESSING_FAILED`. The retry uses a fresh browser context. Other failures are not automatically retried.
+Authentication retries exactly once only when the application reports `LOGIN_PROCESSING_FAILED`. The retry uses a completely fresh browser context. Other failures are not retried automatically.
+
+---
 
 ## Architecture
 
@@ -68,7 +117,9 @@ FNX workflow ──────────┘          │
                                   GitHub Pages dashboard
 ```
 
-Only the dedicated dashboard workflow deploys GitHub Pages. The three monitor workflows never push to `gh-pages`, preventing concurrent deployment conflicts.
+Only the dashboard workflow deploys GitHub Pages. Smoke, Regression, and FNX never push to `gh-pages`, preventing competing deployments and race conditions.
+
+---
 
 ## Repository layout
 
@@ -78,7 +129,7 @@ Only the dedicated dashboard workflow deploys GitHub Pages. The three monitor wo
   regression.yml
   fnx.yml
   dashboard.yml
-  test-alarm-email.yml          # when present: manual evidence-delivery test
+  test-alarm-email.yml
 
 dashboard/
   index.html
@@ -87,7 +138,7 @@ dashboard/
 
 scripts/
   send_alert.py
-  test_alarm_email.py           # synthetic alarm evidence generator
+  test_alarm_email.py
   build_dashboard_data.py
   prepare_dashboard_assets.py
   postprocess_dashboard.py
@@ -105,18 +156,13 @@ tests/
   smoke/
   regression/
   fnx/
-
-requirements.txt
-pytest.ini
-.env.example
-README.md
 ```
 
-Some optional files may be absent on branches that have not yet received the related workflow.
+---
 
 ## Local setup
 
-### WSL/Linux
+### WSL or Linux
 
 ```bash
 python3 -m venv .venv
@@ -138,13 +184,15 @@ playwright install chromium
 Copy-Item .env.example .env
 ```
 
-The pinned Python dependencies are:
+Pinned dependencies:
 
 ```text
 pytest==8.3.5
 pytest-playwright==0.7.0
 python-dotenv==1.0.1
 ```
+
+---
 
 ## Environment configuration
 
@@ -159,13 +207,43 @@ TEST_PASSWORD=replace-me
 ADMIN_USERNAME=deep-monitor@example.invalid
 ADMIN_PASSWORD=replace-me
 
-# People's Clinic bearer-token cookie used by the API-assisted regression flow.
 AUTH_COOKIE_NAME=pc-accessToken
 ```
 
-Never commit `.env`, credentials, SMTP keys, production cookies, or downloaded evidence containing sensitive information.
+Never commit `.env`, credentials, SMTP keys, production cookies, or sensitive evidence.
 
-## Required fixture files
+### Required GitHub Actions secrets
+
+```text
+TEST_USERNAME
+TEST_PASSWORD
+ADMIN_USERNAME
+ADMIN_PASSWORD
+AUTH_COOKIE_NAME
+MAIL_SERVER_ADDRESS
+MAIL_SERVER_PORT
+MAIL_USERNAME
+MAIL_PASSWORD
+MAIL_SENDER_ADDRESS
+MAIL_RECIPIENT_ADDRESS
+```
+
+Example Brevo SMTP configuration:
+
+```text
+MAIL_SERVER_ADDRESS = smtp-relay.brevo.com
+MAIL_SERVER_PORT = 587
+MAIL_USERNAME = Brevo SMTP login
+MAIL_PASSWORD = active Brevo SMTP key
+MAIL_SENDER_ADDRESS = sender verified in Brevo
+MAIL_RECIPIENT_ADDRESS = alert recipient
+```
+
+Enter values without surrounding quotation marks.
+
+---
+
+## Required fixtures
 
 ```text
 test_data/consultation-audio.webm
@@ -174,13 +252,15 @@ test_data/2024-12-14_CGM_P300_1_Ref.FNX
 test_data/fnx.oracle.json
 ```
 
-The consultation oracle must contain stable words actually spoken in the WebM fixture. This prevents an accepted-but-unprocessed upload from being treated as a successful consultation.
+The consultation oracle must contain stable words actually spoken in the WebM fixture. This prevents an accepted-but-unprocessed upload from being treated as successful.
 
-The FNX oracle should contain stable patient fields, summary anchors, chat-turn expectations, and forbidden fallback phrases.
+The FNX oracle contains stable patient fields, summary anchors, chat expectations, and forbidden fallback phrases.
+
+---
 
 ## Running tests locally
 
-Collect tests without executing production journeys:
+Collect without executing production journeys:
 
 ```bash
 pytest --collect-only -q
@@ -211,7 +291,7 @@ pytest -m "fnx and not ai" -v
 pytest -m ai -v
 ```
 
-Run with a JUnit report:
+Run with JUnit output:
 
 ```bash
 mkdir -p results
@@ -220,11 +300,11 @@ pytest tests/regression/test_consultation.py \
   --junitxml=results/regression-junit.xml
 ```
 
+---
+
 ## Evidence capture
 
-The shared browser fixture records a complete browser-page video and Playwright trace while the test runs. It then retains failure evidence and removes unnecessary successful-run video files.
-
-Expected directories:
+Expected evidence directories:
 
 ```text
 test-results/stage-screenshots/
@@ -233,7 +313,7 @@ test-results/videos/
 test-results/traces/
 ```
 
-Stage screenshots are named by business step so a failure can be understood without reading the full console output.
+The shared fixture records a browser-page video and Playwright trace while the test runs. Failure evidence is retained; unnecessary successful-run videos are removed automatically.
 
 Videos capture only the Chromium page. They do not capture the desktop, terminal, unrelated applications, or microphone audio from the host computer.
 
@@ -243,51 +323,13 @@ Open a trace locally:
 playwright show-trace test-results/traces/<trace-name>.zip
 ```
 
-GitHub Actions uploads the evidence, console output, and JUnit XML as a retained artifact for 14 days.
+GitHub Actions uploads evidence, captured console output, and JUnit XML as an artifact retained for 14 days.
 
-## GitHub repository secrets
-
-Configure under **Settings -> Secrets and variables -> Actions**.
-
-### Test credentials
-
-```text
-TEST_USERNAME
-TEST_PASSWORD
-ADMIN_USERNAME
-ADMIN_PASSWORD
-AUTH_COOKIE_NAME
-```
-
-`AUTH_COOKIE_NAME` is expected by Regression and FNX workflows. Use `pc-accessToken` unless the application cookie name has changed.
-
-### SMTP alerts
-
-```text
-MAIL_SERVER_ADDRESS
-MAIL_SERVER_PORT
-MAIL_USERNAME
-MAIL_PASSWORD
-MAIL_SENDER_ADDRESS
-MAIL_RECIPIENT_ADDRESS
-```
-
-Example Brevo configuration:
-
-```text
-MAIL_SERVER_ADDRESS = smtp-relay.brevo.com
-MAIL_SERVER_PORT = 587
-MAIL_USERNAME = Brevo SMTP login
-MAIL_PASSWORD = active Brevo SMTP key
-MAIL_SENDER_ADDRESS = sender verified in Brevo
-MAIL_RECIPIENT_ADDRESS = alert recipient
-```
-
-Enter values without surrounding quotation marks.
+---
 
 ## Alert behavior
 
-Each monitor maintains independent incident state in the GitHub Actions cache.
+Each monitor maintains independent incident state in GitHub Actions cache.
 
 ```text
 First failure during the alert window    -> failure email
@@ -303,107 +345,35 @@ Default failure-notification window:
 04:00 UTC inclusive -> 17:00 UTC exclusive
 ```
 
-A recovery message can be sent after the incident so the alert lifecycle is closed clearly.
-
-Failure and reminder emails contain:
+Failure and reminder emails can contain:
 
 - monitor and test name;
 - inferred failure phase;
 - exception type;
-- concise main error rather than the complete pytest log;
+- concise main error;
 - `main-error.txt`;
-- available stage and failure screenshots;
-- the newest WebM recording that fits the configured attachment limit;
-- a direct GitHub Actions run link for full logs, traces, and artifacts.
+- stage and failure screenshots;
+- the newest WebM recording that fits the attachment allowance;
+- a direct GitHub Actions run link.
 
-The default combined attachment allowance in the workflows is `20 MB`. Files that exceed the allowance remain in the GitHub Actions artifact.
+The default combined email attachment allowance is `20 MB`. Files omitted from email remain available in the GitHub Actions artifact.
 
-## Testing alarm delivery safely
+### Safe alarm-delivery test
 
-Use the dedicated manual workflow when available:
+Use the manual workflow when available:
 
 ```text
 Actions -> Test Alarm Email Delivery -> Run workflow
 ```
 
-The synthetic alarm test:
+It creates clearly labelled synthetic screenshots, a short WebM video, a fake JUnit failure, sends the real multipart email, and uploads the same evidence as an artifact. It does not invalidate credentials or create a real production incident.
 
-1. opens the sign-in page;
-2. creates clearly labelled synthetic screenshots;
-3. records a short WebM video;
-4. generates a fake JUnit failure;
-5. sends the real multipart alert email;
-6. uploads the same evidence as a GitHub artifact.
+---
 
-It does not invalidate credentials, create a real production incident, or submit synthetic patient data.
-
-A successful workflow log should include messages similar to:
-
-```text
-Attached evidence files: main-error.txt, ...png, ...webm
-Sent failure email for Peoples Clinic Alarm Delivery Test.
-```
-
-SMTP acceptance confirms that the server accepted the message. Final inbox placement still depends on the recipient provider, spam filtering, and attachment-size policies.
-
-## GitHub Actions workflows
-
-### Smoke
-
-```text
-File: .github/workflows/smoke.yml
-Name: Smoke Monitor (v2)
-Cron: */10 * * * *
-Timeout: 10 minutes
-Concurrency: cancels an older unfinished Smoke run
-```
-
-### Regression
-
-```text
-File: .github/workflows/regression.yml
-Name: Consultation Regression (v2)
-Cron: 0 * * * *
-Timeout: 15 minutes
-Concurrency: does not cancel an active regression journey
-```
-
-### FNX
-
-```text
-File: .github/workflows/fnx.yml
-Name: FNX Parser and AI (v2)
-Cron: 15 */2 * * *
-Timeout: 20 minutes
-Concurrency: does not cancel an active FNX journey
-```
-
-### Dashboard
-
-```text
-File: .github/workflows/dashboard.yml
-Name: Monitoring Dashboard (v2)
-Cron: 7,22,37,52 * * * *
-Additional trigger: completion of Smoke, Regression, or FNX
-```
-
-The dashboard workflow:
-
-1. checks out `main`;
-2. prepares HTML and static assets;
-3. queries GitHub Actions history;
-4. downloads and extracts the latest monitor artifacts;
-5. creates `public/data/dashboard.json`;
-6. applies final dashboard UI upgrades;
-7. uploads one GitHub Pages artifact;
-8. deploys through `actions/deploy-pages`.
-
-## Monitoring dashboard
-
-The dashboard includes:
+## Dashboard features
 
 - current Smoke, Regression, and FNX status cards;
-- stale-monitor detection;
+- overall health and stale-monitor detection;
 - last completion time, duration, trigger, and run number;
 - concise failure context;
 - direct workflow and run links;
@@ -411,16 +381,16 @@ The dashboard includes:
 - run-count, success-rate, and duration chart modes;
 - 3D reliability visualization;
 - workflow history table;
-- screenshot gallery and video player;
+- screenshot gallery and WebM player;
 - evidence modal;
 - JSON export;
 - dark and light themes;
 - responsive layout;
 - animated background;
 - optional ambient music;
-- automatic data refresh.
+- five-minute client-side refresh.
 
-The dashboard logo links back to the People's Clinic platform.
+The dashboard logo links directly to the People's Clinic platform.
 
 ### GitHub Pages setup
 
@@ -430,52 +400,37 @@ Under **Settings -> Pages**, choose:
 Source: GitHub Actions
 ```
 
-Do not select **Deploy from a branch**. The project deliberately uses a single Pages deployment workflow and does not maintain a shared `gh-pages` publishing branch.
+Do not choose **Deploy from a branch**. This project deliberately uses one Pages deployment workflow and no shared `gh-pages` publishing branch.
 
-After a dashboard deployment, hard-refresh the browser when validating a UI change:
+After deployment, hard-refresh when validating UI updates:
 
 ```text
 Windows/Linux: Ctrl + Shift + R
 macOS: Command + Shift + R
 ```
 
-## Selector and validation policy
-
-- Selectors are scoped and support English and Danish labels where required.
-- FNX uploads prefer direct `input[type="file"]` interaction instead of localized “Browse Files” buttons.
-- Regression success is based on meaningful editor content and oracle validation, not only on a loader disappearing.
-- LLM tests use factual anchors and forbidden fallback phrases instead of exact full-text matching.
-- Stable application-owned `data-testid` attributes should replace temporary accessible selectors when the application team can add them.
+---
 
 ## Troubleshooting
 
 ### A scheduled workflow does not start
 
-Confirm:
+Confirm that:
 
-1. the workflow YAML is committed to the repository's default branch;
+1. the YAML is committed to the default branch;
 2. the workflow is enabled under **Actions**;
-3. the `schedule` block is not commented out;
+3. the `schedule` block is active;
 4. the cron expression is valid and uses UTC;
 5. organization policy allows GitHub Actions;
-6. the run is labelled `schedule`, not `workflow_dispatch`.
-
-GitHub cron is not guaranteed to start at the exact second and can be delayed during high platform load.
+6. the expected run is labelled `schedule` rather than `workflow_dispatch`.
 
 ### No failure email arrives
 
-Check the `Process ... email alerts` step and verify:
+Check the relevant `Process ... email alerts` step and verify all SMTP secrets, the verified sender, notification window, reminder cooldown, recipient spam filtering, and provider attachment limits.
 
-- all SMTP secrets exist;
-- the sender is verified;
-- the failure occurred inside the configured alert window;
-- the incident was not suppressed by the cooldown;
-- the recipient provider did not quarantine the message;
-- the attachment limit is accepted by the SMTP provider.
+### A healthy run sends no email
 
-### The monitor passed but no email arrived
-
-That is expected. Healthy runs do not send routine success messages. A success email is sent only as recovery after a previously notified incident.
+That is expected. Healthy runs do not send routine success messages. A success email is used only to close a previously notified incident.
 
 ### Dashboard remains on “Loading”
 
@@ -486,36 +441,36 @@ public/index.html
 public/data/dashboard.json
 ```
 
-Then confirm the deploy job succeeded and hard-refresh the browser. Open browser developer tools and check whether `data/dashboard.json` returns HTTP 200.
+Then confirm the deploy job succeeded and verify that `data/dashboard.json` returns HTTP 200 in browser developer tools.
 
 ### Dashboard assets do not appear
 
-The workflow expects dashboard assets under:
+The workflow expects:
 
 ```text
 dashboard/favicon.png
 dashboard/bg-music.mp3
 ```
 
-The asset-preparation script copies them into the Pages artifact.
+The preparation script copies them into the GitHub Pages artifact.
 
 ### No screenshots or video in an email
 
-Confirm the test produced files under `test-results/` before the alert step. The video becomes available only after the Playwright browser context closes. Large files may be omitted from email while remaining in the GitHub artifact.
+Confirm evidence existed before the alert step. The video is finalized only after the Playwright browser context closes. Large files may be omitted from email while remaining in the artifact.
 
-### Trace or video is missing after a successful test
-
-Successful-run videos are intentionally removed to reduce artifact size. Failure traces and videos are retained. Named stage screenshots may still be available depending on the test and workflow.
+---
 
 ## Security and data-handling rules
 
 - Never use real patient identities, CPR numbers, consultation audio, or medical records.
 - Never print credentials, cookies, bearer tokens, or SMTP keys.
 - Keep `.env` out of version control.
-- Review screenshots, videos, traces, and artifacts before sharing them outside the authorized team.
+- Review screenshots, videos, traces, and artifacts before external sharing.
 - Use least-privilege GitHub permissions.
-- Keep each monitor's alert state and concurrency group independent.
-- Treat production-monitor fixture changes as controlled changes requiring review.
+- Keep monitor alert state and concurrency independent.
+- Treat production fixture changes as controlled changes requiring review.
+
+---
 
 ## Maintenance checklist
 
@@ -523,11 +478,11 @@ When the application changes:
 
 1. run the affected monitor manually;
 2. inspect stage screenshots and trace;
-3. update page objects rather than duplicating selectors in tests;
+3. update page objects rather than duplicating selectors;
 4. update oracle terms only with verified fixture content;
-5. test the alarm-delivery workflow after changing evidence or SMTP code;
+5. test alarm delivery after changing evidence or SMTP code;
 6. run the dashboard workflow and verify the deployed JSON and UI;
-7. document material behavior changes in this README.
+7. update this README when behavior changes materially.
 
 ## License and ownership
 
