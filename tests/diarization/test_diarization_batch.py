@@ -74,7 +74,7 @@ def discover_case_ids(cases_dir: Path) -> list[str]:
     while Actions uses the versioned fixtures in ``test_data/diarization``.
     """
 
-    return sorted(
+    case_ids = sorted(
         (
             path.name
             for path in cases_dir.glob("case_*")
@@ -82,6 +82,25 @@ def discover_case_ids(cases_dir: Path) -> list[str]:
         ),
         key=lambda case_id: int(case_id.removeprefix("case_")),
     )
+
+    case_limit = os.environ.get("DIARIZATION_CASE_LIMIT")
+
+    if not case_limit:
+        return case_ids
+
+    try:
+        limit = int(case_limit)
+    except ValueError as exc:
+        raise ValueError(
+            "DIARIZATION_CASE_LIMIT must be a positive integer."
+        ) from exc
+
+    if limit < 1:
+        raise ValueError(
+            "DIARIZATION_CASE_LIMIT must be a positive integer."
+        )
+
+    return case_ids[:limit]
 
 
 CASE_IDS = discover_case_ids(CASES_DIR)
