@@ -38,7 +38,9 @@ from tests.pages.consultation_page import (
 from tests.helpers.auth import create_authenticated_session
 from tests.helpers.clinic_api import (
     upload_consultation_audio,
-    wait_for_processed_transcription,
+)
+from tests.helpers.diarization_api import (
+    wait_for_diarization_result,
 )
 from tests.helpers.config import (
     get_settings,
@@ -512,7 +514,7 @@ def test_collect_diarized_transcription(
     # --------------------------------------------------------
 
     transcription_result = (
-        wait_for_processed_transcription(
+        wait_for_diarization_result(
             session.context,
             base_url=(
                 settings.base_app_url
@@ -523,7 +525,6 @@ def test_collect_diarized_transcription(
             auth_cookie_name=(
                 settings.auth_cookie_name
             ),
-            expected_any=[],
             timeout_ms=180_000,
         )
     )
