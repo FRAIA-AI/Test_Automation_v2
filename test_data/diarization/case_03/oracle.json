@@ -1,0 +1,81 @@
+{
+  "case_id": "case_03",
+  "scenario": "doctor_patient_child",
+  "duration_seconds": 61.75,
+  "minimum_duration_seconds": 30.0,
+  "intro_pause_seconds": 1.5,
+  "inter_turn_pause_seconds": 0.55,
+  "speaker_count": 3,
+  "speakers": {
+    "child": {
+      "voice_id": "SOYHLrjzK2X1ezoPC6cr",
+      "voice_name": "Harry - Fierce Warrior"
+    },
+    "doctor": {
+      "voice_id": "N2lVS1w4EtoT3dr4eOWO",
+      "voice_name": "Callum - Husky Trickster"
+    },
+    "patient": {
+      "voice_id": "SAz9YHcvj6GT2YYXdXww",
+      "voice_name": "River - Relaxed, Neutral, Informative"
+    }
+  },
+  "expected_facts": {
+    "patient_symptom": "cough",
+    "patient_duration": "one week",
+    "patient_fever": false,
+    "child_symptom": "runny nose",
+    "child_duration": "two days",
+    "child_fever": false
+  },
+  "dialogue": [
+    {
+      "speaker": "doctor",
+      "text": "Let us start with you. How long have you had this cough and has it changed during the week?"
+    },
+    {
+      "speaker": "patient",
+      "text": "I have been coughing for around one week. It is mostly a dry cough and it seems worse at night."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Have you had fever, difficulty breathing, chest pain, or anything else together with the cough?"
+    },
+    {
+      "speaker": "patient",
+      "text": "No fever and no chest pain. My breathing feels normal. It is mainly the cough that is annoying."
+    },
+    {
+      "speaker": "doctor",
+      "text": "All right. And now I want to ask your child. Can you tell me how you are feeling today?"
+    },
+    {
+      "speaker": "child",
+      "text": "My nose keeps running and I have to keep wiping it. Otherwise I feel okay."
+    },
+    {
+      "speaker": "doctor",
+      "text": "How long has your nose been running? Did it start today or before today?"
+    },
+    {
+      "speaker": "child",
+      "text": "It started about two days ago."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Have you felt hot or had a fever?"
+    },
+    {
+      "speaker": "child",
+      "text": "No. I have not had a fever."
+    },
+    {
+      "speaker": "patient",
+      "text": "I checked the temperature last night as well and it was normal."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Good. It sounds like we are dealing with two different sets of symptoms, so I will make sure we keep your information separate."
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "case_id": "case_08",
+  "scenario": "doctor_patient_parent_fainting",
+  "duration_seconds": 53.12,
+  "minimum_duration_seconds": 30.0,
+  "intro_pause_seconds": 2.0,
+  "inter_turn_pause_seconds": 0.5,
+  "speaker_count": 3,
+  "speakers": {
+    "doctor": {
+      "voice_id": "IKne3meq5aSn9XLyUdCD",
+      "voice_name": "Charlie - Deep, Confident, Energetic"
+    },
+    "parent": {
+      "voice_id": "CwhRBWXzGAHq8TQ4Fs17",
+      "voice_name": "Roger - Laid-Back, Casual, Resonant"
+    },
+    "patient": {
+      "voice_id": "SOYHLrjzK2X1ezoPC6cr",
+      "voice_name": "Harry - Fierce Warrior"
+    }
+  },
+  "expected_facts": {
+    "symptom": "fainting",
+    "episode": "yesterday",
+    "duration_unconscious": "about ten seconds",
+    "food_intake": "poor",
+    "injury": false
+  },
+  "speaker_facts": {
+    "patient": [
+      "felt dizzy before fainting",
+      "poor food intake"
+    ],
+    "parent": [
+      "fainted yesterday",
+      "unconscious around ten seconds",
+      "no head injury"
+    ]
+  },
+  "dialogue": [
+    {
+      "speaker": "doctor",
+      "text": "I understand there was a fainting episode. Can you tell me what you remember?"
+    },
+    {
+      "speaker": "patient",
+      "text": "I was standing in the kitchen yesterday when I suddenly became very dizzy. The next thing I remember is sitting on the floor."
+    },
+    {
+      "speaker": "parent",
+      "text": "I was there. He suddenly went pale and collapsed. He was unconscious for about ten seconds."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Did he hit his head when he fell?"
+    },
+    {
+      "speaker": "parent",
+      "text": "No. I managed to catch him partly, so his head did not hit the floor."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Had you eaten normally before this happened?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Not really. I skipped breakfast and had only a small sandwich during the afternoon."
+    },
+    {
+      "speaker": "parent",
+      "text": "He has been working long hours recently and has not been eating properly."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Did you have chest pain or feel your heart racing before you fainted?"
+    },
+    {
+      "speaker": "patient",
+      "text": "No chest pain. I mainly remember feeling hot and dizzy just before everything went dark."
+    },
+    {
+      "speaker": "doctor",
+      "text": "I will check your heart rate and blood pressure and perform some additional tests today."
+    }
+  ]
+}

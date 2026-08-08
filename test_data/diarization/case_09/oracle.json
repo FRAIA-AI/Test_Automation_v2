@@ -1,0 +1,89 @@
+{
+  "case_id": "case_09",
+  "scenario": "doctor_patient_child_asthma",
+  "duration_seconds": 47.07,
+  "minimum_duration_seconds": 30.0,
+  "intro_pause_seconds": 2.0,
+  "inter_turn_pause_seconds": 0.5,
+  "speaker_count": 3,
+  "speakers": {
+    "child": {
+      "voice_id": "FGY2WhTYpPnrIDTdsKH5",
+      "voice_name": "Laura - Enthusiast, Quirky Attitude"
+    },
+    "doctor": {
+      "voice_id": "TX3LPaxmHKxFdv7VOQHJ",
+      "voice_name": "Liam - Energetic, Social Media Creator"
+    },
+    "patient": {
+      "voice_id": "JBFqnCBsd6RMkjVDRZzb",
+      "voice_name": "George - Warm, Captivating Storyteller"
+    }
+  },
+  "expected_facts": {
+    "patient_symptom": "wheezing",
+    "patient_duration": "three nights",
+    "inhaler": "salbutamol",
+    "child_observation": "coughing at night"
+  },
+  "speaker_facts": {
+    "patient": [
+      "wheezing",
+      "three nights",
+      "salbutamol inhaler"
+    ],
+    "child": [
+      "patient coughing at night"
+    ]
+  },
+  "dialogue": [
+    {
+      "speaker": "doctor",
+      "text": "What breathing symptoms have you noticed recently?"
+    },
+    {
+      "speaker": "patient",
+      "text": "I have been wheezing at night for the last three nights, and sometimes my chest feels tight."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Have you needed your inhaler more often?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Yes. I have used my salbutamol inhaler several times, especially before going to sleep."
+    },
+    {
+      "speaker": "child",
+      "text": "You have been coughing at night too. I can hear you from my room."
+    },
+    {
+      "speaker": "patient",
+      "text": "Yes, that is true. The cough is worse during the night."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Have you had fever or signs of a cold?"
+    },
+    {
+      "speaker": "patient",
+      "text": "No fever. I have not really felt sick otherwise."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Does your inhaler completely relieve the wheezing?"
+    },
+    {
+      "speaker": "patient",
+      "text": "It helps for a while, but the wheezing returns later."
+    },
+    {
+      "speaker": "child",
+      "text": "Last night you woke up twice because you were coughing."
+    },
+    {
+      "speaker": "doctor",
+      "text": "That is useful to know. We may need to review your asthma treatment and your current control."
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "case_id": "case_21",
+  "scenario": "doctor_patient_ear_pain",
+  "duration_seconds": 57.52,
+  "minimum_duration_seconds": 30.0,
+  "intro_pause_seconds": 2.0,
+  "inter_turn_pause_seconds": 0.55,
+  "speaker_count": 2,
+  "speakers": {
+    "doctor": {
+      "voice_id": "FGY2WhTYpPnrIDTdsKH5",
+      "voice_name": "Laura - Enthusiast, Quirky Attitude"
+    },
+    "patient": {
+      "voice_id": "SOYHLrjzK2X1ezoPC6cr",
+      "voice_name": "Harry - Fierce Warrior"
+    }
+  },
+  "expected_facts": {
+    "symptom": "ear pain",
+    "side": "right",
+    "duration": "two days",
+    "fever": false,
+    "discharge": false,
+    "hearing_change": true,
+    "tinnitus": true,
+    "recent_cold": true,
+    "swimming": false
+  },
+  "speaker_facts": {
+    "patient": [
+      "right ear pain",
+      "two days",
+      "no fever",
+      "no discharge",
+      "reduced hearing",
+      "ringing in right ear",
+      "recent cold",
+      "no swimming"
+    ]
+  },
+  "dialogue": [
+    {
+      "speaker": "doctor",
+      "text": "Which ear is bothering you, and when did the problem first start?"
+    },
+    {
+      "speaker": "patient",
+      "text": "My right ear has been painful for about two days. It started as mild discomfort, but today the pain feels stronger."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Have you had a fever, any fluid or discharge from the ear, or any change in your hearing?"
+    },
+    {
+      "speaker": "patient",
+      "text": "No fever and no discharge, but sounds seem quieter in my right ear than in my left."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Have you noticed any ringing, buzzing, or dizziness?"
+    },
+    {
+      "speaker": "patient",
+      "text": "I have noticed a faint ringing sound in the right ear a few times, but I have not felt dizzy."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Did you recently have a cold, sore throat, or another respiratory infection?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Yes. I had a mild cold last week with a blocked nose, but most of those symptoms have improved."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Have you been swimming recently or put anything inside the ear to clean it?"
+    },
+    {
+      "speaker": "patient",
+      "text": "No swimming, and I have not put anything inside the ear."
+    },
+    {
+      "speaker": "doctor",
+      "text": "All right. I will examine the ear canal and eardrum and check for infection, inflammation, or fluid behind the eardrum."
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "case_id": "case_15",
+  "scenario": "slow_three_speaker_memory_concern",
+  "duration_seconds": 65.66,
+  "minimum_duration_seconds": 30.0,
+  "intro_pause_seconds": 2.0,
+  "inter_turn_pause_seconds": 1.1,
+  "speaker_count": 3,
+  "speakers": {
+    "doctor": {
+      "voice_id": "EXAVITQu4vr4xnSDxMaL",
+      "voice_name": "Sarah - Mature, Reassuring, Confident"
+    },
+    "parent": {
+      "voice_id": "JBFqnCBsd6RMkjVDRZzb",
+      "voice_name": "George - Warm, Captivating Storyteller"
+    },
+    "patient": {
+      "voice_id": "XrExE9yKIg1WjnnlVkGX",
+      "voice_name": "Matilda - Knowledgable, Professional"
+    }
+  },
+  "expected_facts": {
+    "symptom": "forgetfulness",
+    "duration": "six months",
+    "medication_issue": true,
+    "driving_problem": false,
+    "sleep": "poor"
+  },
+  "speaker_facts": {
+    "patient": [
+      "forgetfulness six months",
+      "poor sleep",
+      "no driving problems"
+    ],
+    "parent": [
+      "forgets medication"
+    ]
+  },
+  "dialogue": [
+    {
+      "speaker": "doctor",
+      "text": "What changes in your memory have you noticed?"
+    },
+    {
+      "speaker": "patient",
+      "text": "For around six months I have become more forgetful. Sometimes I walk into a room and cannot remember what I wanted."
+    },
+    {
+      "speaker": "parent",
+      "text": "The biggest problem I have noticed is medication. He sometimes forgets whether he already took his morning tablets."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Have you become lost in familiar places or had any problems while driving?"
+    },
+    {
+      "speaker": "patient",
+      "text": "No. I still know where I am and I have not had problems driving."
+    },
+    {
+      "speaker": "doctor",
+      "text": "How have you been sleeping?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Not very well. I wake up several times during the night and often feel tired the next day."
+    },
+    {
+      "speaker": "parent",
+      "text": "His sleep has definitely become worse during the same period."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Have either of you noticed changes in his mood or personality?"
+    },
+    {
+      "speaker": "parent",
+      "text": "No major personality change. He mainly seems frustrated when he forgets something."
+    },
+    {
+      "speaker": "patient",
+      "text": "Yes, it is frustrating, but otherwise I feel like myself."
+    },
+    {
+      "speaker": "doctor",
+      "text": "We will review your medications, sleep, blood tests, and perform some basic memory assessment."
+    }
+  ]
+}

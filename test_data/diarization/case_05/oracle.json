@@ -1,0 +1,89 @@
+{
+  "case_id": "case_05",
+  "scenario": "rapid_three_speaker_conversation",
+  "duration_seconds": 54.55,
+  "minimum_duration_seconds": 30.0,
+  "intro_pause_seconds": 1.0,
+  "inter_turn_pause_seconds": 0.15,
+  "speaker_count": 3,
+  "speakers": {
+    "doctor": {
+      "voice_id": "SOYHLrjzK2X1ezoPC6cr",
+      "voice_name": "Harry - Fierce Warrior"
+    },
+    "parent": {
+      "voice_id": "N2lVS1w4EtoT3dr4eOWO",
+      "voice_name": "Callum - Husky Trickster"
+    },
+    "patient": {
+      "voice_id": "CwhRBWXzGAHq8TQ4Fs17",
+      "voice_name": "Roger - Laid-Back, Casual, Resonant"
+    }
+  },
+  "expected_facts": {
+    "symptom": "dizziness",
+    "trigger": "standing up",
+    "duration": "five days",
+    "blood_pressure": "low",
+    "fall": false,
+    "balance_problem": true
+  },
+  "dialogue": [
+    {
+      "speaker": "doctor",
+      "text": "When exactly do you normally feel dizzy?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Mostly when I stand up quickly from a chair or from bed."
+    },
+    {
+      "speaker": "parent",
+      "text": "His blood pressure has also been lower than usual when we checked it at home."
+    },
+    {
+      "speaker": "doctor",
+      "text": "How long has this been happening?"
+    },
+    {
+      "speaker": "patient",
+      "text": "About five days. It happened several times yesterday."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Have you actually fallen or lost consciousness?"
+    },
+    {
+      "speaker": "patient",
+      "text": "No. I have not fallen and I have never lost consciousness."
+    },
+    {
+      "speaker": "parent",
+      "text": "But yesterday he stood up in the kitchen and nearly lost his balance. I had to hold his arm."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Were you having chest pain, palpitations, or shortness of breath at that moment?"
+    },
+    {
+      "speaker": "patient",
+      "text": "No chest pain and no shortness of breath. I just felt suddenly light-headed."
+    },
+    {
+      "speaker": "parent",
+      "text": "He has also been drinking less water recently because he has been very busy at work."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Have you started any new medications during the last few weeks?"
+    },
+    {
+      "speaker": "patient",
+      "text": "No. I have not started any new medication."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Okay. I want to check your blood pressure both lying down and standing up, because the timing of the dizziness may be important."
+    }
+  ]
+}

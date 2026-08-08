@@ -1,0 +1,120 @@
+{
+  "case_id": "case_24",
+  "scenario": "four_speaker_eye_irritation",
+  "duration_seconds": 51.87,
+  "minimum_duration_seconds": 30.0,
+  "intro_pause_seconds": 2.0,
+  "inter_turn_pause_seconds": 0.25,
+  "speaker_count": 4,
+  "speakers": {
+    "child": {
+      "voice_id": "SOYHLrjzK2X1ezoPC6cr",
+      "voice_name": "Harry - Fierce Warrior"
+    },
+    "doctor": {
+      "voice_id": "XrExE9yKIg1WjnnlVkGX",
+      "voice_name": "Matilda - Knowledgable, Professional"
+    },
+    "parent": {
+      "voice_id": "CwhRBWXzGAHq8TQ4Fs17",
+      "voice_name": "Roger - Laid-Back, Casual, Resonant"
+    },
+    "patient": {
+      "voice_id": "JBFqnCBsd6RMkjVDRZzb",
+      "voice_name": "George - Warm, Captivating Storyteller"
+    }
+  },
+  "expected_facts": {
+    "symptom": "red eye",
+    "side": "left",
+    "duration": "one day",
+    "discharge": true,
+    "vision_problem": false,
+    "itching": true,
+    "pain": false,
+    "contact_lenses": false
+  },
+  "speaker_facts": {
+    "patient": [
+      "left red eye",
+      "one day",
+      "normal vision",
+      "itching",
+      "not painful",
+      "no contact lenses"
+    ],
+    "parent": [
+      "sticky discharge",
+      "no other family member affected"
+    ],
+    "child": [
+      "patient rubbing eye"
+    ]
+  },
+  "dialogue": [
+    {
+      "speaker": "doctor",
+      "text": "When did your eye become red, and which eye is affected?"
+    },
+    {
+      "speaker": "patient",
+      "text": "My left eye became red yesterday afternoon."
+    },
+    {
+      "speaker": "parent",
+      "text": "There was also some sticky discharge around the eye when he woke up this morning."
+    },
+    {
+      "speaker": "child",
+      "text": "You kept rubbing your eye during breakfast."
+    },
+    {
+      "speaker": "patient",
+      "text": "Yes. It feels very itchy and irritated."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Is your vision blurred or reduced in that eye?"
+    },
+    {
+      "speaker": "patient",
+      "text": "No. My vision seems completely normal."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Is the eye painful, or does it mainly itch?"
+    },
+    {
+      "speaker": "patient",
+      "text": "It mainly itches. I would not describe it as painful."
+    },
+    {
+      "speaker": "parent",
+      "text": "Nobody else at home has developed a red eye or similar symptoms."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Do you wear contact lenses?"
+    },
+    {
+      "speaker": "patient",
+      "text": "No. I do not use contact lenses."
+    },
+    {
+      "speaker": "child",
+      "text": "The eye looked more red after you rubbed it."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Have you had fever, headache, or severe sensitivity to light?"
+    },
+    {
+      "speaker": "patient",
+      "text": "No fever, no headache, and normal light does not bother me."
+    },
+    {
+      "speaker": "doctor",
+      "text": "I will examine the surface of the eye and check for conjunctivitis or another cause."
+    }
+  ]
+}

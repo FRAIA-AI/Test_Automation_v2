@@ -1,0 +1,94 @@
+{
+  "case_id": "case_10",
+  "scenario": "four_speaker_knee_injury",
+  "duration_seconds": 49.6,
+  "minimum_duration_seconds": 30.0,
+  "intro_pause_seconds": 2.0,
+  "inter_turn_pause_seconds": 0.45,
+  "speaker_count": 4,
+  "speakers": {
+    "child": {
+      "voice_id": "SOYHLrjzK2X1ezoPC6cr",
+      "voice_name": "Harry - Fierce Warrior"
+    },
+    "doctor": {
+      "voice_id": "N2lVS1w4EtoT3dr4eOWO",
+      "voice_name": "Callum - Husky Trickster"
+    },
+    "parent": {
+      "voice_id": "EXAVITQu4vr4xnSDxMaL",
+      "voice_name": "Sarah - Mature, Reassuring, Confident"
+    },
+    "patient": {
+      "voice_id": "Xb7hH8MSUJpSbSDYk0k2",
+      "voice_name": "Alice - Clear, Engaging Educator"
+    }
+  },
+  "expected_facts": {
+    "symptom": "right knee pain",
+    "cause": "football injury",
+    "duration": "two days",
+    "swelling": true,
+    "weight_bearing": "difficult"
+  },
+  "speaker_facts": {
+    "patient": [
+      "right knee pain",
+      "football",
+      "two days",
+      "difficulty walking"
+    ],
+    "parent": [
+      "knee swelling"
+    ],
+    "child": [
+      "heard patient shout after twisting knee"
+    ]
+  },
+  "dialogue": [
+    {
+      "speaker": "doctor",
+      "text": "Tell me exactly what happened to your knee."
+    },
+    {
+      "speaker": "patient",
+      "text": "I injured my right knee playing football two days ago. I turned suddenly while my foot was still planted on the ground."
+    },
+    {
+      "speaker": "child",
+      "text": "I was watching. He twisted his leg and shouted straight away."
+    },
+    {
+      "speaker": "parent",
+      "text": "The knee started swelling during the evening and was much larger the next morning."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Can you put your full weight on the leg?"
+    },
+    {
+      "speaker": "patient",
+      "text": "I can stand on it, but walking is difficult and bending the knee hurts."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Did you hear or feel a pop when the injury happened?"
+    },
+    {
+      "speaker": "patient",
+      "text": "I felt something move inside the knee, but I cannot remember hearing a clear pop."
+    },
+    {
+      "speaker": "parent",
+      "text": "We put ice on it and he has tried to keep the leg raised."
+    },
+    {
+      "speaker": "child",
+      "text": "He has also been walking very slowly since the match."
+    },
+    {
+      "speaker": "doctor",
+      "text": "I will examine the ligaments and movement of the knee and decide whether imaging is needed."
+    }
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "case_id": "case_18",
+  "scenario": "four_speaker_ankle_injury",
+  "duration_seconds": 56.25,
+  "minimum_duration_seconds": 30.0,
+  "intro_pause_seconds": 2.0,
+  "inter_turn_pause_seconds": 0.35,
+  "speaker_count": 4,
+  "speakers": {
+    "child": {
+      "voice_id": "JBFqnCBsd6RMkjVDRZzb",
+      "voice_name": "George - Warm, Captivating Storyteller"
+    },
+    "doctor": {
+      "voice_id": "SOYHLrjzK2X1ezoPC6cr",
+      "voice_name": "Harry - Fierce Warrior"
+    },
+    "parent": {
+      "voice_id": "XrExE9yKIg1WjnnlVkGX",
+      "voice_name": "Matilda - Knowledgable, Professional"
+    },
+    "patient": {
+      "voice_id": "FGY2WhTYpPnrIDTdsKH5",
+      "voice_name": "Laura - Enthusiast, Quirky Attitude"
+    }
+  },
+  "expected_facts": {
+    "symptom": "left ankle pain",
+    "cause": "fell on stairs",
+    "time": "yesterday evening",
+    "swelling": true,
+    "bruising": true,
+    "walking": "possible but painful",
+    "medication": "ibuprofen"
+  },
+  "speaker_facts": {
+    "patient": [
+      "left ankle pain",
+      "fell on stairs",
+      "yesterday evening",
+      "walking painful"
+    ],
+    "parent": [
+      "ankle swelling",
+      "ibuprofen"
+    ],
+    "child": [
+      "ankle bruising"
+    ]
+  },
+  "dialogue": [
+    {
+      "speaker": "doctor",
+      "text": "Tell me what happened to your ankle."
+    },
+    {
+      "speaker": "patient",
+      "text": "I slipped on the stairs yesterday evening and landed badly on my left foot. My ankle twisted under me."
+    },
+    {
+      "speaker": "parent",
+      "text": "The ankle became swollen quite quickly after the fall, especially around the outside."
+    },
+    {
+      "speaker": "child",
+      "text": "It also turned purple this morning. There is a big bruise near the ankle."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Were you able to stand immediately after the accident?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Yes, but it hurt. I can still walk now, although I have to move slowly because putting weight on the foot is painful."
+    },
+    {
+      "speaker": "parent",
+      "text": "We put ice on it several times and kept the foot raised during the night."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Have you taken anything for the pain?"
+    },
+    {
+      "speaker": "parent",
+      "text": "He took ibuprofen once last night and another dose this morning."
+    },
+    {
+      "speaker": "patient",
+      "text": "It helped a little, but the ankle still hurts when I walk."
+    },
+    {
+      "speaker": "child",
+      "text": "He could barely get down the stairs this morning."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Did you injure your knee or hit your head when you fell?"
+    },
+    {
+      "speaker": "patient",
+      "text": "No. Only the ankle seems to be injured."
+    },
+    {
+      "speaker": "doctor",
+      "text": "I will examine where the ankle is tender and decide whether we need an X-ray."
+    }
+  ]
+}

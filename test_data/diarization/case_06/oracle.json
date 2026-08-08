@@ -1,0 +1,74 @@
+{
+  "case_id": "case_06",
+  "scenario": "doctor_patient_chest_tightness",
+  "duration_seconds": 58.57,
+  "minimum_duration_seconds": 30.0,
+  "intro_pause_seconds": 2.0,
+  "inter_turn_pause_seconds": 0.65,
+  "speaker_count": 2,
+  "speakers": {
+    "doctor": {
+      "voice_id": "FGY2WhTYpPnrIDTdsKH5",
+      "voice_name": "Laura - Enthusiast, Quirky Attitude"
+    },
+    "patient": {
+      "voice_id": "N2lVS1w4EtoT3dr4eOWO",
+      "voice_name": "Callum - Husky Trickster"
+    }
+  },
+  "expected_facts": {
+    "symptom": "chest tightness",
+    "duration": "two days",
+    "shortness_of_breath": true,
+    "trigger": "climbing stairs",
+    "smoking": false,
+    "fever": false
+  },
+  "speaker_facts": {
+    "patient": [
+      "chest tightness",
+      "two days",
+      "shortness of breath climbing stairs",
+      "does not smoke",
+      "no fever"
+    ]
+  },
+  "dialogue": [
+    {
+      "speaker": "doctor",
+      "text": "Good morning. Tell me what has been happening and when you first noticed the problem."
+    },
+    {
+      "speaker": "patient",
+      "text": "For about two days I have had a feeling of tightness in my chest. It is not constant, but it worries me when it happens."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Do you notice it more during exercise, while resting, or at any particular time?"
+    },
+    {
+      "speaker": "patient",
+      "text": "It is more noticeable when I climb stairs. Yesterday I also became slightly short of breath after walking quickly upstairs."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Have you had a fever, cough, dizziness, or pain spreading into your arm or jaw?"
+    },
+    {
+      "speaker": "patient",
+      "text": "No fever and no cough. I have not felt dizzy, and the discomfort has not spread into my arm or jaw."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Do you smoke cigarettes or use any nicotine products?"
+    },
+    {
+      "speaker": "patient",
+      "text": "No. I do not smoke and I do not use nicotine."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Thank you. I want to check your blood pressure, oxygen level, heart rate, and listen to your heart and lungs before deciding what comes next."
+    }
+  ]
+}

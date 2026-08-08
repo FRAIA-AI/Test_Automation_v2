@@ -1,0 +1,117 @@
+{
+  "case_id": "case_20",
+  "scenario": "four_speaker_gastroenteritis",
+  "duration_seconds": 51.19,
+  "minimum_duration_seconds": 30.0,
+  "intro_pause_seconds": 2.0,
+  "inter_turn_pause_seconds": 0.18,
+  "speaker_count": 4,
+  "speakers": {
+    "child": {
+      "voice_id": "SOYHLrjzK2X1ezoPC6cr",
+      "voice_name": "Harry - Fierce Warrior"
+    },
+    "doctor": {
+      "voice_id": "bIHbv24MWmeRgasZH58o",
+      "voice_name": "Will - Relaxed Optimist"
+    },
+    "parent": {
+      "voice_id": "CwhRBWXzGAHq8TQ4Fs17",
+      "voice_name": "Roger - Laid-Back, Casual, Resonant"
+    },
+    "patient": {
+      "voice_id": "N2lVS1w4EtoT3dr4eOWO",
+      "voice_name": "Callum - Husky Trickster"
+    }
+  },
+  "expected_facts": {
+    "symptom": "diarrhea",
+    "duration": "two days",
+    "vomiting": "twice",
+    "fever": false,
+    "restaurant_meal": true,
+    "abdominal_cramps": true,
+    "fluid_intake": "reduced"
+  },
+  "speaker_facts": {
+    "patient": [
+      "diarrhea two days",
+      "vomited twice",
+      "abdominal cramps",
+      "no fever"
+    ],
+    "parent": [
+      "restaurant meal before symptoms",
+      "reduced fluid intake"
+    ],
+    "child": [
+      "patient stayed in bed"
+    ]
+  },
+  "dialogue": [
+    {
+      "speaker": "doctor",
+      "text": "When did the stomach problem begin?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Two days ago. I started having diarrhea during the night."
+    },
+    {
+      "speaker": "parent",
+      "text": "The evening before that, we all ate at a new restaurant."
+    },
+    {
+      "speaker": "child",
+      "text": "You stayed in bed almost all day yesterday."
+    },
+    {
+      "speaker": "patient",
+      "text": "Yes. I was very tired and had stomach cramps."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Have you vomited?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Yes, twice yesterday morning."
+    },
+    {
+      "speaker": "parent",
+      "text": "He has barely been drinking anything since yesterday."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Have you had a fever?"
+    },
+    {
+      "speaker": "patient",
+      "text": "No. We checked several times and I did not have a fever."
+    },
+    {
+      "speaker": "child",
+      "text": "You said your stomach hurt after drinking water too."
+    },
+    {
+      "speaker": "patient",
+      "text": "Yes, drinking quickly seemed to make the cramps worse."
+    },
+    {
+      "speaker": "parent",
+      "text": "Nobody else in the family has become sick yet."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Have you noticed blood in the diarrhea?"
+    },
+    {
+      "speaker": "patient",
+      "text": "No, there has been no blood."
+    },
+    {
+      "speaker": "doctor",
+      "text": "The most important thing right now is checking for dehydration. I will examine you and we will decide whether you need any additional tests."
+    }
+  ]
+}

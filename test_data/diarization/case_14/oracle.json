@@ -1,0 +1,110 @@
+{
+  "case_id": "case_14",
+  "scenario": "four_speaker_fever_switching",
+  "duration_seconds": 39.92,
+  "minimum_duration_seconds": 30.0,
+  "intro_pause_seconds": 2.0,
+  "inter_turn_pause_seconds": 0.2,
+  "speaker_count": 4,
+  "speakers": {
+    "child": {
+      "voice_id": "Xb7hH8MSUJpSbSDYk0k2",
+      "voice_name": "Alice - Clear, Engaging Educator"
+    },
+    "doctor": {
+      "voice_id": "SOYHLrjzK2X1ezoPC6cr",
+      "voice_name": "Harry - Fierce Warrior"
+    },
+    "parent": {
+      "voice_id": "N2lVS1w4EtoT3dr4eOWO",
+      "voice_name": "Callum - Husky Trickster"
+    },
+    "patient": {
+      "voice_id": "IKne3meq5aSn9XLyUdCD",
+      "voice_name": "Charlie - Deep, Confident, Energetic"
+    }
+  },
+  "expected_facts": {
+    "symptom": "fever",
+    "duration": "three days",
+    "temperature": "39.1",
+    "cough": true,
+    "appetite": "poor",
+    "medication": "paracetamol"
+  },
+  "speaker_facts": {
+    "patient": [
+      "fever three days",
+      "cough"
+    ],
+    "parent": [
+      "temperature 39.1",
+      "paracetamol"
+    ],
+    "child": [
+      "poor appetite"
+    ]
+  },
+  "dialogue": [
+    {
+      "speaker": "doctor",
+      "text": "How long have you been unwell?"
+    },
+    {
+      "speaker": "patient",
+      "text": "About three days. I have had fever and a cough."
+    },
+    {
+      "speaker": "parent",
+      "text": "The highest temperature we measured was thirty nine point one degrees."
+    },
+    {
+      "speaker": "child",
+      "text": "You did not eat much dinner yesterday either."
+    },
+    {
+      "speaker": "patient",
+      "text": "That is true. I have not had much appetite."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Is the cough dry or are you bringing up mucus?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Mostly dry."
+    },
+    {
+      "speaker": "parent",
+      "text": "We gave paracetamol last night when the fever became high."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Did the temperature come down?"
+    },
+    {
+      "speaker": "parent",
+      "text": "Yes, for several hours."
+    },
+    {
+      "speaker": "child",
+      "text": "But you were sweating during the night."
+    },
+    {
+      "speaker": "patient",
+      "text": "Yes, I woke up sweating."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Any shortness of breath or chest pain?"
+    },
+    {
+      "speaker": "patient",
+      "text": "No chest pain and my breathing is okay."
+    },
+    {
+      "speaker": "doctor",
+      "text": "I will listen to your lungs and check your temperature and oxygen level."
+    }
+  ]
+}

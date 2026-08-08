@@ -1,0 +1,85 @@
+{
+  "case_id": "case_04",
+  "scenario": "doctor_patient_parent_child",
+  "duration_seconds": 64.5,
+  "minimum_duration_seconds": 30.0,
+  "intro_pause_seconds": 1.5,
+  "inter_turn_pause_seconds": 0.5,
+  "speaker_count": 4,
+  "speakers": {
+    "child": {
+      "voice_id": "FGY2WhTYpPnrIDTdsKH5",
+      "voice_name": "Laura - Enthusiast, Quirky Attitude"
+    },
+    "doctor": {
+      "voice_id": "EXAVITQu4vr4xnSDxMaL",
+      "voice_name": "Sarah - Mature, Reassuring, Confident"
+    },
+    "parent": {
+      "voice_id": "SAz9YHcvj6GT2YYXdXww",
+      "voice_name": "River - Relaxed, Neutral, Informative"
+    },
+    "patient": {
+      "voice_id": "JBFqnCBsd6RMkjVDRZzb",
+      "voice_name": "George - Warm, Captivating Storyteller"
+    }
+  },
+  "expected_facts": {
+    "patient_symptom": "headache",
+    "patient_duration": "four days",
+    "parent_observation": "poor sleep",
+    "child_observation": "patient tired",
+    "medication": "ibuprofen",
+    "medication_effect": "little improvement"
+  },
+  "dialogue": [
+    {
+      "speaker": "doctor",
+      "text": "Tell me about your headache. When did it begin and where do you mainly feel the pain?"
+    },
+    {
+      "speaker": "patient",
+      "text": "I have had the headache for about four days. Most of the pain is across my forehead and near my temples."
+    },
+    {
+      "speaker": "parent",
+      "text": "He has also been sleeping very poorly for the last few nights. He wakes up several times and looks exhausted in the morning."
+    },
+    {
+      "speaker": "child",
+      "text": "Dad has been really tired after work too. Yesterday he fell asleep on the sofa much earlier than usual."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Have you noticed blurred vision, weakness, numbness, vomiting, or anything unusual?"
+    },
+    {
+      "speaker": "patient",
+      "text": "No. I have not had blurred vision, weakness, numbness, or vomiting."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Have you taken any medicine for the headache?"
+    },
+    {
+      "speaker": "patient",
+      "text": "I took ibuprofen this morning and I also took some yesterday evening."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Did the ibuprofen make a noticeable difference?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Only a little. The headache became less intense for a while but it did not completely disappear."
+    },
+    {
+      "speaker": "parent",
+      "text": "He has also been working late this week, so I wonder whether the lack of sleep is making the headache worse."
+    },
+    {
+      "speaker": "doctor",
+      "text": "That is useful information. I will check his blood pressure and perform a neurological exam before deciding what we should do next."
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "case_id": "case_25",
+  "scenario": "rapid_four_speaker_neck_pain",
+  "duration_seconds": 55.67,
+  "minimum_duration_seconds": 30.0,
+  "intro_pause_seconds": 2.0,
+  "inter_turn_pause_seconds": 0.15,
+  "speaker_count": 4,
+  "speakers": {
+    "child": {
+      "voice_id": "TX3LPaxmHKxFdv7VOQHJ",
+      "voice_name": "Liam - Energetic, Social Media Creator"
+    },
+    "doctor": {
+      "voice_id": "bIHbv24MWmeRgasZH58o",
+      "voice_name": "Will - Relaxed Optimist"
+    },
+    "parent": {
+      "voice_id": "FGY2WhTYpPnrIDTdsKH5",
+      "voice_name": "Laura - Enthusiast, Quirky Attitude"
+    },
+    "patient": {
+      "voice_id": "N2lVS1w4EtoT3dr4eOWO",
+      "voice_name": "Callum - Husky Trickster"
+    }
+  },
+  "expected_facts": {
+    "symptom": "neck pain",
+    "duration": "two days",
+    "cause": "slept awkwardly",
+    "headache": true,
+    "headache_location": "back of head",
+    "arm_numbness": false,
+    "arm_weakness": false,
+    "medication": "ibuprofen",
+    "fever": false
+  },
+  "speaker_facts": {
+    "patient": [
+      "neck pain two days",
+      "slept awkwardly",
+      "headache back of head",
+      "no arm numbness",
+      "no arm weakness"
+    ],
+    "parent": [
+      "ibuprofen",
+      "no fever"
+    ],
+    "child": [
+      "difficulty turning head"
+    ]
+  },
+  "dialogue": [
+    {
+      "speaker": "doctor",
+      "text": "When did your neck pain begin?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Two days ago after I slept in an awkward position."
+    },
+    {
+      "speaker": "child",
+      "text": "Yesterday you could barely turn your head."
+    },
+    {
+      "speaker": "parent",
+      "text": "He took ibuprofen last night because the neck was very uncomfortable."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Did the ibuprofen help?"
+    },
+    {
+      "speaker": "patient",
+      "text": "A little. The pain improved, but the neck still feels stiff."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Have you also had a headache?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Yes. I have a mild headache mainly at the back of my head."
+    },
+    {
+      "speaker": "parent",
+      "text": "We checked his temperature twice and there has been no fever."
+    },
+    {
+      "speaker": "child",
+      "text": "He turns his whole body when he wants to look sideways."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Any numbness, tingling, or weakness in either arm or hand?"
+    },
+    {
+      "speaker": "patient",
+      "text": "No numbness, no tingling, and no weakness in either arm."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Did you have any accident, fall, or injury before the neck pain started?"
+    },
+    {
+      "speaker": "patient",
+      "text": "No. There was no injury. I simply woke up with the stiff neck."
+    },
+    {
+      "speaker": "parent",
+      "text": "He was using a different pillow that night."
+    },
+    {
+      "speaker": "doctor",
+      "text": "All right. I will examine the neck movement, muscles, strength, and sensation and check for any warning signs."
+    }
+  ]
+}

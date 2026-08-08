@@ -1,0 +1,92 @@
+{
+  "case_id": "case_22",
+  "scenario": "doctor_patient_parent_foot_pain",
+  "duration_seconds": 57.59,
+  "minimum_duration_seconds": 30.0,
+  "intro_pause_seconds": 2.0,
+  "inter_turn_pause_seconds": 0.45,
+  "speaker_count": 3,
+  "speakers": {
+    "doctor": {
+      "voice_id": "N2lVS1w4EtoT3dr4eOWO",
+      "voice_name": "Callum - Husky Trickster"
+    },
+    "parent": {
+      "voice_id": "Xb7hH8MSUJpSbSDYk0k2",
+      "voice_name": "Alice - Clear, Engaging Educator"
+    },
+    "patient": {
+      "voice_id": "EXAVITQu4vr4xnSDxMaL",
+      "voice_name": "Sarah - Mature, Reassuring, Confident"
+    }
+  },
+  "expected_facts": {
+    "symptom": "foot pain",
+    "side": "left",
+    "duration": "three days",
+    "cause": "long walk",
+    "swelling": true,
+    "trauma": false,
+    "weight_bearing": true,
+    "pain_worse_walking": true
+  },
+  "speaker_facts": {
+    "patient": [
+      "left foot pain",
+      "three days",
+      "after long walk",
+      "no fall",
+      "walking worsens pain"
+    ],
+    "parent": [
+      "foot swelling",
+      "limping"
+    ]
+  },
+  "dialogue": [
+    {
+      "speaker": "doctor",
+      "text": "Where exactly is the pain in your foot, and when did you first notice it?"
+    },
+    {
+      "speaker": "patient",
+      "text": "It is mainly on the top of my left foot. The pain started about three days ago."
+    },
+    {
+      "speaker": "parent",
+      "text": "The foot also looked a little swollen last night, especially compared with the other foot."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Did you fall, twist your ankle, or injure the foot before the pain started?"
+    },
+    {
+      "speaker": "patient",
+      "text": "No. I did not fall or twist it. I went on a very long walk the day before the pain began."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Can you still put your full weight on the foot?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Yes, I can stand and walk, but after a few minutes the pain becomes noticeably worse."
+    },
+    {
+      "speaker": "parent",
+      "text": "He has also been limping since yesterday, especially after walking outside."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Is there one specific point that hurts when you press on it?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Yes. There is a tender area near the middle of the top of the foot."
+    },
+    {
+      "speaker": "doctor",
+      "text": "I will examine the bones, joints, and soft tissues and decide whether an X-ray or another test is necessary."
+    }
+  ]
+}

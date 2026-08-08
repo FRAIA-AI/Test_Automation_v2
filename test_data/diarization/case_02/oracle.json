@@ -1,0 +1,73 @@
+{
+  "case_id": "case_02",
+  "scenario": "doctor_patient_parent",
+  "duration_seconds": 56.52,
+  "minimum_duration_seconds": 30.0,
+  "intro_pause_seconds": 1.5,
+  "inter_turn_pause_seconds": 0.55,
+  "speaker_count": 3,
+  "speakers": {
+    "doctor": {
+      "voice_id": "FGY2WhTYpPnrIDTdsKH5",
+      "voice_name": "Laura - Enthusiast, Quirky Attitude"
+    },
+    "parent": {
+      "voice_id": "JBFqnCBsd6RMkjVDRZzb",
+      "voice_name": "George - Warm, Captivating Storyteller"
+    },
+    "patient": {
+      "voice_id": "IKne3meq5aSn9XLyUdCD",
+      "voice_name": "Charlie - Deep, Confident, Energetic"
+    }
+  },
+  "expected_facts": {
+    "symptom": "abdominal pain",
+    "duration": "two days",
+    "fever": true,
+    "vomiting": false,
+    "temperature": "38.4",
+    "appetite": "reduced"
+  },
+  "dialogue": [
+    {
+      "speaker": "doctor",
+      "text": "Can you describe exactly where the stomach pain is and how long you have been feeling it?"
+    },
+    {
+      "speaker": "patient",
+      "text": "The pain is mostly around the middle of my stomach. It started two days ago and sometimes gets stronger after I eat."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Have you vomited, had diarrhea, or felt sick when trying to eat?"
+    },
+    {
+      "speaker": "patient",
+      "text": "I feel a little sick sometimes, but I have not vomited and I have not had diarrhea."
+    },
+    {
+      "speaker": "parent",
+      "text": "He has also eaten much less than usual since yesterday. Last night he felt very warm, so I checked his temperature."
+    },
+    {
+      "speaker": "doctor",
+      "text": "What temperature did you measure, and what type of thermometer did you use?"
+    },
+    {
+      "speaker": "parent",
+      "text": "It was thirty eight point four degrees Celsius. I checked it twice with our digital thermometer."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Has the pain moved toward the lower right side of the abdomen at any point?"
+    },
+    {
+      "speaker": "patient",
+      "text": "No. It has mostly stayed around the middle and has not moved to the right side."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Thank you. I will examine your abdomen carefully and we will decide whether you need any further tests today."
+    }
+  ]
+}

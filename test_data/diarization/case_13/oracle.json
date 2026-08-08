@@ -1,0 +1,96 @@
+{
+  "case_id": "case_13",
+  "scenario": "three_speaker_back_pain_interruptions",
+  "duration_seconds": 35.38,
+  "minimum_duration_seconds": 30.0,
+  "intro_pause_seconds": 2.0,
+  "inter_turn_pause_seconds": 0.18,
+  "speaker_count": 3,
+  "speakers": {
+    "doctor": {
+      "voice_id": "JBFqnCBsd6RMkjVDRZzb",
+      "voice_name": "George - Warm, Captivating Storyteller"
+    },
+    "parent": {
+      "voice_id": "bIHbv24MWmeRgasZH58o",
+      "voice_name": "Will - Relaxed Optimist"
+    },
+    "patient": {
+      "voice_id": "TX3LPaxmHKxFdv7VOQHJ",
+      "voice_name": "Liam - Energetic, Social Media Creator"
+    }
+  },
+  "expected_facts": {
+    "symptom": "lower back pain",
+    "duration": "one week",
+    "leg_pain": true,
+    "side": "left",
+    "numbness": false,
+    "cause": "lifting box"
+  },
+  "speaker_facts": {
+    "patient": [
+      "lower back pain",
+      "one week",
+      "left leg pain",
+      "no numbness"
+    ],
+    "parent": [
+      "lifted heavy box"
+    ]
+  },
+  "dialogue": [
+    {
+      "speaker": "doctor",
+      "text": "How long has your back been hurting?"
+    },
+    {
+      "speaker": "patient",
+      "text": "About one week, mostly in my lower back."
+    },
+    {
+      "speaker": "parent",
+      "text": "It started after he lifted that heavy box in the garage."
+    },
+    {
+      "speaker": "patient",
+      "text": "Yes, it started later that evening."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Does the pain stay in your back?"
+    },
+    {
+      "speaker": "patient",
+      "text": "No. Sometimes it travels down my left leg."
+    },
+    {
+      "speaker": "parent",
+      "text": "He complained about the leg pain yesterday too."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Any numbness or loss of sensation?"
+    },
+    {
+      "speaker": "patient",
+      "text": "No numbness."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Any difficulty controlling your bladder or bowels?"
+    },
+    {
+      "speaker": "patient",
+      "text": "No, nothing like that."
+    },
+    {
+      "speaker": "parent",
+      "text": "He can still walk, but he moves much more carefully now."
+    },
+    {
+      "speaker": "doctor",
+      "text": "I will examine your back, strength, reflexes, and sensation in both legs."
+    }
+  ]
+}

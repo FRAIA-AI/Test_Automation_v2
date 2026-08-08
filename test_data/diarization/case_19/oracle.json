@@ -1,0 +1,113 @@
+{
+  "case_id": "case_19",
+  "scenario": "rapid_three_speaker_palpitations",
+  "duration_seconds": 42.19,
+  "minimum_duration_seconds": 30.0,
+  "intro_pause_seconds": 2.0,
+  "inter_turn_pause_seconds": 0.12,
+  "speaker_count": 3,
+  "speakers": {
+    "doctor": {
+      "voice_id": "Xb7hH8MSUJpSbSDYk0k2",
+      "voice_name": "Alice - Clear, Engaging Educator"
+    },
+    "parent": {
+      "voice_id": "TX3LPaxmHKxFdv7VOQHJ",
+      "voice_name": "Liam - Energetic, Social Media Creator"
+    },
+    "patient": {
+      "voice_id": "SAz9YHcvj6GT2YYXdXww",
+      "voice_name": "River - Relaxed, Neutral, Informative"
+    }
+  },
+  "expected_facts": {
+    "symptom": "palpitations",
+    "duration": "one week",
+    "episode_duration": "five minutes",
+    "caffeine": "four coffees daily",
+    "fainting": false,
+    "stress": true
+  },
+  "speaker_facts": {
+    "patient": [
+      "palpitations",
+      "one week",
+      "episodes around five minutes",
+      "four coffees daily",
+      "no fainting"
+    ],
+    "parent": [
+      "patient under stress"
+    ]
+  },
+  "dialogue": [
+    {
+      "speaker": "doctor",
+      "text": "How long have you been noticing your heart racing?"
+    },
+    {
+      "speaker": "patient",
+      "text": "About one week."
+    },
+    {
+      "speaker": "parent",
+      "text": "It started during a very stressful week at work."
+    },
+    {
+      "speaker": "doctor",
+      "text": "How long does each episode last?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Usually around five minutes."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Do the episodes happen while exercising?"
+    },
+    {
+      "speaker": "patient",
+      "text": "No. They sometimes happen when I am just sitting at my desk."
+    },
+    {
+      "speaker": "parent",
+      "text": "He has been working late almost every evening."
+    },
+    {
+      "speaker": "doctor",
+      "text": "How much coffee do you drink?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Probably four cups every day."
+    },
+    {
+      "speaker": "parent",
+      "text": "Sometimes more when he works late."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Have you fainted?"
+    },
+    {
+      "speaker": "patient",
+      "text": "No."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Any chest pain?"
+    },
+    {
+      "speaker": "patient",
+      "text": "No chest pain."
+    },
+    {
+      "speaker": "parent",
+      "text": "But he becomes anxious when his heart starts racing."
+    },
+    {
+      "speaker": "doctor",
+      "text": "That makes sense. We will check your pulse, blood pressure, and heart rhythm, and we should also consider the amount of caffeine and stress."
+    }
+  ]
+}

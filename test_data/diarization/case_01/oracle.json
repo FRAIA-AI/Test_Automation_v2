@@ -1,0 +1,65 @@
+{
+  "case_id": "case_01",
+  "scenario": "doctor_patient",
+  "duration_seconds": 50.64,
+  "minimum_duration_seconds": 30.0,
+  "intro_pause_seconds": 1.5,
+  "inter_turn_pause_seconds": 0.65,
+  "speaker_count": 2,
+  "speakers": {
+    "doctor": {
+      "voice_id": "CwhRBWXzGAHq8TQ4Fs17",
+      "voice_name": "Roger - Laid-Back, Casual, Resonant"
+    },
+    "patient": {
+      "voice_id": "EXAVITQu4vr4xnSDxMaL",
+      "voice_name": "Sarah - Mature, Reassuring, Confident"
+    }
+  },
+  "expected_facts": {
+    "symptom": "sore throat",
+    "fever": true,
+    "duration": "three days",
+    "medication": "paracetamol",
+    "allergies": "none",
+    "cough": false
+  },
+  "dialogue": [
+    {
+      "speaker": "doctor",
+      "text": "Good morning. Please tell me what has been bothering you and when the symptoms started."
+    },
+    {
+      "speaker": "patient",
+      "text": "I have had a very sore throat and a fever for about three days. Swallowing is uncomfortable, especially in the evening."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Have you also had a cough, shortness of breath, or any pain in your chest?"
+    },
+    {
+      "speaker": "patient",
+      "text": "No, I have not been coughing and I do not have any chest pain or trouble breathing."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Have you taken anything for the fever or throat pain since this started?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Yes. I took paracetamol yesterday evening and again this morning. It helped the fever for a few hours but my throat still hurts."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Do you have any known allergies to medicines, food, or anything else?"
+    },
+    {
+      "speaker": "patient",
+      "text": "No. I do not have any known allergies."
+    },
+    {
+      "speaker": "doctor",
+      "text": "All right. Keep drinking plenty of fluids and continue monitoring the fever. We will examine your throat and decide whether any additional treatment is needed."
+    }
+  ]
+}

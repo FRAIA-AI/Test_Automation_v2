@@ -1,0 +1,90 @@
+{
+  "case_id": "case_07",
+  "scenario": "fast_doctor_patient_migraine",
+  "duration_seconds": 42.62,
+  "minimum_duration_seconds": 30.0,
+  "intro_pause_seconds": 2.0,
+  "inter_turn_pause_seconds": 0.25,
+  "speaker_count": 2,
+  "speakers": {
+    "doctor": {
+      "voice_id": "SAz9YHcvj6GT2YYXdXww",
+      "voice_name": "River - Relaxed, Neutral, Informative"
+    },
+    "patient": {
+      "voice_id": "EXAVITQu4vr4xnSDxMaL",
+      "voice_name": "Sarah - Mature, Reassuring, Confident"
+    }
+  },
+  "expected_facts": {
+    "symptom": "headache",
+    "location": "left side",
+    "duration": "six hours",
+    "nausea": true,
+    "vomiting": false,
+    "light_sensitivity": true
+  },
+  "speaker_facts": {
+    "patient": [
+      "left sided headache",
+      "six hours",
+      "nausea",
+      "no vomiting",
+      "light sensitivity"
+    ]
+  },
+  "dialogue": [
+    {
+      "speaker": "doctor",
+      "text": "Where exactly is the headache?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Mostly on the left side of my head, especially around my temple."
+    },
+    {
+      "speaker": "doctor",
+      "text": "How long has it been there?"
+    },
+    {
+      "speaker": "patient",
+      "text": "About six hours. It began this morning."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Are you nauseous?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Yes, quite nauseous, but I have not vomited."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Does bright light make it worse?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Yes. Bright light makes the headache much worse and I prefer sitting in a dark room."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Have you had weakness, numbness, difficulty speaking, or problems with your vision?"
+    },
+    {
+      "speaker": "patient",
+      "text": "No weakness or numbness. I can speak normally and my vision is normal."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Have you experienced headaches like this before?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Yes, but usually they are less intense and normally improve after a few hours."
+    },
+    {
+      "speaker": "doctor",
+      "text": "All right. I will examine you and check for any warning signs before we decide on treatment."
+    }
+  ]
+}

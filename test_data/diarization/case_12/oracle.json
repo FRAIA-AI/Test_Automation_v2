@@ -1,0 +1,97 @@
+{
+  "case_id": "case_12",
+  "scenario": "rapid_two_speaker_allergic_reaction",
+  "duration_seconds": 30.16,
+  "minimum_duration_seconds": 30.0,
+  "intro_pause_seconds": 2.0,
+  "inter_turn_pause_seconds": 0.12,
+  "speaker_count": 2,
+  "speakers": {
+    "doctor": {
+      "voice_id": "XrExE9yKIg1WjnnlVkGX",
+      "voice_name": "Matilda - Knowledgable, Professional"
+    },
+    "patient": {
+      "voice_id": "SAz9YHcvj6GT2YYXdXww",
+      "voice_name": "River - Relaxed, Neutral, Informative"
+    }
+  },
+  "expected_facts": {
+    "symptom": "rash",
+    "cause": "amoxicillin",
+    "start": "yesterday",
+    "breathing_problem": false,
+    "facial_swelling": false
+  },
+  "speaker_facts": {
+    "patient": [
+      "rash",
+      "amoxicillin",
+      "started yesterday",
+      "no breathing problem",
+      "no facial swelling"
+    ]
+  },
+  "dialogue": [
+    {
+      "speaker": "doctor",
+      "text": "When did the rash begin?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Yesterday afternoon."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Any new medicines?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Yes. I started amoxicillin two days ago."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Where is the rash?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Mostly on my chest, stomach, and upper arms."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Is it itchy?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Yes, very itchy."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Any trouble breathing?"
+    },
+    {
+      "speaker": "patient",
+      "text": "No."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Swelling of your lips, tongue, or face?"
+    },
+    {
+      "speaker": "patient",
+      "text": "No swelling."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Have you taken amoxicillin before?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Not that I remember."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Do not take another dose until we have assessed this properly. I also want to document the possible medication reaction."
+    }
+  ]
+}
