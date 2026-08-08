@@ -12,6 +12,8 @@ test-results/
 results/*.json
 results/*.txt
 !results/.gitkeep
+results/diarization/
+test_results/
 
 # Local fixture source files and Windows metadata
 test_data/test-audio.wav
