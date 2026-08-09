@@ -8,7 +8,7 @@ from pathlib import Path
 SOURCE = Path("dashboard")
 PUBLIC = Path("public")
 PAGE_NAMES = ("index.html", "diarization.html", "workflows.html", "evidence.html", "guide.html")
-ASSET_NAMES = ("app.css", "app.js", "favicon.png", "favicon.webp")
+ASSET_NAMES = ("app.css", "app.js", "bg-music.mp3", "favicon.png", "favicon.webp")
 
 
 def main() -> None:
@@ -23,7 +23,7 @@ def main() -> None:
         shutil.copy2(source, PUBLIC / name)
         copied.append(name)
     (PUBLIC / ".nojekyll").touch()
-    print(f"Prepared Dashboard v5: {', '.join(copied)}")
+    print(f"Prepared Dashboard v6: {', '.join(copied)}")
 
 
 if __name__ == "__main__":

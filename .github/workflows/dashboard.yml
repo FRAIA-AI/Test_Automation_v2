@@ -68,7 +68,8 @@ jobs:
           test -f public/guide.html
           test -f public/app.css
           test -f public/app.js
-          grep -q "Dashboard v5" public/app.js
+          test -f public/bg-music.mp3
+          grep -q "Dashboard v6" public/app.js
           grep -q "Diarization intelligence" public/app.js
 
           echo "Generated dashboard content:"
