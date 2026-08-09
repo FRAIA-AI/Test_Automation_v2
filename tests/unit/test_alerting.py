@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta, timezone
 
-from scripts.send_alert import AlertState, decide_alert
+from scripts.send_alert import AlertState, decide_alert, is_in_alert_window
 
 
 NOW = datetime(2026, 7, 31, 10, 0, tzinfo=timezone.utc)
@@ -75,3 +75,15 @@ def test_unnotified_failure_then_success_does_not_send_recovery() -> None:
 
 def test_stable_success_does_not_send_email() -> None:
     assert decide(AlertState(status="success"), "success").event is None
+
+
+def test_central_europe_window_uses_summer_time() -> None:
+    summer_open = datetime(2026, 8, 9, 4, 0, tzinfo=timezone.utc)
+    summer_close = datetime(2026, 8, 9, 16, 0, tzinfo=timezone.utc)
+    assert is_in_alert_window(summer_open, 6, 18, "Europe/Berlin")
+    assert not is_in_alert_window(summer_close, 6, 18, "Europe/Berlin")
+
+
+def test_central_europe_window_uses_winter_time() -> None:
+    winter_open = datetime(2026, 1, 9, 5, 0, tzinfo=timezone.utc)
+    assert is_in_alert_window(winter_open, 6, 18, "Europe/Berlin")
