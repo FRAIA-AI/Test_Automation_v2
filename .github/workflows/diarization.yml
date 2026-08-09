@@ -176,7 +176,7 @@ jobs:
             --state-file results/alert-state-diarization.json \
             --junit-file "${{ steps.monitor.outputs.junit_file || 'results/diarization-junit.xml' }}" \
             --evidence-root results/diarization \
-            --cooldown-minutes 10080
+            --cooldown-minutes 0
 
       - name: Save diarization alert state
         if: always()

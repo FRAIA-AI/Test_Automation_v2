@@ -37,6 +37,22 @@ def test_repeated_failure_after_cooldown_sends_reminder() -> None:
     assert decide(previous, "failure").event == "reminder"
 
 
+def test_zero_cooldown_sends_every_failed_run() -> None:
+    previous = AlertState(
+        status="failure",
+        last_failure_notification_at=NOW.isoformat(),
+    )
+    decision = decide_alert(
+        previous,
+        "failure",
+        NOW,
+        cooldown_minutes=0,
+        start_hour_utc=0,
+        end_hour_utc=0,
+    )
+    assert decision.event == "reminder"
+
+
 def test_failure_outside_notification_window_is_suppressed() -> None:
     outside_window = NOW.replace(hour=2)
     assert decide(AlertState(), "failure", outside_window).event is None

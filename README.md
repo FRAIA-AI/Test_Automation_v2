@@ -104,6 +104,8 @@ DIARIZATION_CASES_DIR=test_data/diarization_v2 DIARIZATION_CASE_LIMIT=3 pytest t
 
 The workflow then evaluates all collected transcripts and generated notes with the same structured AI scoring, deterministic formulas, quality gates, evidence upload, dashboard ingestion, and alerting used by the earlier suite. See the [live dashboard guide](https://fraia-ai.github.io/Test_Automation_v2/guide.html) for score definitions, formulas, thresholds, reports, and troubleshooting guidance.
 
+The diarization benchmark requires at least 92% for each transcription/diarization aggregate and 90% for each generated clinical-note aggregate. Any lower score fails the quality gate and sends an email for that run; the benchmark does not suppress repeated failed-run emails.
+
 ---
 
 ## Test suite
