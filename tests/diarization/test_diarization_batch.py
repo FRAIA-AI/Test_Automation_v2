@@ -42,6 +42,9 @@ from tests.helpers.clinic_api import (
 from tests.helpers.diarization_api import (
     wait_for_diarization_result,
 )
+from tests.helpers.diarization_note import (
+    wait_for_generated_note,
+)
 from tests.helpers.config import (
     get_settings,
     require_admin_credentials,
@@ -628,7 +631,8 @@ def test_collect_diarized_transcription(
     )
 
     generated_note = (
-        consultation.wait_for_generated_note(
+        wait_for_generated_note(
+            session.page,
             timeout_ms=180_000,
             minimum_words=10,
         )
