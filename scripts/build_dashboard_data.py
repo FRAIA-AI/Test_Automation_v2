@@ -38,6 +38,14 @@ MONITORS = {
         "threshold_minutes": 180,
         "expected_interval_minutes": 120,
     },
+    "diarization": {
+        "label": "Diarization benchmark",
+        "workflow": "diarization.yml",
+        "threshold_minutes": None,
+        "expected_interval_minutes": None,
+        "kind": "benchmark",
+        "expected_case_count": 25,
+    },
 }
 
 
@@ -114,7 +122,54 @@ def safe_extract(zip_path: Path, destination: Path) -> None:
             archive.extract(member, destination)
 
 
-def copy_evidence(monitor: str, extracted: Path) -> dict[str, list[str] | str | None]:
+def read_json(path: Path) -> dict[str, Any] | None:
+    try:
+        value = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError):
+        return None
+    return value if isinstance(value, dict) else None
+
+
+def parse_diarization_evaluation(extracted: Path) -> dict[str, Any] | None:
+    """Return a compact, UI-ready view of the latest benchmark artifact."""
+    summaries = [path for path in extracted.rglob("evaluation-summary.json") if path.is_file()]
+    if not summaries:
+        return None
+    summary = read_json(summaries[0])
+    if not summary:
+        return None
+
+    metadata: dict[str, dict[str, Any]] = {}
+    for path in extracted.rglob("metadata.json"):
+        item = read_json(path)
+        if item and item.get("case_id"):
+            metadata[str(item["case_id"])] = item
+
+    cases: list[dict[str, Any]] = []
+    for path in extracted.rglob("case_*.json"):
+        item = read_json(path)
+        if not item or "expected_turn_count" not in item or not item.get("case_id"):
+            continue
+        case_id = str(item["case_id"])
+        meta = metadata.get(case_id, {})
+        item["expected_speaker_count"] = meta.get("expected_speaker_count")
+        item["expected_speakers"] = meta.get("expected_speakers", [])
+        item["duration_seconds"] = meta.get("duration_seconds")
+        cases.append(item)
+    cases.sort(key=lambda item: str(item.get("case_id", "")))
+
+    count_fields = (
+        "expected_turn_count",
+        "evaluated_turn_count",
+        "correctly_attributed_turns",
+        "misattributed_turns",
+        "missing_turns",
+    )
+    turns = {field: sum(int(item.get(field) or 0) for item in cases) for field in count_fields}
+    return {"summary": summary, "cases": cases, "turns": turns}
+
+
+def copy_evidence(monitor: str, extracted: Path) -> dict[str, Any]:
     target = EVIDENCE_DIR / monitor
     shutil.rmtree(target, ignore_errors=True)
     target.mkdir(parents=True, exist_ok=True)
@@ -122,13 +177,14 @@ def copy_evidence(monitor: str, extracted: Path) -> dict[str, list[str] | str | 
     screenshots: list[str] = []
     videos: list[str] = []
     traces: list[str] = []
+    documents: list[str] = []
     main_error: str | None = None
 
     for source in extracted.rglob("*"):
         if not source.is_file():
             continue
         suffix = source.suffix.casefold()
-        if suffix not in {".png", ".jpg", ".jpeg", ".webm", ".zip", ".txt", ".xml"}:
+        if suffix not in {".png", ".jpg", ".jpeg", ".webm", ".zip", ".txt", ".xml", ".json"}:
             continue
         name = source.name
         destination = target / name
@@ -145,16 +201,22 @@ def copy_evidence(monitor: str, extracted: Path) -> dict[str, list[str] | str | 
         elif suffix == ".zip" and "trace" in name.casefold():
             traces.append(relative)
         elif name == "main-error.txt":
+            documents.append(relative)
             main_error = source.read_text(encoding="utf-8", errors="replace")[:3000]
+        elif suffix in {".txt", ".xml", ".json"}:
+            documents.append(relative)
 
     screenshots.sort()
     videos.sort()
     traces.sort()
+    documents.sort()
     return {
         "screenshots": screenshots,
         "videos": videos,
         "traces": traces,
+        "documents": documents,
         "main_error": main_error,
+        "evaluation": parse_diarization_evaluation(extracted) if monitor == "diarization" else None,
     }
 
 
@@ -169,7 +231,7 @@ def latest_artifact_for_run(run_id: int) -> dict[str, Any] | None:
 
 def load_evidence(monitor: str, run: dict[str, Any]) -> dict[str, Any]:
     artifact = latest_artifact_for_run(int(run["id"]))
-    empty = {"screenshots": [], "videos": [], "traces": [], "main_error": None}
+    empty = {"screenshots": [], "videos": [], "traces": [], "documents": [], "main_error": None, "evaluation": None}
     if artifact is None:
         return empty
 
@@ -216,7 +278,8 @@ def monitor_data(key: str, config: dict[str, Any]) -> dict[str, Any]:
     latest_completed = next((run for run in runs if run.get("status") == "completed"), None)
     latest_any = runs[0] if runs else None
     evidence = load_evidence(key, latest_completed) if latest_completed else {
-        "screenshots": [], "videos": [], "traces": [], "main_error": None
+        "screenshots": [], "videos": [], "traces": [], "documents": [],
+        "main_error": None, "evaluation": None,
     }
 
     main_error = evidence.get("main_error")
@@ -232,6 +295,8 @@ def monitor_data(key: str, config: dict[str, Any]) -> dict[str, Any]:
         "workflow": workflow,
         "threshold_minutes": config["threshold_minutes"],
         "expected_interval_minutes": config["expected_interval_minutes"],
+        "kind": config.get("kind", "monitor"),
+        "expected_case_count": config.get("expected_case_count"),
         "latest": history[0] if history else None,
         "latest_completed": next((item for item in history if item["status"] == "completed"), None),
         "main_error": main_error,
@@ -260,10 +325,12 @@ def main() -> None:
                 "workflow": config["workflow"],
                 "threshold_minutes": config["threshold_minutes"],
                 "expected_interval_minutes": config["expected_interval_minutes"],
+                "kind": config.get("kind", "monitor"),
+                "expected_case_count": config.get("expected_case_count"),
                 "latest": None,
                 "latest_completed": None,
                 "main_error": f"Dashboard data build failed with HTTP {error.code}.",
-                "evidence": {"screenshots": [], "videos": [], "traces": []},
+                "evidence": {"screenshots": [], "videos": [], "traces": [], "documents": [], "evaluation": None},
                 "history": [],
                 "workflow_url": f"https://github.com/{REPOSITORY}/actions/workflows/{config['workflow']}",
                 "currently_running": False,

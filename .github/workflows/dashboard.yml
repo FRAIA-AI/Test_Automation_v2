@@ -12,6 +12,7 @@ on:
       - "Smoke Monitor (v2)"
       - "Consultation Regression (v2)"
       - "FNX Parser and AI (v2)"
+      - "Diarization and Clinical Note Evaluation (v2)"
     types:
       - completed
 
@@ -52,7 +53,7 @@ jobs:
         run: |
           python scripts/build_dashboard_data.py
 
-      - name: Apply final dashboard v3 UI and chart upgrades
+      - name: Apply final dashboard v4 UI and chart upgrades
         run: |
           python scripts/postprocess_dashboard.py
 
@@ -61,8 +62,9 @@ jobs:
         run: |
           test -f public/index.html
           test -f public/data/dashboard.json
-          grep -q "dashboard-v3-runtime" public/index.html
-          grep -q "Dashboard v3" public/index.html
+          grep -q "dashboard-v4-runtime" public/index.html
+          grep -q "Dashboard v4" public/index.html
+          grep -q "diarization-benchmark" public/index.html
 
           echo "Generated dashboard content:"
           find public \
@@ -77,6 +79,7 @@ jobs:
           from pathlib import Path
 
           data = json.loads(Path("public/data/dashboard.json").read_text())
+          assert "diarization" in data.get("monitors", {})
           print("generated_at:", data.get("generated_at"))
           for key, monitor in data.get("monitors", {}).items():
               latest = monitor.get("latest_completed") or monitor.get("latest") or {}
