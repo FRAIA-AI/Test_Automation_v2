@@ -1,0 +1,216 @@
+[Læge] Hej, kom indenfor.
+[Læge] Jeg hedder Sara og er læge.
+[Læge] Du må sætte dig her.
+[Læge] Hvad hedder du?
+[Patient] Henrik.
+[Læge] Hej Henrik.
+[Læge] Jeg kan se, du har bestilt tid på grund af hoste og åndenød.
+[Læge] Fortæl lidt om det.
+[Patient] Ja, øh, jeg har hostet i omkring ti dage.
+[Patient] Først var det bare tør hoste, men nu kommer der gult slim op.
+[Patient] Og de sidste tre dage bliver jeg forpustet bare af at gå op ad trapper.
+[Læge] Har du haft feber?
+[Patient] Ja, i weekenden målte jeg 38,4.
+[Patient] I går var den 37,9.
+[Læge] Har du smerter i brystet?
+[Patient] Kun når jeg hoster meget.
+[Patient] Så gør det ondt sådan ude i højre side.
+[Læge] Er smerten også der, når du trækker vejret dybt ind?
+[Patient] Ja, lidt.
+[Patient] Det stikker.
+[Læge] Har du hostet blod op?
+[Læge] Ryger du?
+[Patient] Jeg røg før.
+[Patient] Stoppede for seks år siden.
+[Patient] Jeg røg vel femten cigaretter om dagen i tyve år.
+[Læge] Har du KOL, astma eller anden lungesygdom?
+[Patient] Jeg har aldrig fået at vide, jeg har KOL.
+[Patient] Men jeg havde astma som barn.
+[Læge] Andre sygdomme?
+[Patient] Forhøjet blodtryk og type 2-diabetes.
+[Læge] Hvilken medicin tager du?
+[Patient] Metformin, losartan og noget kolesterolmedicin.
+[Patient] Atorvastatin, tror jeg.
+[Læge] Har du allergier over for medicin?
+[Patient] Penicillin.
+[Patient] Jeg fik udslæt og hævede læber, da jeg var yngre.
+[Læge] Godt du siger det.
+[Læge] Jeg vil gerne have sygeplejersken ind til at måle dine værdier og tage en CRP.
+[Læge] Et øjeblik.
+[Sygeplejerske] Hej Henrik, jeg hedder Nadia og er sygeplejerske.
+[Sygeplejerske] Jeg tager lige temperatur, saturation, puls, blodtryk og respirationsfrekvens.
+[Patient] Ja, fint.
+[Sygeplejerske] Sæt fingeren her i pulsoximeteret.
+[Sygeplejerske] Prøv at holde hånden helt stille.
+[Sygeplejerske] Saturation er 93 procent på rumluft.
+[Sygeplejerske] Puls 104.
+[Læge] 93, okay.
+[Læge] Hvad er respirationsfrekvensen?
+[Sygeplejerske] Jeg tæller lige... 22 per minut.
+[Læge] Og temperatur?
+[Sygeplejerske] 38,1 tympanisk.
+[Patient] Så jeg har stadig feber.
+[Læge] Ja, let feber.
+[Læge] Nadia, kan du tage CRP og eventuelt blodsukker, når du alligevel stikker?
+[Sygeplejerske] Henrik, jeg prikker dig lige i fingeren.
+[Sygeplejerske] Det kan svie lidt.
+[Patient] Bare gør det.
+[Sygeplejerske] Sådan.
+[Sygeplejerske] CRP-maskinen bruger et par minutter.
+[Sygeplejerske] Blodsukker er 9,8.
+[Læge] Har du spist for nylig?
+[Patient] Jeg spiste morgenmad for en time siden.
+[Læge] Okay, så det er ikke et fastende blodsukker.
+[Læge] Hvordan ligger dine værdier normalt?
+[Patient] Omkring syv eller otte efter mad, tror jeg.
+[Læge] Vi holder øje med det under infektion, fordi blodsukkeret ofte stiger lidt.
+[Læge] Nadia, hvad var blodtrykket?
+[Sygeplejerske] 138 over 84.
+[Læge] Fint.
+[Læge] Jeg vil lytte på dine lunger nu.
+[Læge] Tag trøjen lidt op bagpå og træk vejret dybt gennem munden.
+[Læge] Dybt ind... og ud.
+[Læge] Igen.
+[Læge] Jeg hører normale respirationslyde øverst, men basalt på højre side er der nedsatte respirationslyde og nogle fine krepitationer.
+[Sygeplejerske] Jeg syntes også, han lød lidt sekretfyldt, da han kom ind.
+[Læge] Henrik, host lige én gang for mig.
+[Patient] Host, host... undskyld.
+[Læge] Det er helt fint.
+[Læge] Efter hosten er der stadig krepitation basalt højre.
+[Læge] Det gør pneumoni mere sandsynlig.
+[Patient] Lungebetændelse?
+[Læge] Ja, det er en af de vigtigste muligheder.
+[Læge] Vi skal vurdere, om du kan behandles hjemme, eller om du har brug for yderligere akut vurdering.
+[Sygeplejerske] CRP er klar.
+[Sygeplejerske] Den er 86 milligram per liter.
+[Læge] 86, tak.
+[Læge] Det støtter, at der er en betydelig infektion, men CRP alene afgør ikke, om det er bakterielt.
+[Læge] Lad os lige samle det kliniske billede.
+[Patient] Er 86 meget?
+[Læge] Det er forhøjet.
+[Læge] Sammen med feber, produktiv hoste, nedsat saturation og fundene på højre lunge giver det mistanke om pneumoni.
+[Sygeplejerske] Vil du have en NEWS2-score?
+[Læge] Ja, lad os beregne den.
+[Læge] Respirationsfrekvens 22 giver to point.
+[Læge] Saturation 93 på skala 1 giver to point.
+[Læge] Ingen ilttilskud.
+[Læge] Temperatur 38,1 giver ét point.
+[Læge] Systolisk blodtryk 138 giver nul.
+[Læge] Puls 104 giver ét point.
+[Læge] Bevidsthed er A, så nul.
+[Sygeplejerske] Det giver seks i alt.
+[Læge] Ja, NEWS2 på seks kræver klinisk opmærksomhed.
+[Læge] Henrik, føler du dig svimmel eller konfus?
+[Patient] Nej, bare træt.
+[Patient] Og det er svært at få vejret, når jeg går.
+[Læge] Kan du tale i hele sætninger uden at stoppe for luft?
+[Patient] Ja, som nu.
+[Læge] Nadia, vil du prøve saturation igen efter nogle minutters hvile?
+[Sygeplejerske] Henrik, sid helt roligt og træk vejret normalt.
+[Sygeplejerske] Nu ligger den på 94, kortvarigt 95, men mest 94.
+[Læge] Bliver du forpustet i hvile?
+[Patient] Ikke når jeg bare sidder, men jeg kan mærke, at jeg skal arbejde lidt mere for at trække vejret.
+[Læge] På grund af din penicillinallergi skal vi være omhyggelige med antibiotikavalget, hvis vi behandler dig for bakteriel pneumoni.
+[Patient] Jeg vil helst ikke på hospitalet.
+[Læge] Det forstår jeg.
+[Læge] Men beslutningen afhænger af sikkerheden.
+[Læge] Din saturation er lavere end normalt, og NEWS2 er seks.
+[Læge] Jeg vil gerne have, at du bliver vurderet på akutmodtagelsen med røntgen af thorax og blodprøver.
+[Patient] Kan jeg ikke bare få antibiotika med hjem og se tiden an?
+[Læge] Hvis du havde saturation 97, normal respirationsfrekvens og var mindre påvirket, kunne det måske være rimeligt.
+[Læge] Men med saturation omkring 93 til 94, tachykardi, feber og en relativt høj NEWS2 vil jeg ikke være tryg ved kun hjemmebehandling uden yderligere vurdering.
+[Sygeplejerske] Og fordi du har diabetes, har du også lidt højere risiko for at blive dårligere under infektionen.
+[Patient] Skal jeg med ambulance?
+[Læge] Ikke nødvendigvis med blå blink.
+[Læge] Du er vågen, stabil i siddende stilling og kan tale normalt.
+[Læge] Men jeg vil kontakte akutmodtagelsen og aftale, hvordan du kommer derind.
+[Læge] Jeg vil helst ikke have, at du kører selv.
+[Patient] Min kone kan hente mig.
+[Læge] Det er fint, hvis hun kan komme hurtigt.
+[Læge] Nadia, kan du tage en venøs blodprøve her, mens jeg ringer?
+[Læge] Blodprocent, leukocytter, elektrolytter og kreatinin.
+[Sygeplejerske] Ja, det kan jeg.
+[Sygeplejerske] Blodgas vil jeg dog hellere lade akutmodtagelsen tage.
+[Læge] Enig.
+[Læge] Tag standardprøverne, så sender vi resultaterne elektronisk, hvis de når at komme.
+[Patient] Skal jeg have ilt nu?
+[Læge] Ikke automatisk.
+[Læge] Du ligger lige omkring grænsen.
+[Læge] Hvis saturation falder yderligere, eller du bliver mere forpustet, giver vi ilt.
+[Læge] Nadia, mål igen under lidt gang på gangen, men stop hvis han bliver dårlig.
+[Patient] Okay, så jeg skal ind.
+[Læge] Vi sender dig ind, fordi du sandsynligvis har en pneumoni og nogle målinger, der gør,
+[Læge] at vi skal være sikre på, at du ikke har behov for ilt, intravenøs væske eller anden behandling.
+[Sygeplejerske] Jeg tager blodprøven nu.
+[Sygeplejerske] Har du det okay med nåle?
+[Patient] Ikke rigtig, men det går.
+[Sygeplejerske] Kig den anden vej.
+[Sygeplejerske] Lille stik... så er den i.
+[Sygeplejerske] Jeg tager tre glas.
+[Sygeplejerske] Blodprøverne er taget.
+[Sygeplejerske] Jeg sætter en lille forbinding på.
+[Patient] Tak.
+[Læge] Jeg ringer til akutmodtagelsen nu og giver en struktureret overlevering: 58-årig mand med ti dages hoste, feber, purulent ekspektorat,
+[Læge] pleuritisk smerte højresidigt, saturation 93 til 94 i hvile og 92 ved gang, respirationsfrekvens 22, puls 104, CRP 86 og fokale krepitationer basalt højre.
+[Sygeplejerske] Penicillinallergi med læbehævelse skal også med.
+[Læge] Ja, vigtigt.
+[Læge] Jeg skriver det tydeligt som mulig straksreaktion.
+[Patient] Det lyder alvorligt, når I siger det sådan.
+[Læge] Det lyder teknisk, fordi vi opsummerer de oplysninger, næste team skal bruge.
+[Læge] Du er ikke kritisk lige nu, men du har tegn, vi ikke skal ignorere.
+[Læge] Din kone kan hente dig, men hvis du bliver mere forpustet, får blå læber, bliver konfus,
+[Læge] besvimer eller får stærke brystsmerter, mens du venter, så siger du til med det samme.
+[Sygeplejerske] Jeg bliver lige i nærheden, mens Sara ringer.
+[Patient] Tak.
+[Patient] Det er rart.
+[Læge] Fint.
+[Læge] Jeg går ud og ringer nu.
+[Læge] Vi sørger for, at akutmodtagelsen ved, du kommer.
+[Læge] Inden jeg ringer, Henrik, vil jeg lige sikre mig, at der ikke er noget vigtigt, vi har overset.
+[Patient] Ja, selvfølgelig.
+[Læge] Har du haft problemer med at få væske nok de sidste par dage?
+[Patient] Ja... altså, jeg har nok drukket mindre end normalt.
+[Sygeplejerske] Hvor meget cirka?
+[Patient] Måske fire-fem glas om dagen. Ikke ret meget.
+[Læge] Har du tisset normalt?
+[Patient] Mindre end normalt, tror jeg.
+[Sygeplejerske] Mørkere urin?
+[Patient] Ja, lidt.
+[Læge] Okay. Det kan tyde på, at du også er lidt dehydreret.
+[Patient] Det giver mening. Jeg har ikke haft meget appetit heller.
+[Sygeplejerske] Har du kunnet spise noget i dag?
+[Patient] Et stykke toast og lidt yoghurt.
+[Læge] Fint. Ingen opkastninger?
+[Patient] Nej.
+[Læge] Godt. Nadia, kan du lige gentage pulsen nu, hvor han har siddet i ro lidt længere?
+[Sygeplejerske] Ja. Jeg måler... puls 98 nu.
+[Læge] Så den er faldet lidt fra 104.
+[Patient] Er det godt?
+[Læge] Ja, det er positivt. Men vi ser stadig på hele billedet, ikke kun én værdi.
+[Sygeplejerske] Saturationen ligger stadig på 94.
+[Læge] Stabil?
+[Sygeplejerske] Ja, 94 det meste af tiden. Kortvarigt 95.
+[Læge] Fint. Henrik, har du nogen inhalator hjemme fra dengang, du havde astma som barn?
+[Patient] Nej, ikke længere.
+[Læge] Har du brugt nogen form for inhalationsmedicin de sidste år?
+[Patient] Nej.
+[Sygeplejerske] Jeg kan høre en smule hvæsende respiration, når han taler længe.
+[Læge] Ja, jeg lagde også mærke til det. Henrik, prøv at puste helt ud.
+[Patient] Sådan her?
+[Læge] Ja. Og igen.
+[Patient] Puh... ja.
+[Læge] Der er lidt forlænget ekspirium, men ikke udtalt bronkospasme.
+[Sygeplejerske] Skal vi prøve bronkodilatator her?
+[Læge] Ikke som eneste behandling, men en enkelt inhalation kan være rimelig, mens vi venter, hvis han føler trykken.
+[Patient] Det føles faktisk lidt stramt.
+[Læge] Okay. Nadia, kan du gøre en salbutamol-inhalation klar efter klinikkens standarddosis?
+[Sygeplejerske] Ja, selvfølgelig.
+[Patient] Er det sådan noget, astmatikere bruger?
+[Læge] Ja, det afslapper musklerne omkring luftvejene og kan gøre det lettere at trække vejret, hvis der også er en obstruktiv komponent.
+[Sygeplejerske] Henrik, jeg giver dig mundstykket her. Slut læberne tæt omkring det.
+[Sygeplejerske] Træk langsomt og dybt ind... hold vejret et øjeblik... og pust roligt ud.
+[Patient] Sådan?
+[Læge] Fint. Jeg ringer til akutmodtagelsen nu og giver dem en samlet overlevering.
+[Patient] Okay.
+[Sygeplejerske] Jeg bliver her og holder øje med saturation og puls imens.
+[Patient] Tak. Det er jeg glad for.

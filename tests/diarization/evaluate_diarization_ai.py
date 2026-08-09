@@ -98,7 +98,10 @@ def discover_case_ids(cases_root: Path) -> list[str]:
             for path in cases_root.glob("case_*")
             if path.is_dir()
         ),
-        key=lambda case_id: int(case_id.removeprefix("case_")),
+        key=lambda case_id: (
+            int(case_id.split("_")[1]),
+            case_id,
+        ),
     )
 
     case_limit = os.environ.get("DIARIZATION_CASE_LIMIT")
@@ -413,10 +416,17 @@ def load_oracle(
 ) -> dict:
     """Load the known original consultation oracle."""
 
-    oracle_file = (
-        CASES_ROOT
-        / case_id
-        / "oracle.json"
+    case_dir = CASES_ROOT / case_id
+    oracle_file = next(
+        (
+            case_dir / name
+            for name in (
+                "oracle.json",
+                "ground_truth.json",
+            )
+            if (case_dir / name).exists()
+        ),
+        case_dir / "oracle.json",
     )
 
     if not oracle_file.exists():
@@ -425,11 +435,25 @@ def load_oracle(
             f"{oracle_file}"
         )
 
-    return json.loads(
+    oracle = json.loads(
         oracle_file.read_text(
             encoding="utf-8"
         )
     )
+
+    if "dialogue" not in oracle:
+        oracle["dialogue"] = (
+            oracle.get("turns")
+            or oracle.get("transcript")
+            or []
+        )
+
+    if "speaker_count" not in oracle:
+        oracle["speaker_count"] = oracle.get(
+            "expected_speaker_count"
+        )
+
+    return oracle
 
 
 def load_diarized_transcription(
@@ -544,7 +568,11 @@ def create_expected_dialogue(
             .lower()
         )
 
-        if source_role == "doctor":
+        if source_role in {
+            "doctor",
+            "læge",
+            "laege",
+        }:
             expected_bucket = "doctor"
 
         else:

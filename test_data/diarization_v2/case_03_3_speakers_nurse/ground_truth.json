@@ -1,0 +1,2177 @@
+{
+  "case_id": "case_08_3_speakers_nurse",
+  "language": "da",
+  "title": "3 speakers — Læge + Patient + Sygeplejerske",
+  "scenario": "Respiratory infection / suspected pneumonia with technical clinician-to-nurse dialogue",
+  "expected_speaker_count": 3,
+  "spoken_word_count": 1529,
+  "speaker_word_counts": {
+    "Læge": 931,
+    "Patient": 321,
+    "Sygeplejerske": 277
+  },
+  "transcript": [
+    {
+      "speaker": "doctor",
+      "text": "Hej, kom indenfor."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Jeg hedder Sara og er læge."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Du må sætte dig her."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Hvad hedder du?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Henrik."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Hej Henrik."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Jeg kan se, du har bestilt tid på grund af hoste og åndenød."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Fortæl lidt om det."
+    },
+    {
+      "speaker": "patient",
+      "text": "Ja, øh, jeg har hostet i omkring ti dage."
+    },
+    {
+      "speaker": "patient",
+      "text": "Først var det bare tør hoste, men nu kommer der gult slim op."
+    },
+    {
+      "speaker": "patient",
+      "text": "Og de sidste tre dage bliver jeg forpustet bare af at gå op ad trapper."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Har du haft feber?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Ja, i weekenden målte jeg 38,4."
+    },
+    {
+      "speaker": "patient",
+      "text": "I går var den 37,9."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Har du smerter i brystet?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Kun når jeg hoster meget."
+    },
+    {
+      "speaker": "patient",
+      "text": "Så gør det ondt sådan ude i højre side."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Er smerten også der, når du trækker vejret dybt ind?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Ja, lidt."
+    },
+    {
+      "speaker": "patient",
+      "text": "Det stikker."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Har du hostet blod op?"
+    },
+    {
+      "speaker": "doctor",
+      "text": "Ryger du?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Jeg røg før."
+    },
+    {
+      "speaker": "patient",
+      "text": "Stoppede for seks år siden."
+    },
+    {
+      "speaker": "patient",
+      "text": "Jeg røg vel femten cigaretter om dagen i tyve år."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Har du KOL, astma eller anden lungesygdom?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Jeg har aldrig fået at vide, jeg har KOL."
+    },
+    {
+      "speaker": "patient",
+      "text": "Men jeg havde astma som barn."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Andre sygdomme?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Forhøjet blodtryk og type 2-diabetes."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Hvilken medicin tager du?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Metformin, losartan og noget kolesterolmedicin."
+    },
+    {
+      "speaker": "patient",
+      "text": "Atorvastatin, tror jeg."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Har du allergier over for medicin?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Penicillin."
+    },
+    {
+      "speaker": "patient",
+      "text": "Jeg fik udslæt og hævede læber, da jeg var yngre."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Godt du siger det."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Jeg vil gerne have sygeplejersken ind til at måle dine værdier og tage en CRP."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Et øjeblik."
+    },
+    {
+      "speaker": "nurse",
+      "text": "Hej Henrik, jeg hedder Nadia og er sygeplejerske."
+    },
+    {
+      "speaker": "nurse",
+      "text": "Jeg tager lige temperatur, saturation, puls, blodtryk og respirationsfrekvens."
+    },
+    {
+      "speaker": "patient",
+      "text": "Ja, fint."
+    },
+    {
+      "speaker": "nurse",
+      "text": "Sæt fingeren her i pulsoximeteret."
+    },
+    {
+      "speaker": "nurse",
+      "text": "Prøv at holde hånden helt stille."
+    },
+    {
+      "speaker": "nurse",
+      "text": "Saturation er 93 procent på rumluft."
+    },
+    {
+      "speaker": "nurse",
+      "text": "Puls 104."
+    },
+    {
+      "speaker": "doctor",
+      "text": "93, okay."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Hvad er respirationsfrekvensen?"
+    },
+    {
+      "speaker": "nurse",
+      "text": "Jeg tæller lige... 22 per minut."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Og temperatur?"
+    },
+    {
+      "speaker": "nurse",
+      "text": "38,1 tympanisk."
+    },
+    {
+      "speaker": "patient",
+      "text": "Så jeg har stadig feber."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Ja, let feber."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Nadia, kan du tage CRP og eventuelt blodsukker, når du alligevel stikker?"
+    },
+    {
+      "speaker": "nurse",
+      "text": "Henrik, jeg prikker dig lige i fingeren."
+    },
+    {
+      "speaker": "nurse",
+      "text": "Det kan svie lidt."
+    },
+    {
+      "speaker": "patient",
+      "text": "Bare gør det."
+    },
+    {
+      "speaker": "nurse",
+      "text": "Sådan."
+    },
+    {
+      "speaker": "nurse",
+      "text": "CRP-maskinen bruger et par minutter."
+    },
+    {
+      "speaker": "nurse",
+      "text": "Blodsukker er 9,8."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Har du spist for nylig?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Jeg spiste morgenmad for en time siden."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Okay, så det er ikke et fastende blodsukker."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Hvordan ligger dine værdier normalt?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Omkring syv eller otte efter mad, tror jeg."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Vi holder øje med det under infektion, fordi blodsukkeret ofte stiger lidt."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Nadia, hvad var blodtrykket?"
+    },
+    {
+      "speaker": "nurse",
+      "text": "138 over 84."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Fint."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Jeg vil lytte på dine lunger nu."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Tag trøjen lidt op bagpå og træk vejret dybt gennem munden."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Dybt ind... og ud."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Igen."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Jeg hører normale respirationslyde øverst, men basalt på højre side er der nedsatte respirationslyde og nogle fine krepitationer."
+    },
+    {
+      "speaker": "nurse",
+      "text": "Jeg syntes også, han lød lidt sekretfyldt, da han kom ind."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Henrik, host lige én gang for mig."
+    },
+    {
+      "speaker": "patient",
+      "text": "Host, host... undskyld."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Det er helt fint."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Efter hosten er der stadig krepitation basalt højre."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Det gør pneumoni mere sandsynlig."
+    },
+    {
+      "speaker": "patient",
+      "text": "Lungebetændelse?"
+    },
+    {
+      "speaker": "doctor",
+      "text": "Ja, det er en af de vigtigste muligheder."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Vi skal vurdere, om du kan behandles hjemme, eller om du har brug for yderligere akut vurdering."
+    },
+    {
+      "speaker": "nurse",
+      "text": "CRP er klar."
+    },
+    {
+      "speaker": "nurse",
+      "text": "Den er 86 milligram per liter."
+    },
+    {
+      "speaker": "doctor",
+      "text": "86, tak."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Det støtter, at der er en betydelig infektion, men CRP alene afgør ikke, om det er bakterielt."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Lad os lige samle det kliniske billede."
+    },
+    {
+      "speaker": "patient",
+      "text": "Er 86 meget?"
+    },
+    {
+      "speaker": "doctor",
+      "text": "Det er forhøjet."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Sammen med feber, produktiv hoste, nedsat saturation og fundene på højre lunge giver det mistanke om pneumoni."
+    },
+    {
+      "speaker": "nurse",
+      "text": "Vil du have en NEWS2-score?"
+    },
+    {
+      "speaker": "doctor",
+      "text": "Ja, lad os beregne den."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Respirationsfrekvens 22 giver to point."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Saturation 93 på skala 1 giver to point."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Ingen ilttilskud."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Temperatur 38,1 giver ét point."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Systolisk blodtryk 138 giver nul."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Puls 104 giver ét point."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Bevidsthed er A, så nul."
+    },
+    {
+      "speaker": "nurse",
+      "text": "Det giver seks i alt."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Ja, NEWS2 på seks kræver klinisk opmærksomhed."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Henrik, føler du dig svimmel eller konfus?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Nej, bare træt."
+    },
+    {
+      "speaker": "patient",
+      "text": "Og det er svært at få vejret, når jeg går."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Kan du tale i hele sætninger uden at stoppe for luft?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Ja, som nu."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Nadia, vil du prøve saturation igen efter nogle minutters hvile?"
+    },
+    {
+      "speaker": "nurse",
+      "text": "Henrik, sid helt roligt og træk vejret normalt."
+    },
+    {
+      "speaker": "nurse",
+      "text": "Nu ligger den på 94, kortvarigt 95, men mest 94."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Bliver du forpustet i hvile?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Ikke når jeg bare sidder, men jeg kan mærke, at jeg skal arbejde lidt mere for at trække vejret."
+    },
+    {
+      "speaker": "doctor",
+      "text": "På grund af din penicillinallergi skal vi være omhyggelige med antibiotikavalget, hvis vi behandler dig for bakteriel pneumoni."
+    },
+    {
+      "speaker": "patient",
+      "text": "Jeg vil helst ikke på hospitalet."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Det forstår jeg."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Men beslutningen afhænger af sikkerheden."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Din saturation er lavere end normalt, og NEWS2 er seks."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Jeg vil gerne have, at du bliver vurderet på akutmodtagelsen med røntgen af thorax og blodprøver."
+    },
+    {
+      "speaker": "patient",
+      "text": "Kan jeg ikke bare få antibiotika med hjem og se tiden an?"
+    },
+    {
+      "speaker": "doctor",
+      "text": "Hvis du havde saturation 97, normal respirationsfrekvens og var mindre påvirket, kunne det måske være rimeligt."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Men med saturation omkring 93 til 94, tachykardi, feber og en relativt høj NEWS2 vil jeg ikke være tryg ved kun hjemmebehandling uden yderligere vurdering."
+    },
+    {
+      "speaker": "nurse",
+      "text": "Og fordi du har diabetes, har du også lidt højere risiko for at blive dårligere under infektionen."
+    },
+    {
+      "speaker": "patient",
+      "text": "Skal jeg med ambulance?"
+    },
+    {
+      "speaker": "doctor",
+      "text": "Ikke nødvendigvis med blå blink."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Du er vågen, stabil i siddende stilling og kan tale normalt."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Men jeg vil kontakte akutmodtagelsen og aftale, hvordan du kommer derind."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Jeg vil helst ikke have, at du kører selv."
+    },
+    {
+      "speaker": "patient",
+      "text": "Min kone kan hente mig."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Det er fint, hvis hun kan komme hurtigt."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Nadia, kan du tage en venøs blodprøve her, mens jeg ringer?"
+    },
+    {
+      "speaker": "doctor",
+      "text": "Blodprocent, leukocytter, elektrolytter og kreatinin."
+    },
+    {
+      "speaker": "nurse",
+      "text": "Ja, det kan jeg."
+    },
+    {
+      "speaker": "nurse",
+      "text": "Blodgas vil jeg dog hellere lade akutmodtagelsen tage."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Enig."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Tag standardprøverne, så sender vi resultaterne elektronisk, hvis de når at komme."
+    },
+    {
+      "speaker": "patient",
+      "text": "Skal jeg have ilt nu?"
+    },
+    {
+      "speaker": "doctor",
+      "text": "Ikke automatisk."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Du ligger lige omkring grænsen."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Hvis saturation falder yderligere, eller du bliver mere forpustet, giver vi ilt."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Nadia, mål igen under lidt gang på gangen, men stop hvis han bliver dårlig."
+    },
+    {
+      "speaker": "patient",
+      "text": "Okay, så jeg skal ind."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Vi sender dig ind, fordi du sandsynligvis har en pneumoni og nogle målinger, der gør,"
+    },
+    {
+      "speaker": "doctor",
+      "text": "at vi skal være sikre på, at du ikke har behov for ilt, intravenøs væske eller anden behandling."
+    },
+    {
+      "speaker": "nurse",
+      "text": "Jeg tager blodprøven nu."
+    },
+    {
+      "speaker": "nurse",
+      "text": "Har du det okay med nåle?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Ikke rigtig, men det går."
+    },
+    {
+      "speaker": "nurse",
+      "text": "Kig den anden vej."
+    },
+    {
+      "speaker": "nurse",
+      "text": "Lille stik... så er den i."
+    },
+    {
+      "speaker": "nurse",
+      "text": "Jeg tager tre glas."
+    },
+    {
+      "speaker": "nurse",
+      "text": "Blodprøverne er taget."
+    },
+    {
+      "speaker": "nurse",
+      "text": "Jeg sætter en lille forbinding på."
+    },
+    {
+      "speaker": "patient",
+      "text": "Tak."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Jeg ringer til akutmodtagelsen nu og giver en struktureret overlevering: 58-årig mand med ti dages hoste, feber, purulent ekspektorat,"
+    },
+    {
+      "speaker": "doctor",
+      "text": "pleuritisk smerte højresidigt, saturation 93 til 94 i hvile og 92 ved gang, respirationsfrekvens 22, puls 104, CRP 86 og fokale krepitationer basalt højre."
+    },
+    {
+      "speaker": "nurse",
+      "text": "Penicillinallergi med læbehævelse skal også med."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Ja, vigtigt."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Jeg skriver det tydeligt som mulig straksreaktion."
+    },
+    {
+      "speaker": "patient",
+      "text": "Det lyder alvorligt, når I siger det sådan."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Det lyder teknisk, fordi vi opsummerer de oplysninger, næste team skal bruge."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Du er ikke kritisk lige nu, men du har tegn, vi ikke skal ignorere."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Din kone kan hente dig, men hvis du bliver mere forpustet, får blå læber, bliver konfus,"
+    },
+    {
+      "speaker": "doctor",
+      "text": "besvimer eller får stærke brystsmerter, mens du venter, så siger du til med det samme."
+    },
+    {
+      "speaker": "nurse",
+      "text": "Jeg bliver lige i nærheden, mens Sara ringer."
+    },
+    {
+      "speaker": "patient",
+      "text": "Tak."
+    },
+    {
+      "speaker": "patient",
+      "text": "Det er rart."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Fint."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Jeg går ud og ringer nu."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Vi sørger for, at akutmodtagelsen ved, du kommer."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Inden jeg ringer, Henrik, vil jeg lige sikre mig, at der ikke er noget vigtigt, vi har overset."
+    },
+    {
+      "speaker": "patient",
+      "text": "Ja, selvfølgelig."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Har du haft problemer med at få væske nok de sidste par dage?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Ja... altså, jeg har nok drukket mindre end normalt."
+    },
+    {
+      "speaker": "nurse",
+      "text": "Hvor meget cirka?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Måske fire-fem glas om dagen. Ikke ret meget."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Har du tisset normalt?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Mindre end normalt, tror jeg."
+    },
+    {
+      "speaker": "nurse",
+      "text": "Mørkere urin?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Ja, lidt."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Okay. Det kan tyde på, at du også er lidt dehydreret."
+    },
+    {
+      "speaker": "patient",
+      "text": "Det giver mening. Jeg har ikke haft meget appetit heller."
+    },
+    {
+      "speaker": "nurse",
+      "text": "Har du kunnet spise noget i dag?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Et stykke toast og lidt yoghurt."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Fint. Ingen opkastninger?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Nej."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Godt. Nadia, kan du lige gentage pulsen nu, hvor han har siddet i ro lidt længere?"
+    },
+    {
+      "speaker": "nurse",
+      "text": "Ja. Jeg måler... puls 98 nu."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Så den er faldet lidt fra 104."
+    },
+    {
+      "speaker": "patient",
+      "text": "Er det godt?"
+    },
+    {
+      "speaker": "doctor",
+      "text": "Ja, det er positivt. Men vi ser stadig på hele billedet, ikke kun én værdi."
+    },
+    {
+      "speaker": "nurse",
+      "text": "Saturationen ligger stadig på 94."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Stabil?"
+    },
+    {
+      "speaker": "nurse",
+      "text": "Ja, 94 det meste af tiden. Kortvarigt 95."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Fint. Henrik, har du nogen inhalator hjemme fra dengang, du havde astma som barn?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Nej, ikke længere."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Har du brugt nogen form for inhalationsmedicin de sidste år?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Nej."
+    },
+    {
+      "speaker": "nurse",
+      "text": "Jeg kan høre en smule hvæsende respiration, når han taler længe."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Ja, jeg lagde også mærke til det. Henrik, prøv at puste helt ud."
+    },
+    {
+      "speaker": "patient",
+      "text": "Sådan her?"
+    },
+    {
+      "speaker": "doctor",
+      "text": "Ja. Og igen."
+    },
+    {
+      "speaker": "patient",
+      "text": "Puh... ja."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Der er lidt forlænget ekspirium, men ikke udtalt bronkospasme."
+    },
+    {
+      "speaker": "nurse",
+      "text": "Skal vi prøve bronkodilatator her?"
+    },
+    {
+      "speaker": "doctor",
+      "text": "Ikke som eneste behandling, men en enkelt inhalation kan være rimelig, mens vi venter, hvis han føler trykken."
+    },
+    {
+      "speaker": "patient",
+      "text": "Det føles faktisk lidt stramt."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Okay. Nadia, kan du gøre en salbutamol-inhalation klar efter klinikkens standarddosis?"
+    },
+    {
+      "speaker": "nurse",
+      "text": "Ja, selvfølgelig."
+    },
+    {
+      "speaker": "patient",
+      "text": "Er det sådan noget, astmatikere bruger?"
+    },
+    {
+      "speaker": "doctor",
+      "text": "Ja, det afslapper musklerne omkring luftvejene og kan gøre det lettere at trække vejret, hvis der også er en obstruktiv komponent."
+    },
+    {
+      "speaker": "nurse",
+      "text": "Henrik, jeg giver dig mundstykket her. Slut læberne tæt omkring det."
+    },
+    {
+      "speaker": "nurse",
+      "text": "Træk langsomt og dybt ind... hold vejret et øjeblik... og pust roligt ud."
+    },
+    {
+      "speaker": "patient",
+      "text": "Sådan?"
+    },
+    {
+      "speaker": "doctor",
+      "text": "Fint. Jeg ringer til akutmodtagelsen nu og giver dem en samlet overlevering."
+    },
+    {
+      "speaker": "patient",
+      "text": "Okay."
+    },
+    {
+      "speaker": "nurse",
+      "text": "Jeg bliver her og holder øje med saturation og puls imens."
+    },
+    {
+      "speaker": "patient",
+      "text": "Tak. Det er jeg glad for."
+    }
+  ],
+  "turns": [
+    {
+      "turn_id": 1,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Hej, kom indenfor."
+    },
+    {
+      "turn_id": 2,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Jeg hedder Sara og er læge."
+    },
+    {
+      "turn_id": 3,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Du må sætte dig her."
+    },
+    {
+      "turn_id": 4,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Hvad hedder du?"
+    },
+    {
+      "turn_id": 5,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Henrik."
+    },
+    {
+      "turn_id": 6,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Hej Henrik."
+    },
+    {
+      "turn_id": 7,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Jeg kan se, du har bestilt tid på grund af hoste og åndenød."
+    },
+    {
+      "turn_id": 8,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Fortæl lidt om det."
+    },
+    {
+      "turn_id": 9,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Ja, øh, jeg har hostet i omkring ti dage."
+    },
+    {
+      "turn_id": 10,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Først var det bare tør hoste, men nu kommer der gult slim op."
+    },
+    {
+      "turn_id": 11,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Og de sidste tre dage bliver jeg forpustet bare af at gå op ad trapper."
+    },
+    {
+      "turn_id": 12,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Har du haft feber?"
+    },
+    {
+      "turn_id": 13,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Ja, i weekenden målte jeg 38,4."
+    },
+    {
+      "turn_id": 14,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "I går var den 37,9."
+    },
+    {
+      "turn_id": 15,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Har du smerter i brystet?"
+    },
+    {
+      "turn_id": 16,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Kun når jeg hoster meget."
+    },
+    {
+      "turn_id": 17,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Så gør det ondt sådan ude i højre side."
+    },
+    {
+      "turn_id": 18,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Er smerten også der, når du trækker vejret dybt ind?"
+    },
+    {
+      "turn_id": 19,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Ja, lidt."
+    },
+    {
+      "turn_id": 20,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Det stikker."
+    },
+    {
+      "turn_id": 21,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Har du hostet blod op?"
+    },
+    {
+      "turn_id": 22,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Ryger du?"
+    },
+    {
+      "turn_id": 23,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Jeg røg før."
+    },
+    {
+      "turn_id": 24,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Stoppede for seks år siden."
+    },
+    {
+      "turn_id": 25,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Jeg røg vel femten cigaretter om dagen i tyve år."
+    },
+    {
+      "turn_id": 26,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Har du KOL, astma eller anden lungesygdom?"
+    },
+    {
+      "turn_id": 27,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Jeg har aldrig fået at vide, jeg har KOL."
+    },
+    {
+      "turn_id": 28,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Men jeg havde astma som barn."
+    },
+    {
+      "turn_id": 29,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Andre sygdomme?"
+    },
+    {
+      "turn_id": 30,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Forhøjet blodtryk og type 2-diabetes."
+    },
+    {
+      "turn_id": 31,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Hvilken medicin tager du?"
+    },
+    {
+      "turn_id": 32,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Metformin, losartan og noget kolesterolmedicin."
+    },
+    {
+      "turn_id": 33,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Atorvastatin, tror jeg."
+    },
+    {
+      "turn_id": 34,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Har du allergier over for medicin?"
+    },
+    {
+      "turn_id": 35,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Penicillin."
+    },
+    {
+      "turn_id": 36,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Jeg fik udslæt og hævede læber, da jeg var yngre."
+    },
+    {
+      "turn_id": 37,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Godt du siger det."
+    },
+    {
+      "turn_id": 38,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Jeg vil gerne have sygeplejersken ind til at måle dine værdier og tage en CRP."
+    },
+    {
+      "turn_id": 39,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Et øjeblik."
+    },
+    {
+      "turn_id": 40,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "Hej Henrik, jeg hedder Nadia og er sygeplejerske."
+    },
+    {
+      "turn_id": 41,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "Jeg tager lige temperatur, saturation, puls, blodtryk og respirationsfrekvens."
+    },
+    {
+      "turn_id": 42,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Ja, fint."
+    },
+    {
+      "turn_id": 43,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "Sæt fingeren her i pulsoximeteret."
+    },
+    {
+      "turn_id": 44,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "Prøv at holde hånden helt stille."
+    },
+    {
+      "turn_id": 45,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "Saturation er 93 procent på rumluft."
+    },
+    {
+      "turn_id": 46,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "Puls 104."
+    },
+    {
+      "turn_id": 47,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "93, okay."
+    },
+    {
+      "turn_id": 48,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Hvad er respirationsfrekvensen?"
+    },
+    {
+      "turn_id": 49,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "Jeg tæller lige... 22 per minut."
+    },
+    {
+      "turn_id": 50,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Og temperatur?"
+    },
+    {
+      "turn_id": 51,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "38,1 tympanisk."
+    },
+    {
+      "turn_id": 52,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Så jeg har stadig feber."
+    },
+    {
+      "turn_id": 53,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Ja, let feber."
+    },
+    {
+      "turn_id": 54,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Nadia, kan du tage CRP og eventuelt blodsukker, når du alligevel stikker?"
+    },
+    {
+      "turn_id": 55,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "Henrik, jeg prikker dig lige i fingeren."
+    },
+    {
+      "turn_id": 56,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "Det kan svie lidt."
+    },
+    {
+      "turn_id": 57,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Bare gør det."
+    },
+    {
+      "turn_id": 58,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "Sådan."
+    },
+    {
+      "turn_id": 59,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "CRP-maskinen bruger et par minutter."
+    },
+    {
+      "turn_id": 60,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "Blodsukker er 9,8."
+    },
+    {
+      "turn_id": 61,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Har du spist for nylig?"
+    },
+    {
+      "turn_id": 62,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Jeg spiste morgenmad for en time siden."
+    },
+    {
+      "turn_id": 63,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Okay, så det er ikke et fastende blodsukker."
+    },
+    {
+      "turn_id": 64,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Hvordan ligger dine værdier normalt?"
+    },
+    {
+      "turn_id": 65,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Omkring syv eller otte efter mad, tror jeg."
+    },
+    {
+      "turn_id": 66,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Vi holder øje med det under infektion, fordi blodsukkeret ofte stiger lidt."
+    },
+    {
+      "turn_id": 67,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Nadia, hvad var blodtrykket?"
+    },
+    {
+      "turn_id": 68,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "138 over 84."
+    },
+    {
+      "turn_id": 69,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Fint."
+    },
+    {
+      "turn_id": 70,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Jeg vil lytte på dine lunger nu."
+    },
+    {
+      "turn_id": 71,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Tag trøjen lidt op bagpå og træk vejret dybt gennem munden."
+    },
+    {
+      "turn_id": 72,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Dybt ind... og ud."
+    },
+    {
+      "turn_id": 73,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Igen."
+    },
+    {
+      "turn_id": 74,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Jeg hører normale respirationslyde øverst, men basalt på højre side er der nedsatte respirationslyde og nogle fine krepitationer."
+    },
+    {
+      "turn_id": 75,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "Jeg syntes også, han lød lidt sekretfyldt, da han kom ind."
+    },
+    {
+      "turn_id": 76,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Henrik, host lige én gang for mig."
+    },
+    {
+      "turn_id": 77,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Host, host... undskyld."
+    },
+    {
+      "turn_id": 78,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Det er helt fint."
+    },
+    {
+      "turn_id": 79,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Efter hosten er der stadig krepitation basalt højre."
+    },
+    {
+      "turn_id": 80,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Det gør pneumoni mere sandsynlig."
+    },
+    {
+      "turn_id": 81,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Lungebetændelse?"
+    },
+    {
+      "turn_id": 82,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Ja, det er en af de vigtigste muligheder."
+    },
+    {
+      "turn_id": 83,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Vi skal vurdere, om du kan behandles hjemme, eller om du har brug for yderligere akut vurdering."
+    },
+    {
+      "turn_id": 84,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "CRP er klar."
+    },
+    {
+      "turn_id": 85,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "Den er 86 milligram per liter."
+    },
+    {
+      "turn_id": 86,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "86, tak."
+    },
+    {
+      "turn_id": 87,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Det støtter, at der er en betydelig infektion, men CRP alene afgør ikke, om det er bakterielt."
+    },
+    {
+      "turn_id": 88,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Lad os lige samle det kliniske billede."
+    },
+    {
+      "turn_id": 89,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Er 86 meget?"
+    },
+    {
+      "turn_id": 90,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Det er forhøjet."
+    },
+    {
+      "turn_id": 91,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Sammen med feber, produktiv hoste, nedsat saturation og fundene på højre lunge giver det mistanke om pneumoni."
+    },
+    {
+      "turn_id": 92,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "Vil du have en NEWS2-score?"
+    },
+    {
+      "turn_id": 93,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Ja, lad os beregne den."
+    },
+    {
+      "turn_id": 94,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Respirationsfrekvens 22 giver to point."
+    },
+    {
+      "turn_id": 95,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Saturation 93 på skala 1 giver to point."
+    },
+    {
+      "turn_id": 96,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Ingen ilttilskud."
+    },
+    {
+      "turn_id": 97,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Temperatur 38,1 giver ét point."
+    },
+    {
+      "turn_id": 98,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Systolisk blodtryk 138 giver nul."
+    },
+    {
+      "turn_id": 99,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Puls 104 giver ét point."
+    },
+    {
+      "turn_id": 100,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Bevidsthed er A, så nul."
+    },
+    {
+      "turn_id": 101,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "Det giver seks i alt."
+    },
+    {
+      "turn_id": 102,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Ja, NEWS2 på seks kræver klinisk opmærksomhed."
+    },
+    {
+      "turn_id": 103,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Henrik, føler du dig svimmel eller konfus?"
+    },
+    {
+      "turn_id": 104,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Nej, bare træt."
+    },
+    {
+      "turn_id": 105,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Og det er svært at få vejret, når jeg går."
+    },
+    {
+      "turn_id": 106,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Kan du tale i hele sætninger uden at stoppe for luft?"
+    },
+    {
+      "turn_id": 107,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Ja, som nu."
+    },
+    {
+      "turn_id": 108,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Nadia, vil du prøve saturation igen efter nogle minutters hvile?"
+    },
+    {
+      "turn_id": 109,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "Henrik, sid helt roligt og træk vejret normalt."
+    },
+    {
+      "turn_id": 110,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "Nu ligger den på 94, kortvarigt 95, men mest 94."
+    },
+    {
+      "turn_id": 111,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Bliver du forpustet i hvile?"
+    },
+    {
+      "turn_id": 112,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Ikke når jeg bare sidder, men jeg kan mærke, at jeg skal arbejde lidt mere for at trække vejret."
+    },
+    {
+      "turn_id": 113,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "På grund af din penicillinallergi skal vi være omhyggelige med antibiotikavalget, hvis vi behandler dig for bakteriel pneumoni."
+    },
+    {
+      "turn_id": 114,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Jeg vil helst ikke på hospitalet."
+    },
+    {
+      "turn_id": 115,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Det forstår jeg."
+    },
+    {
+      "turn_id": 116,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Men beslutningen afhænger af sikkerheden."
+    },
+    {
+      "turn_id": 117,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Din saturation er lavere end normalt, og NEWS2 er seks."
+    },
+    {
+      "turn_id": 118,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Jeg vil gerne have, at du bliver vurderet på akutmodtagelsen med røntgen af thorax og blodprøver."
+    },
+    {
+      "turn_id": 119,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Kan jeg ikke bare få antibiotika med hjem og se tiden an?"
+    },
+    {
+      "turn_id": 120,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Hvis du havde saturation 97, normal respirationsfrekvens og var mindre påvirket, kunne det måske være rimeligt."
+    },
+    {
+      "turn_id": 121,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Men med saturation omkring 93 til 94, tachykardi, feber og en relativt høj NEWS2 vil jeg ikke være tryg ved kun hjemmebehandling uden yderligere vurdering."
+    },
+    {
+      "turn_id": 122,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "Og fordi du har diabetes, har du også lidt højere risiko for at blive dårligere under infektionen."
+    },
+    {
+      "turn_id": 123,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Skal jeg med ambulance?"
+    },
+    {
+      "turn_id": 124,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Ikke nødvendigvis med blå blink."
+    },
+    {
+      "turn_id": 125,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Du er vågen, stabil i siddende stilling og kan tale normalt."
+    },
+    {
+      "turn_id": 126,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Men jeg vil kontakte akutmodtagelsen og aftale, hvordan du kommer derind."
+    },
+    {
+      "turn_id": 127,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Jeg vil helst ikke have, at du kører selv."
+    },
+    {
+      "turn_id": 128,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Min kone kan hente mig."
+    },
+    {
+      "turn_id": 129,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Det er fint, hvis hun kan komme hurtigt."
+    },
+    {
+      "turn_id": 130,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Nadia, kan du tage en venøs blodprøve her, mens jeg ringer?"
+    },
+    {
+      "turn_id": 131,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Blodprocent, leukocytter, elektrolytter og kreatinin."
+    },
+    {
+      "turn_id": 132,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "Ja, det kan jeg."
+    },
+    {
+      "turn_id": 133,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "Blodgas vil jeg dog hellere lade akutmodtagelsen tage."
+    },
+    {
+      "turn_id": 134,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Enig."
+    },
+    {
+      "turn_id": 135,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Tag standardprøverne, så sender vi resultaterne elektronisk, hvis de når at komme."
+    },
+    {
+      "turn_id": 136,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Skal jeg have ilt nu?"
+    },
+    {
+      "turn_id": 137,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Ikke automatisk."
+    },
+    {
+      "turn_id": 138,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Du ligger lige omkring grænsen."
+    },
+    {
+      "turn_id": 139,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Hvis saturation falder yderligere, eller du bliver mere forpustet, giver vi ilt."
+    },
+    {
+      "turn_id": 140,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Nadia, mål igen under lidt gang på gangen, men stop hvis han bliver dårlig."
+    },
+    {
+      "turn_id": 141,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Okay, så jeg skal ind."
+    },
+    {
+      "turn_id": 142,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Vi sender dig ind, fordi du sandsynligvis har en pneumoni og nogle målinger, der gør,"
+    },
+    {
+      "turn_id": 143,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "at vi skal være sikre på, at du ikke har behov for ilt, intravenøs væske eller anden behandling."
+    },
+    {
+      "turn_id": 144,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "Jeg tager blodprøven nu."
+    },
+    {
+      "turn_id": 145,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "Har du det okay med nåle?"
+    },
+    {
+      "turn_id": 146,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Ikke rigtig, men det går."
+    },
+    {
+      "turn_id": 147,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "Kig den anden vej."
+    },
+    {
+      "turn_id": 148,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "Lille stik... så er den i."
+    },
+    {
+      "turn_id": 149,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "Jeg tager tre glas."
+    },
+    {
+      "turn_id": 150,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "Blodprøverne er taget."
+    },
+    {
+      "turn_id": 151,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "Jeg sætter en lille forbinding på."
+    },
+    {
+      "turn_id": 152,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Tak."
+    },
+    {
+      "turn_id": 153,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Jeg ringer til akutmodtagelsen nu og giver en struktureret overlevering: 58-årig mand med ti dages hoste, feber, purulent ekspektorat,"
+    },
+    {
+      "turn_id": 154,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "pleuritisk smerte højresidigt, saturation 93 til 94 i hvile og 92 ved gang, respirationsfrekvens 22, puls 104, CRP 86 og fokale krepitationer basalt højre."
+    },
+    {
+      "turn_id": 155,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "Penicillinallergi med læbehævelse skal også med."
+    },
+    {
+      "turn_id": 156,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Ja, vigtigt."
+    },
+    {
+      "turn_id": 157,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Jeg skriver det tydeligt som mulig straksreaktion."
+    },
+    {
+      "turn_id": 158,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Det lyder alvorligt, når I siger det sådan."
+    },
+    {
+      "turn_id": 159,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Det lyder teknisk, fordi vi opsummerer de oplysninger, næste team skal bruge."
+    },
+    {
+      "turn_id": 160,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Du er ikke kritisk lige nu, men du har tegn, vi ikke skal ignorere."
+    },
+    {
+      "turn_id": 161,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Din kone kan hente dig, men hvis du bliver mere forpustet, får blå læber, bliver konfus,"
+    },
+    {
+      "turn_id": 162,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "besvimer eller får stærke brystsmerter, mens du venter, så siger du til med det samme."
+    },
+    {
+      "turn_id": 163,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "Jeg bliver lige i nærheden, mens Sara ringer."
+    },
+    {
+      "turn_id": 164,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Tak."
+    },
+    {
+      "turn_id": 165,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Det er rart."
+    },
+    {
+      "turn_id": 166,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Fint."
+    },
+    {
+      "turn_id": 167,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Jeg går ud og ringer nu."
+    },
+    {
+      "turn_id": 168,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Vi sørger for, at akutmodtagelsen ved, du kommer."
+    },
+    {
+      "turn_id": 169,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Inden jeg ringer, Henrik, vil jeg lige sikre mig, at der ikke er noget vigtigt, vi har overset."
+    },
+    {
+      "turn_id": 170,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Ja, selvfølgelig."
+    },
+    {
+      "turn_id": 171,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Har du haft problemer med at få væske nok de sidste par dage?"
+    },
+    {
+      "turn_id": 172,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Ja... altså, jeg har nok drukket mindre end normalt."
+    },
+    {
+      "turn_id": 173,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "Hvor meget cirka?"
+    },
+    {
+      "turn_id": 174,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Måske fire-fem glas om dagen. Ikke ret meget."
+    },
+    {
+      "turn_id": 175,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Har du tisset normalt?"
+    },
+    {
+      "turn_id": 176,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Mindre end normalt, tror jeg."
+    },
+    {
+      "turn_id": 177,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "Mørkere urin?"
+    },
+    {
+      "turn_id": 178,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Ja, lidt."
+    },
+    {
+      "turn_id": 179,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Okay. Det kan tyde på, at du også er lidt dehydreret."
+    },
+    {
+      "turn_id": 180,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Det giver mening. Jeg har ikke haft meget appetit heller."
+    },
+    {
+      "turn_id": 181,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "Har du kunnet spise noget i dag?"
+    },
+    {
+      "turn_id": 182,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Et stykke toast og lidt yoghurt."
+    },
+    {
+      "turn_id": 183,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Fint. Ingen opkastninger?"
+    },
+    {
+      "turn_id": 184,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Nej."
+    },
+    {
+      "turn_id": 185,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Godt. Nadia, kan du lige gentage pulsen nu, hvor han har siddet i ro lidt længere?"
+    },
+    {
+      "turn_id": 186,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "Ja. Jeg måler... puls 98 nu."
+    },
+    {
+      "turn_id": 187,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Så den er faldet lidt fra 104."
+    },
+    {
+      "turn_id": 188,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Er det godt?"
+    },
+    {
+      "turn_id": 189,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Ja, det er positivt. Men vi ser stadig på hele billedet, ikke kun én værdi."
+    },
+    {
+      "turn_id": 190,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "Saturationen ligger stadig på 94."
+    },
+    {
+      "turn_id": 191,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Stabil?"
+    },
+    {
+      "turn_id": 192,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "Ja, 94 det meste af tiden. Kortvarigt 95."
+    },
+    {
+      "turn_id": 193,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Fint. Henrik, har du nogen inhalator hjemme fra dengang, du havde astma som barn?"
+    },
+    {
+      "turn_id": 194,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Nej, ikke længere."
+    },
+    {
+      "turn_id": 195,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Har du brugt nogen form for inhalationsmedicin de sidste år?"
+    },
+    {
+      "turn_id": 196,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Nej."
+    },
+    {
+      "turn_id": 197,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "Jeg kan høre en smule hvæsende respiration, når han taler længe."
+    },
+    {
+      "turn_id": 198,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Ja, jeg lagde også mærke til det. Henrik, prøv at puste helt ud."
+    },
+    {
+      "turn_id": 199,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Sådan her?"
+    },
+    {
+      "turn_id": 200,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Ja. Og igen."
+    },
+    {
+      "turn_id": 201,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Puh... ja."
+    },
+    {
+      "turn_id": 202,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Der er lidt forlænget ekspirium, men ikke udtalt bronkospasme."
+    },
+    {
+      "turn_id": 203,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "Skal vi prøve bronkodilatator her?"
+    },
+    {
+      "turn_id": 204,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Ikke som eneste behandling, men en enkelt inhalation kan være rimelig, mens vi venter, hvis han føler trykken."
+    },
+    {
+      "turn_id": 205,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Det føles faktisk lidt stramt."
+    },
+    {
+      "turn_id": 206,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Okay. Nadia, kan du gøre en salbutamol-inhalation klar efter klinikkens standarddosis?"
+    },
+    {
+      "turn_id": 207,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "Ja, selvfølgelig."
+    },
+    {
+      "turn_id": 208,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Er det sådan noget, astmatikere bruger?"
+    },
+    {
+      "turn_id": 209,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Ja, det afslapper musklerne omkring luftvejene og kan gøre det lettere at trække vejret, hvis der også er en obstruktiv komponent."
+    },
+    {
+      "turn_id": 210,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "Henrik, jeg giver dig mundstykket her. Slut læberne tæt omkring det."
+    },
+    {
+      "turn_id": 211,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "Træk langsomt og dybt ind... hold vejret et øjeblik... og pust roligt ud."
+    },
+    {
+      "turn_id": 212,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Sådan?"
+    },
+    {
+      "turn_id": 213,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Fint. Jeg ringer til akutmodtagelsen nu og giver dem en samlet overlevering."
+    },
+    {
+      "turn_id": 214,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Okay."
+    },
+    {
+      "turn_id": 215,
+      "speaker": "Sygeplejerske",
+      "tag": "[Sygeplejerske]",
+      "text": "Jeg bliver her og holder øje med saturation og puls imens."
+    },
+    {
+      "turn_id": 216,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Tak. Det er jeg glad for."
+    }
+  ]
+}

@@ -1,0 +1,2207 @@
+{
+  "case_id": "case_07_3_speakers_relative",
+  "language": "da",
+  "title": "3 speakers — Læge + Patient + Pårørende",
+  "scenario": "Teenage headache, dizziness and fatigue with mother/guardian",
+  "expected_speaker_count": 3,
+  "spoken_word_count": 1540,
+  "speaker_word_counts": {
+    "Læge": 927,
+    "Patient": 369,
+    "Pårørende": 244
+  },
+  "transcript": [
+    {
+      "speaker": "doctor",
+      "text": "Hej, velkommen."
+    },
+    {
+      "speaker": "doctor",
+      "text": "I må begge to gerne sætte jer."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Jeg hedder Anne og er læge."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Hvem af jer er Emil?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Det er mig."
+    },
+    {
+      "speaker": "relative",
+      "text": "Ja, det er Emil."
+    },
+    {
+      "speaker": "relative",
+      "text": "Jeg er hans mor, Louise."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Hej Emil, hej Louise."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Emil, jeg vil helst høre fra dig først, og så må din mor selvfølgelig supplere."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Hvad er grunden til, at I er kommet i dag?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Øh, jeg har haft hovedpine ret meget."
+    },
+    {
+      "speaker": "patient",
+      "text": "Og jeg bliver svimmel nogle gange."
+    },
+    {
+      "speaker": "relative",
+      "text": "Han har også været helt vildt træt."
+    },
+    {
+      "speaker": "relative",
+      "text": "Altså, han kommer hjem fra skole og sover på sofaen, og det plejer han aldrig."
+    },
+    {
+      "speaker": "patient",
+      "text": "Mor, jeg sover ikke altid."
+    },
+    {
+      "speaker": "relative",
+      "text": "Okay, men du ligger i hvert fald og falder i søvn."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Det er fint, vi tager én ting ad gangen."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Emil, hvor længe har hovedpinen stået på?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Måske tre uger."
+    },
+    {
+      "speaker": "patient",
+      "text": "Eller fire."
+    },
+    {
+      "speaker": "patient",
+      "text": "Jeg ved det ikke helt."
+    },
+    {
+      "speaker": "relative",
+      "text": "Det startede efter den der fodboldkamp, tror jeg."
+    },
+    {
+      "speaker": "patient",
+      "text": "Nej, det var senere."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Kan du huske, om det kom pludseligt én dag, eller om det gradvist blev mere og mere?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Det kom langsomt."
+    },
+    {
+      "speaker": "patient",
+      "text": "Først havde jeg bare lidt ondt efter skole, og nu kommer det næsten hver dag."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Hvor sidder hovedpinen?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Mest her foran, sådan over øjnene."
+    },
+    {
+      "speaker": "patient",
+      "text": "Nogle gange i begge sider."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Hvordan føles den?"
+    },
+    {
+      "speaker": "doctor",
+      "text": "Dunkende, trykkende eller stikkende?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Trykkende."
+    },
+    {
+      "speaker": "patient",
+      "text": "Som om nogen strammer noget rundt om hovedet."
+    },
+    {
+      "speaker": "relative",
+      "text": "Han siger tit, at det føles som en hjelm."
+    },
+    {
+      "speaker": "patient",
+      "text": "Ja, lidt."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Bliver du kvalm af den?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Nogle gange, men jeg kaster ikke op."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Bliver du mere følsom for lys eller lyd?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Lys, ja."
+    },
+    {
+      "speaker": "patient",
+      "text": "Især skærmen på min computer."
+    },
+    {
+      "speaker": "relative",
+      "text": "Og han sidder altså også foran den skærm til meget sent."
+    },
+    {
+      "speaker": "patient",
+      "text": "Det gør jeg ikke hver dag."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Hvor mange timer sover du cirka om natten?"
+    },
+    {
+      "speaker": "patient",
+      "text": "På skoledage måske seks timer."
+    },
+    {
+      "speaker": "relative",
+      "text": "Fem til seks."
+    },
+    {
+      "speaker": "relative",
+      "text": "Han går i seng efter midnat."
+    },
+    {
+      "speaker": "patient",
+      "text": "Okay, nogle gange fem."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Og hvor gammel er du?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Femten."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Så du har sandsynligvis brug for mere søvn end det."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Men vi skal stadig undersøge de andre symptomer."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Fortæl om svimmelheden."
+    },
+    {
+      "speaker": "patient",
+      "text": "Det sker tit, når jeg rejser mig hurtigt."
+    },
+    {
+      "speaker": "patient",
+      "text": "Så bliver det sort sådan ude i siderne, og jeg skal lige holde fast i noget."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Er du nogensinde besvimet?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Nej."
+    },
+    {
+      "speaker": "relative",
+      "text": "Han var tæt på én gang i køkkenet."
+    },
+    {
+      "speaker": "relative",
+      "text": "Han blev helt hvid."
+    },
+    {
+      "speaker": "patient",
+      "text": "Jeg satte mig bare ned."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Har du hjertebanken samtidig?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Lidt måske."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Brystsmerter eller svært ved at trække vejret?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Nej."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Hvordan spiser du i løbet af en almindelig dag?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Øh, jeg springer tit morgenmad over."
+    },
+    {
+      "speaker": "patient",
+      "text": "Så spiser jeg noget i kantinen."
+    },
+    {
+      "speaker": "patient",
+      "text": "Og aftensmad hjemme."
+    },
+    {
+      "speaker": "relative",
+      "text": "Han drikker energidrik i stedet for morgenmad."
+    },
+    {
+      "speaker": "patient",
+      "text": "Ikke i stedet for."
+    },
+    {
+      "speaker": "relative",
+      "text": "Jo, ret ofte."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Hvor mange energidrikke får du på en dag?"
+    },
+    {
+      "speaker": "patient",
+      "text": "En."
+    },
+    {
+      "speaker": "patient",
+      "text": "Nogle gange to."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Hvor meget vand drikker du?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Det ved jeg ikke."
+    },
+    {
+      "speaker": "patient",
+      "text": "Ikke så meget måske."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Har du ændret vægt?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Ikke med vilje."
+    },
+    {
+      "speaker": "patient",
+      "text": "Jeg tror, jeg har tabt to kilo."
+    },
+    {
+      "speaker": "relative",
+      "text": "Næsten tre siden vinter."
+    },
+    {
+      "speaker": "patient",
+      "text": "Men jeg er også blevet højere."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Har du haft feber, infektion eller været syg for nylig?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Jeg var forkølet for en måned siden, men kun et par dage."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Har du problemer med synet?"
+    },
+    {
+      "speaker": "doctor",
+      "text": "Ser du dobbelt, sløret, blink eller sorte pletter?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Nogle gange bliver teksten på tavlen lidt sløret."
+    },
+    {
+      "speaker": "relative",
+      "text": "Han har aldrig fået tjekket syn ordentligt."
+    },
+    {
+      "speaker": "patient",
+      "text": "Jeg kan godt se."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Det er stadig værd at undersøge."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Har du fået et slag mod hovedet til fodbold eller andet?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Jeg fik en bold i hovedet for måske to måneder siden."
+    },
+    {
+      "speaker": "relative",
+      "text": "Det var den kamp, jeg mente."
+    },
+    {
+      "speaker": "patient",
+      "text": "Ja, men hovedpinen startede ikke lige efter."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Mistede du bevidstheden, kastede op eller blev forvirret bagefter?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Nej, ikke sådan."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Hvordan går det i skolen?"
+    },
+    {
+      "speaker": "doctor",
+      "text": "Er der meget pres eller stress for tiden?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Ja, lidt."
+    },
+    {
+      "speaker": "patient",
+      "text": "Vi havde prøver, og jeg er bagud i matematik."
+    },
+    {
+      "speaker": "patient",
+      "text": "Og så træner jeg fodbold fire gange om ugen."
+    },
+    {
+      "speaker": "relative",
+      "text": "Han bliver meget stresset, når han ikke når det hele."
+    },
+    {
+      "speaker": "patient",
+      "text": "Det gør alle vel."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Måske, men kroppen kan reagere på belastning."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Har du været mere nedtrykt eller bekymret end normalt?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Ikke rigtig."
+    },
+    {
+      "speaker": "patient",
+      "text": "Bare træt."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Jeg vil gerne undersøge dig."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Først måler vi blodtryk og puls liggende og stående."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Det kan fortælle os noget om svimmelheden."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Lig stille et par minutter."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Så måler jeg nu."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Blodtrykket er 112 over 68, puls 72."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Rejs dig langsomt."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Hvordan føles det?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Lidt svimmel nu faktisk."
+    },
+    {
+      "speaker": "relative",
+      "text": "Kan du se, han bliver bleg?"
+    },
+    {
+      "speaker": "doctor",
+      "text": "Nu måler jeg igen."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Blodtrykket falder en smule, og pulsen stiger."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Ikke dramatisk, men det passer med, at væske og regelmæssige måltider kan være en del af forklaringen."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Jeg vil også lave en kort neurologisk undersøgelse."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Følg min finger med øjnene uden at dreje hovedet."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Pupillerne reagerer normalt."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Smil til mig."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Ræk tungen ud."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Løft begge arme og hold dem her."
+    },
+    {
+      "speaker": "patient",
+      "text": "Sådan?"
+    },
+    {
+      "speaker": "doctor",
+      "text": "Pres dine hænder mod mine."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Stå med fødderne samlet og luk øjnene."
+    },
+    {
+      "speaker": "relative",
+      "text": "Pas lige på."
+    },
+    {
+      "speaker": "patient",
+      "text": "Mor."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Jeg står her ved siden af."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Det ser stabilt ud."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Gå nu lige hen til døren og tilbage på tæer og derefter på hæle."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Det ser normalt ud."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Der er ikke noget i den neurologiske undersøgelse, som bekymrer mig akut."
+    },
+    {
+      "speaker": "relative",
+      "text": "Så det er ikke noget i hjernen?"
+    },
+    {
+      "speaker": "doctor",
+      "text": "Lige nu er der ingen alarmsignaler, der peger mod en akut neurologisk sygdom."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Hovedpinen lyder mest som spændingshovedpine, muligvis forværret af for lidt søvn, skærmtid, stress, koffein og uregelmæssige måltider."
+    },
+    {
+      "speaker": "patient",
+      "text": "Så jeg skal bare sove mere?"
+    },
+    {
+      "speaker": "doctor",
+      "text": "Det er en del af behandlingen, men jeg vil også tage nogle blodprøver, fordi du er træt og bliver svimmel."
+    },
+    {
+      "speaker": "relative",
+      "text": "Hvad vil du tjekke?"
+    },
+    {
+      "speaker": "doctor",
+      "text": "Blodprocent og jernlagre, infektionstal, stofskifte og blodsukker."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Hos unge kan for eksempel jernmangel give træthed, hovedpine og svimmelhed."
+    },
+    {
+      "speaker": "patient",
+      "text": "Skal jeg stikkes i armen?"
+    },
+    {
+      "speaker": "doctor",
+      "text": "Ja, én blodprøve."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Det tager et øjeblik."
+    },
+    {
+      "speaker": "patient",
+      "text": "Fedt."
+    },
+    {
+      "speaker": "relative",
+      "text": "Du overlever."
+    },
+    {
+      "speaker": "patient",
+      "text": "Tak for støtten."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Jeg vil også anbefale en synstest hos optiker, især fordi du oplever sløret syn på afstand."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Og så laver vi en konkret plan for de næste to uger: mindst otte timers søvn, morgenmad hver dag, vandflaske med i skole og markant mindre energidrik."
+    },
+    {
+      "speaker": "patient",
+      "text": "Nul energidrik?"
+    },
+    {
+      "speaker": "relative",
+      "text": "Det ville være dejligt."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Vi behøver ikke gøre det til en kamp."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Start med at halvere og undgå det sent på dagen."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Derudover skal du holde små pauser fra skærmen og fortsat dyrke sport, men ikke presse dig, hvis du bliver svimmel."
+    },
+    {
+      "speaker": "patient",
+      "text": "Må jeg stadig spille kamp på lørdag?"
+    },
+    {
+      "speaker": "doctor",
+      "text": "Hvis du føler dig som normalt, ikke har kraftig hovedpine og ikke bliver svimmel under opvarmning, kan du som udgangspunkt deltage."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Hvis symptomerne bliver tydeligt værre, skal du stoppe."
+    },
+    {
+      "speaker": "relative",
+      "text": "Og hvis han får meget værre hovedpine?"
+    },
+    {
+      "speaker": "doctor",
+      "text": "Reagér på pludselig ekstrem hovedpine, gentagne opkastninger, besvimelse, kramper, lammelser, talebesvær, høj feber med nakkestivhed eller hvis han virker svært påvirket."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Så skal han vurderes akut."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Ellers ser jeg jer igen om to til tre uger."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Vi gennemgår blodprøverne og ser, om ændringerne i søvn, væske og koffein har hjulpet."
+    },
+    {
+      "speaker": "relative",
+      "text": "Det lyder godt."
+    },
+    {
+      "speaker": "relative",
+      "text": "Jeg tror også, han har brug for at høre det fra en anden end mig."
+    },
+    {
+      "speaker": "patient",
+      "text": "Ja ja."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Emil, er der noget, du gerne vil spørge om, uden at din mor svarer først?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Øh... nej, faktisk ikke."
+    },
+    {
+      "speaker": "patient",
+      "text": "Jeg vil bare gerne have, at hovedpinen stopper."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Det er målet."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Vi tager det systematisk og følger op."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Du får blodprøven taget i dag."
+    },
+    {
+      "speaker": "relative",
+      "text": "Tak for hjælpen."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Selv tak."
+    },
+    {
+      "speaker": "doctor",
+      "text": "I kan gå ud til sygeplejersken, så hjælper hun med prøven."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Inden vi slutter, Emil, vil jeg gerne forstå lidt bedre, hvordan det påvirker din hverdag."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Når hovedpinen kommer i skolen, hvad gør du så?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Jeg prøver mest bare at ignorere den."
+    },
+    {
+      "speaker": "relative",
+      "text": "Han skriver nogle gange til mig, at han vil hentes."
+    },
+    {
+      "speaker": "patient",
+      "text": "Ikke så tit."
+    },
+    {
+      "speaker": "relative",
+      "text": "Nej, men det er sket tre gange den sidste måned."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Det er nyttigt at vide. Går du hjem, når det sker?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Nogle gange. Andre gange sætter jeg mig bare bagerst i klassen."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Hjælper det at komme væk fra lys og støj?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Ja, faktisk."
+    },
+    {
+      "speaker": "relative",
+      "text": "Han ligger ofte med gardinerne trukket for."
+    },
+    {
+      "speaker": "patient",
+      "text": "Mor..."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Det er okay, Louise. Det kan være relevant. Emil, har du lagt mærke til, om hovedpinen bliver værre på dage, hvor du ikke spiser morgenmad?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Øh... ja, måske."
+    },
+    {
+      "speaker": "relative",
+      "text": "Helt sikkert."
+    },
+    {
+      "speaker": "patient",
+      "text": "Det ved du jo ikke."
+    },
+    {
+      "speaker": "relative",
+      "text": "Nej, men jeg kan se, at du får det værre de dage."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Det kunne passe med, at lavt væskeindtag og uregelmæssige måltider spiller en rolle."
+    },
+    {
+      "speaker": "patient",
+      "text": "Så det er ikke nødvendigvis noget farligt?"
+    },
+    {
+      "speaker": "doctor",
+      "text": "Nej, ikke ud fra det vi ser nu. Men vi følger det systematisk, fordi symptomerne har stået på i flere uger."
+    },
+    {
+      "speaker": "relative",
+      "text": "Hvad med migræne?"
+    },
+    {
+      "speaker": "doctor",
+      "text": "Det er også en mulighed, især fordi han beskriver lysfølsomhed og kvalme."
+    },
+    {
+      "speaker": "patient",
+      "text": "Men jeg har ikke sådan voldsom dunkende hovedpine."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Nej, og derfor passer det ikke helt klassisk. Symptomer kan godt overlappe."
+    },
+    {
+      "speaker": "relative",
+      "text": "Kan det være synet?"
+    },
+    {
+      "speaker": "doctor",
+      "text": "Ja. Hvis han anstrenger øjnene for at se tavlen, kan det udløse hovedpine."
+    },
+    {
+      "speaker": "patient",
+      "text": "Jeg kan altså godt se tavlen."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Men du sagde, at teksten nogle gange bliver sløret."
+    },
+    {
+      "speaker": "patient",
+      "text": "Ja, når jeg er træt."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Netop. Derfor er synstesten stadig relevant."
+    },
+    {
+      "speaker": "relative",
+      "text": "Jeg bestiller en tid hos optikeren."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Godt. Jeg vil også gerne have, at I laver en lille hovedpinedagbog."
+    },
+    {
+      "speaker": "patient",
+      "text": "En hvad?"
+    },
+    {
+      "speaker": "doctor",
+      "text": "Bare en simpel note på telefonen."
+    },
+    {
+      "speaker": "relative",
+      "text": "Det kan jeg hjælpe med."
+    },
+    {
+      "speaker": "patient",
+      "text": "Jeg kan godt selv."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Skriv dato, tidspunkt, hvor længe hovedpinen varer, hvor stærk den er fra nul til ti, og hvad du havde spist og drukket."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Og om du havde sovet dårligt, trænet, haft meget skærmtid eller været stresset."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Så opsummerer jeg: blodprøver i dag, synstest, hovedpinedagbog og fokus på søvn, væske, mad og mindre energidrik."
+    },
+    {
+      "speaker": "patient",
+      "text": "Okay."
+    },
+    {
+      "speaker": "relative",
+      "text": "Det lyder godt."
+    },
+    {
+      "speaker": "doctor",
+      "text": "Og vi ses igen om to til tre uger."
+    },
+    {
+      "speaker": "patient",
+      "text": "Ja, fint."
+    }
+  ],
+  "turns": [
+    {
+      "turn_id": 1,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Hej, velkommen."
+    },
+    {
+      "turn_id": 2,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "I må begge to gerne sætte jer."
+    },
+    {
+      "turn_id": 3,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Jeg hedder Anne og er læge."
+    },
+    {
+      "turn_id": 4,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Hvem af jer er Emil?"
+    },
+    {
+      "turn_id": 5,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Det er mig."
+    },
+    {
+      "turn_id": 6,
+      "speaker": "Pårørende",
+      "tag": "[Pårørende]",
+      "text": "Ja, det er Emil."
+    },
+    {
+      "turn_id": 7,
+      "speaker": "Pårørende",
+      "tag": "[Pårørende]",
+      "text": "Jeg er hans mor, Louise."
+    },
+    {
+      "turn_id": 8,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Hej Emil, hej Louise."
+    },
+    {
+      "turn_id": 9,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Emil, jeg vil helst høre fra dig først, og så må din mor selvfølgelig supplere."
+    },
+    {
+      "turn_id": 10,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Hvad er grunden til, at I er kommet i dag?"
+    },
+    {
+      "turn_id": 11,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Øh, jeg har haft hovedpine ret meget."
+    },
+    {
+      "turn_id": 12,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Og jeg bliver svimmel nogle gange."
+    },
+    {
+      "turn_id": 13,
+      "speaker": "Pårørende",
+      "tag": "[Pårørende]",
+      "text": "Han har også været helt vildt træt."
+    },
+    {
+      "turn_id": 14,
+      "speaker": "Pårørende",
+      "tag": "[Pårørende]",
+      "text": "Altså, han kommer hjem fra skole og sover på sofaen, og det plejer han aldrig."
+    },
+    {
+      "turn_id": 15,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Mor, jeg sover ikke altid."
+    },
+    {
+      "turn_id": 16,
+      "speaker": "Pårørende",
+      "tag": "[Pårørende]",
+      "text": "Okay, men du ligger i hvert fald og falder i søvn."
+    },
+    {
+      "turn_id": 17,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Det er fint, vi tager én ting ad gangen."
+    },
+    {
+      "turn_id": 18,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Emil, hvor længe har hovedpinen stået på?"
+    },
+    {
+      "turn_id": 19,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Måske tre uger."
+    },
+    {
+      "turn_id": 20,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Eller fire."
+    },
+    {
+      "turn_id": 21,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Jeg ved det ikke helt."
+    },
+    {
+      "turn_id": 22,
+      "speaker": "Pårørende",
+      "tag": "[Pårørende]",
+      "text": "Det startede efter den der fodboldkamp, tror jeg."
+    },
+    {
+      "turn_id": 23,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Nej, det var senere."
+    },
+    {
+      "turn_id": 24,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Kan du huske, om det kom pludseligt én dag, eller om det gradvist blev mere og mere?"
+    },
+    {
+      "turn_id": 25,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Det kom langsomt."
+    },
+    {
+      "turn_id": 26,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Først havde jeg bare lidt ondt efter skole, og nu kommer det næsten hver dag."
+    },
+    {
+      "turn_id": 27,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Hvor sidder hovedpinen?"
+    },
+    {
+      "turn_id": 28,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Mest her foran, sådan over øjnene."
+    },
+    {
+      "turn_id": 29,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Nogle gange i begge sider."
+    },
+    {
+      "turn_id": 30,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Hvordan føles den?"
+    },
+    {
+      "turn_id": 31,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Dunkende, trykkende eller stikkende?"
+    },
+    {
+      "turn_id": 32,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Trykkende."
+    },
+    {
+      "turn_id": 33,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Som om nogen strammer noget rundt om hovedet."
+    },
+    {
+      "turn_id": 34,
+      "speaker": "Pårørende",
+      "tag": "[Pårørende]",
+      "text": "Han siger tit, at det føles som en hjelm."
+    },
+    {
+      "turn_id": 35,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Ja, lidt."
+    },
+    {
+      "turn_id": 36,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Bliver du kvalm af den?"
+    },
+    {
+      "turn_id": 37,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Nogle gange, men jeg kaster ikke op."
+    },
+    {
+      "turn_id": 38,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Bliver du mere følsom for lys eller lyd?"
+    },
+    {
+      "turn_id": 39,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Lys, ja."
+    },
+    {
+      "turn_id": 40,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Især skærmen på min computer."
+    },
+    {
+      "turn_id": 41,
+      "speaker": "Pårørende",
+      "tag": "[Pårørende]",
+      "text": "Og han sidder altså også foran den skærm til meget sent."
+    },
+    {
+      "turn_id": 42,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Det gør jeg ikke hver dag."
+    },
+    {
+      "turn_id": 43,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Hvor mange timer sover du cirka om natten?"
+    },
+    {
+      "turn_id": 44,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "På skoledage måske seks timer."
+    },
+    {
+      "turn_id": 45,
+      "speaker": "Pårørende",
+      "tag": "[Pårørende]",
+      "text": "Fem til seks."
+    },
+    {
+      "turn_id": 46,
+      "speaker": "Pårørende",
+      "tag": "[Pårørende]",
+      "text": "Han går i seng efter midnat."
+    },
+    {
+      "turn_id": 47,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Okay, nogle gange fem."
+    },
+    {
+      "turn_id": 48,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Og hvor gammel er du?"
+    },
+    {
+      "turn_id": 49,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Femten."
+    },
+    {
+      "turn_id": 50,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Så du har sandsynligvis brug for mere søvn end det."
+    },
+    {
+      "turn_id": 51,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Men vi skal stadig undersøge de andre symptomer."
+    },
+    {
+      "turn_id": 52,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Fortæl om svimmelheden."
+    },
+    {
+      "turn_id": 53,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Det sker tit, når jeg rejser mig hurtigt."
+    },
+    {
+      "turn_id": 54,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Så bliver det sort sådan ude i siderne, og jeg skal lige holde fast i noget."
+    },
+    {
+      "turn_id": 55,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Er du nogensinde besvimet?"
+    },
+    {
+      "turn_id": 56,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Nej."
+    },
+    {
+      "turn_id": 57,
+      "speaker": "Pårørende",
+      "tag": "[Pårørende]",
+      "text": "Han var tæt på én gang i køkkenet."
+    },
+    {
+      "turn_id": 58,
+      "speaker": "Pårørende",
+      "tag": "[Pårørende]",
+      "text": "Han blev helt hvid."
+    },
+    {
+      "turn_id": 59,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Jeg satte mig bare ned."
+    },
+    {
+      "turn_id": 60,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Har du hjertebanken samtidig?"
+    },
+    {
+      "turn_id": 61,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Lidt måske."
+    },
+    {
+      "turn_id": 62,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Brystsmerter eller svært ved at trække vejret?"
+    },
+    {
+      "turn_id": 63,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Nej."
+    },
+    {
+      "turn_id": 64,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Hvordan spiser du i løbet af en almindelig dag?"
+    },
+    {
+      "turn_id": 65,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Øh, jeg springer tit morgenmad over."
+    },
+    {
+      "turn_id": 66,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Så spiser jeg noget i kantinen."
+    },
+    {
+      "turn_id": 67,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Og aftensmad hjemme."
+    },
+    {
+      "turn_id": 68,
+      "speaker": "Pårørende",
+      "tag": "[Pårørende]",
+      "text": "Han drikker energidrik i stedet for morgenmad."
+    },
+    {
+      "turn_id": 69,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Ikke i stedet for."
+    },
+    {
+      "turn_id": 70,
+      "speaker": "Pårørende",
+      "tag": "[Pårørende]",
+      "text": "Jo, ret ofte."
+    },
+    {
+      "turn_id": 71,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Hvor mange energidrikke får du på en dag?"
+    },
+    {
+      "turn_id": 72,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "En."
+    },
+    {
+      "turn_id": 73,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Nogle gange to."
+    },
+    {
+      "turn_id": 74,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Hvor meget vand drikker du?"
+    },
+    {
+      "turn_id": 75,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Det ved jeg ikke."
+    },
+    {
+      "turn_id": 76,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Ikke så meget måske."
+    },
+    {
+      "turn_id": 77,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Har du ændret vægt?"
+    },
+    {
+      "turn_id": 78,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Ikke med vilje."
+    },
+    {
+      "turn_id": 79,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Jeg tror, jeg har tabt to kilo."
+    },
+    {
+      "turn_id": 80,
+      "speaker": "Pårørende",
+      "tag": "[Pårørende]",
+      "text": "Næsten tre siden vinter."
+    },
+    {
+      "turn_id": 81,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Men jeg er også blevet højere."
+    },
+    {
+      "turn_id": 82,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Har du haft feber, infektion eller været syg for nylig?"
+    },
+    {
+      "turn_id": 83,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Jeg var forkølet for en måned siden, men kun et par dage."
+    },
+    {
+      "turn_id": 84,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Har du problemer med synet?"
+    },
+    {
+      "turn_id": 85,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Ser du dobbelt, sløret, blink eller sorte pletter?"
+    },
+    {
+      "turn_id": 86,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Nogle gange bliver teksten på tavlen lidt sløret."
+    },
+    {
+      "turn_id": 87,
+      "speaker": "Pårørende",
+      "tag": "[Pårørende]",
+      "text": "Han har aldrig fået tjekket syn ordentligt."
+    },
+    {
+      "turn_id": 88,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Jeg kan godt se."
+    },
+    {
+      "turn_id": 89,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Det er stadig værd at undersøge."
+    },
+    {
+      "turn_id": 90,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Har du fået et slag mod hovedet til fodbold eller andet?"
+    },
+    {
+      "turn_id": 91,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Jeg fik en bold i hovedet for måske to måneder siden."
+    },
+    {
+      "turn_id": 92,
+      "speaker": "Pårørende",
+      "tag": "[Pårørende]",
+      "text": "Det var den kamp, jeg mente."
+    },
+    {
+      "turn_id": 93,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Ja, men hovedpinen startede ikke lige efter."
+    },
+    {
+      "turn_id": 94,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Mistede du bevidstheden, kastede op eller blev forvirret bagefter?"
+    },
+    {
+      "turn_id": 95,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Nej, ikke sådan."
+    },
+    {
+      "turn_id": 96,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Hvordan går det i skolen?"
+    },
+    {
+      "turn_id": 97,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Er der meget pres eller stress for tiden?"
+    },
+    {
+      "turn_id": 98,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Ja, lidt."
+    },
+    {
+      "turn_id": 99,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Vi havde prøver, og jeg er bagud i matematik."
+    },
+    {
+      "turn_id": 100,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Og så træner jeg fodbold fire gange om ugen."
+    },
+    {
+      "turn_id": 101,
+      "speaker": "Pårørende",
+      "tag": "[Pårørende]",
+      "text": "Han bliver meget stresset, når han ikke når det hele."
+    },
+    {
+      "turn_id": 102,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Det gør alle vel."
+    },
+    {
+      "turn_id": 103,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Måske, men kroppen kan reagere på belastning."
+    },
+    {
+      "turn_id": 104,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Har du været mere nedtrykt eller bekymret end normalt?"
+    },
+    {
+      "turn_id": 105,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Ikke rigtig."
+    },
+    {
+      "turn_id": 106,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Bare træt."
+    },
+    {
+      "turn_id": 107,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Jeg vil gerne undersøge dig."
+    },
+    {
+      "turn_id": 108,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Først måler vi blodtryk og puls liggende og stående."
+    },
+    {
+      "turn_id": 109,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Det kan fortælle os noget om svimmelheden."
+    },
+    {
+      "turn_id": 110,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Lig stille et par minutter."
+    },
+    {
+      "turn_id": 111,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Så måler jeg nu."
+    },
+    {
+      "turn_id": 112,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Blodtrykket er 112 over 68, puls 72."
+    },
+    {
+      "turn_id": 113,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Rejs dig langsomt."
+    },
+    {
+      "turn_id": 114,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Hvordan føles det?"
+    },
+    {
+      "turn_id": 115,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Lidt svimmel nu faktisk."
+    },
+    {
+      "turn_id": 116,
+      "speaker": "Pårørende",
+      "tag": "[Pårørende]",
+      "text": "Kan du se, han bliver bleg?"
+    },
+    {
+      "turn_id": 117,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Nu måler jeg igen."
+    },
+    {
+      "turn_id": 118,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Blodtrykket falder en smule, og pulsen stiger."
+    },
+    {
+      "turn_id": 119,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Ikke dramatisk, men det passer med, at væske og regelmæssige måltider kan være en del af forklaringen."
+    },
+    {
+      "turn_id": 120,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Jeg vil også lave en kort neurologisk undersøgelse."
+    },
+    {
+      "turn_id": 121,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Følg min finger med øjnene uden at dreje hovedet."
+    },
+    {
+      "turn_id": 122,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Pupillerne reagerer normalt."
+    },
+    {
+      "turn_id": 123,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Smil til mig."
+    },
+    {
+      "turn_id": 124,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Ræk tungen ud."
+    },
+    {
+      "turn_id": 125,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Løft begge arme og hold dem her."
+    },
+    {
+      "turn_id": 126,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Sådan?"
+    },
+    {
+      "turn_id": 127,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Pres dine hænder mod mine."
+    },
+    {
+      "turn_id": 128,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Stå med fødderne samlet og luk øjnene."
+    },
+    {
+      "turn_id": 129,
+      "speaker": "Pårørende",
+      "tag": "[Pårørende]",
+      "text": "Pas lige på."
+    },
+    {
+      "turn_id": 130,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Mor."
+    },
+    {
+      "turn_id": 131,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Jeg står her ved siden af."
+    },
+    {
+      "turn_id": 132,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Det ser stabilt ud."
+    },
+    {
+      "turn_id": 133,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Gå nu lige hen til døren og tilbage på tæer og derefter på hæle."
+    },
+    {
+      "turn_id": 134,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Det ser normalt ud."
+    },
+    {
+      "turn_id": 135,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Der er ikke noget i den neurologiske undersøgelse, som bekymrer mig akut."
+    },
+    {
+      "turn_id": 136,
+      "speaker": "Pårørende",
+      "tag": "[Pårørende]",
+      "text": "Så det er ikke noget i hjernen?"
+    },
+    {
+      "turn_id": 137,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Lige nu er der ingen alarmsignaler, der peger mod en akut neurologisk sygdom."
+    },
+    {
+      "turn_id": 138,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Hovedpinen lyder mest som spændingshovedpine, muligvis forværret af for lidt søvn, skærmtid, stress, koffein og uregelmæssige måltider."
+    },
+    {
+      "turn_id": 139,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Så jeg skal bare sove mere?"
+    },
+    {
+      "turn_id": 140,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Det er en del af behandlingen, men jeg vil også tage nogle blodprøver, fordi du er træt og bliver svimmel."
+    },
+    {
+      "turn_id": 141,
+      "speaker": "Pårørende",
+      "tag": "[Pårørende]",
+      "text": "Hvad vil du tjekke?"
+    },
+    {
+      "turn_id": 142,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Blodprocent og jernlagre, infektionstal, stofskifte og blodsukker."
+    },
+    {
+      "turn_id": 143,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Hos unge kan for eksempel jernmangel give træthed, hovedpine og svimmelhed."
+    },
+    {
+      "turn_id": 144,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Skal jeg stikkes i armen?"
+    },
+    {
+      "turn_id": 145,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Ja, én blodprøve."
+    },
+    {
+      "turn_id": 146,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Det tager et øjeblik."
+    },
+    {
+      "turn_id": 147,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Fedt."
+    },
+    {
+      "turn_id": 148,
+      "speaker": "Pårørende",
+      "tag": "[Pårørende]",
+      "text": "Du overlever."
+    },
+    {
+      "turn_id": 149,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Tak for støtten."
+    },
+    {
+      "turn_id": 150,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Jeg vil også anbefale en synstest hos optiker, især fordi du oplever sløret syn på afstand."
+    },
+    {
+      "turn_id": 151,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Og så laver vi en konkret plan for de næste to uger: mindst otte timers søvn, morgenmad hver dag, vandflaske med i skole og markant mindre energidrik."
+    },
+    {
+      "turn_id": 152,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Nul energidrik?"
+    },
+    {
+      "turn_id": 153,
+      "speaker": "Pårørende",
+      "tag": "[Pårørende]",
+      "text": "Det ville være dejligt."
+    },
+    {
+      "turn_id": 154,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Vi behøver ikke gøre det til en kamp."
+    },
+    {
+      "turn_id": 155,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Start med at halvere og undgå det sent på dagen."
+    },
+    {
+      "turn_id": 156,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Derudover skal du holde små pauser fra skærmen og fortsat dyrke sport, men ikke presse dig, hvis du bliver svimmel."
+    },
+    {
+      "turn_id": 157,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Må jeg stadig spille kamp på lørdag?"
+    },
+    {
+      "turn_id": 158,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Hvis du føler dig som normalt, ikke har kraftig hovedpine og ikke bliver svimmel under opvarmning, kan du som udgangspunkt deltage."
+    },
+    {
+      "turn_id": 159,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Hvis symptomerne bliver tydeligt værre, skal du stoppe."
+    },
+    {
+      "turn_id": 160,
+      "speaker": "Pårørende",
+      "tag": "[Pårørende]",
+      "text": "Og hvis han får meget værre hovedpine?"
+    },
+    {
+      "turn_id": 161,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Reagér på pludselig ekstrem hovedpine, gentagne opkastninger, besvimelse, kramper, lammelser, talebesvær, høj feber med nakkestivhed eller hvis han virker svært påvirket."
+    },
+    {
+      "turn_id": 162,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Så skal han vurderes akut."
+    },
+    {
+      "turn_id": 163,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Ellers ser jeg jer igen om to til tre uger."
+    },
+    {
+      "turn_id": 164,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Vi gennemgår blodprøverne og ser, om ændringerne i søvn, væske og koffein har hjulpet."
+    },
+    {
+      "turn_id": 165,
+      "speaker": "Pårørende",
+      "tag": "[Pårørende]",
+      "text": "Det lyder godt."
+    },
+    {
+      "turn_id": 166,
+      "speaker": "Pårørende",
+      "tag": "[Pårørende]",
+      "text": "Jeg tror også, han har brug for at høre det fra en anden end mig."
+    },
+    {
+      "turn_id": 167,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Ja ja."
+    },
+    {
+      "turn_id": 168,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Emil, er der noget, du gerne vil spørge om, uden at din mor svarer først?"
+    },
+    {
+      "turn_id": 169,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Øh... nej, faktisk ikke."
+    },
+    {
+      "turn_id": 170,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Jeg vil bare gerne have, at hovedpinen stopper."
+    },
+    {
+      "turn_id": 171,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Det er målet."
+    },
+    {
+      "turn_id": 172,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Vi tager det systematisk og følger op."
+    },
+    {
+      "turn_id": 173,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Du får blodprøven taget i dag."
+    },
+    {
+      "turn_id": 174,
+      "speaker": "Pårørende",
+      "tag": "[Pårørende]",
+      "text": "Tak for hjælpen."
+    },
+    {
+      "turn_id": 175,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Selv tak."
+    },
+    {
+      "turn_id": 176,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "I kan gå ud til sygeplejersken, så hjælper hun med prøven."
+    },
+    {
+      "turn_id": 177,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Inden vi slutter, Emil, vil jeg gerne forstå lidt bedre, hvordan det påvirker din hverdag."
+    },
+    {
+      "turn_id": 178,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Når hovedpinen kommer i skolen, hvad gør du så?"
+    },
+    {
+      "turn_id": 179,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Jeg prøver mest bare at ignorere den."
+    },
+    {
+      "turn_id": 180,
+      "speaker": "Pårørende",
+      "tag": "[Pårørende]",
+      "text": "Han skriver nogle gange til mig, at han vil hentes."
+    },
+    {
+      "turn_id": 181,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Ikke så tit."
+    },
+    {
+      "turn_id": 182,
+      "speaker": "Pårørende",
+      "tag": "[Pårørende]",
+      "text": "Nej, men det er sket tre gange den sidste måned."
+    },
+    {
+      "turn_id": 183,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Det er nyttigt at vide. Går du hjem, når det sker?"
+    },
+    {
+      "turn_id": 184,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Nogle gange. Andre gange sætter jeg mig bare bagerst i klassen."
+    },
+    {
+      "turn_id": 185,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Hjælper det at komme væk fra lys og støj?"
+    },
+    {
+      "turn_id": 186,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Ja, faktisk."
+    },
+    {
+      "turn_id": 187,
+      "speaker": "Pårørende",
+      "tag": "[Pårørende]",
+      "text": "Han ligger ofte med gardinerne trukket for."
+    },
+    {
+      "turn_id": 188,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Mor..."
+    },
+    {
+      "turn_id": 189,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Det er okay, Louise. Det kan være relevant. Emil, har du lagt mærke til, om hovedpinen bliver værre på dage, hvor du ikke spiser morgenmad?"
+    },
+    {
+      "turn_id": 190,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Øh... ja, måske."
+    },
+    {
+      "turn_id": 191,
+      "speaker": "Pårørende",
+      "tag": "[Pårørende]",
+      "text": "Helt sikkert."
+    },
+    {
+      "turn_id": 192,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Det ved du jo ikke."
+    },
+    {
+      "turn_id": 193,
+      "speaker": "Pårørende",
+      "tag": "[Pårørende]",
+      "text": "Nej, men jeg kan se, at du får det værre de dage."
+    },
+    {
+      "turn_id": 194,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Det kunne passe med, at lavt væskeindtag og uregelmæssige måltider spiller en rolle."
+    },
+    {
+      "turn_id": 195,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Så det er ikke nødvendigvis noget farligt?"
+    },
+    {
+      "turn_id": 196,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Nej, ikke ud fra det vi ser nu. Men vi følger det systematisk, fordi symptomerne har stået på i flere uger."
+    },
+    {
+      "turn_id": 197,
+      "speaker": "Pårørende",
+      "tag": "[Pårørende]",
+      "text": "Hvad med migræne?"
+    },
+    {
+      "turn_id": 198,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Det er også en mulighed, især fordi han beskriver lysfølsomhed og kvalme."
+    },
+    {
+      "turn_id": 199,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Men jeg har ikke sådan voldsom dunkende hovedpine."
+    },
+    {
+      "turn_id": 200,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Nej, og derfor passer det ikke helt klassisk. Symptomer kan godt overlappe."
+    },
+    {
+      "turn_id": 201,
+      "speaker": "Pårørende",
+      "tag": "[Pårørende]",
+      "text": "Kan det være synet?"
+    },
+    {
+      "turn_id": 202,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Ja. Hvis han anstrenger øjnene for at se tavlen, kan det udløse hovedpine."
+    },
+    {
+      "turn_id": 203,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Jeg kan altså godt se tavlen."
+    },
+    {
+      "turn_id": 204,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Men du sagde, at teksten nogle gange bliver sløret."
+    },
+    {
+      "turn_id": 205,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Ja, når jeg er træt."
+    },
+    {
+      "turn_id": 206,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Netop. Derfor er synstesten stadig relevant."
+    },
+    {
+      "turn_id": 207,
+      "speaker": "Pårørende",
+      "tag": "[Pårørende]",
+      "text": "Jeg bestiller en tid hos optikeren."
+    },
+    {
+      "turn_id": 208,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Godt. Jeg vil også gerne have, at I laver en lille hovedpinedagbog."
+    },
+    {
+      "turn_id": 209,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "En hvad?"
+    },
+    {
+      "turn_id": 210,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Bare en simpel note på telefonen."
+    },
+    {
+      "turn_id": 211,
+      "speaker": "Pårørende",
+      "tag": "[Pårørende]",
+      "text": "Det kan jeg hjælpe med."
+    },
+    {
+      "turn_id": 212,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Jeg kan godt selv."
+    },
+    {
+      "turn_id": 213,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Skriv dato, tidspunkt, hvor længe hovedpinen varer, hvor stærk den er fra nul til ti, og hvad du havde spist og drukket."
+    },
+    {
+      "turn_id": 214,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Og om du havde sovet dårligt, trænet, haft meget skærmtid eller været stresset."
+    },
+    {
+      "turn_id": 215,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Så opsummerer jeg: blodprøver i dag, synstest, hovedpinedagbog og fokus på søvn, væske, mad og mindre energidrik."
+    },
+    {
+      "turn_id": 216,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Okay."
+    },
+    {
+      "turn_id": 217,
+      "speaker": "Pårørende",
+      "tag": "[Pårørende]",
+      "text": "Det lyder godt."
+    },
+    {
+      "turn_id": 218,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Og vi ses igen om to til tre uger."
+    },
+    {
+      "turn_id": 219,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Ja, fint."
+    }
+  ]
+}
