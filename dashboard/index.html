@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="People's Clinic monitoring dashboard for Smoke, Regression, and FNX automation.">
+  <meta name="description" content="People's Clinic monitoring dashboard for operational automation, diarization, transcription, and clinical-note quality.">
   <title>People's Clinic Monitoring</title>
   <script src="https://cdn.jsdelivr.net/npm/three@0.179.1/build/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/echarts@5.6.0/dist/echarts.min.js"></script>
@@ -152,7 +152,7 @@
   <canvas id="three-bg" aria-hidden="true"></canvas><div class="veil"></div>
   <main class="app">
     <header class="topbar">
-      <div class="brand"><div class="brand-mark">PC</div><div><h1>People's Clinic Monitoring</h1><p>Production test intelligence · Smoke · Regression · FNX</p></div></div>
+      <div class="brand"><div class="brand-mark">PC</div><div><h1>People's Clinic Monitoring</h1><p>Production health and clinical AI quality intelligence</p></div></div>
       <div class="toolbar">
         <select class="control" id="range"><option value="1">24 hours</option><option value="7" selected>7 days</option><option value="14">14 days</option><option value="30">30 days</option><option value="all">All runs</option></select>
         <button class="icon-btn" id="refresh" title="Refresh now">↻</button>
@@ -168,12 +168,16 @@
 
     <section class="grid status-grid" id="status-grid" aria-live="polite"></section>
 
+    <section class="panel section" id="diarization-benchmark" aria-labelledby="diarization-title">
+      <div class="empty">Loading the latest diarization and clinical-note evaluation…</div>
+    </section>
+
     <section class="grid chart-grid">
       <article class="panel section"><div class="section-head"><div><h3>Run outcomes</h3><p>Success and failure trend over the selected period</p></div></div><div id="outcome-chart" class="chart"></div></article>
       <article class="panel section"><div class="section-head"><div><h3>3D reliability view</h3><p>Monitor × run × duration, colored by conclusion</p></div></div><div id="three-chart" class="chart"></div></article>
     </section>
 
-    <section class="panel section"><div class="section-head"><div><h3>Evidence gallery</h3><p>Latest screenshots and recordings from each monitor</p></div><select class="control" id="evidence-monitor"><option value="all">All monitors</option><option value="smoke">Smoke</option><option value="regression">Regression</option><option value="fnx">FNX</option></select></div><div class="evidence-grid" id="evidence-grid"></div></section>
+    <section class="panel section"><div class="section-head"><div><h3>Evidence gallery</h3><p>Latest screenshots and recordings from each monitor</p></div><select class="control" id="evidence-monitor"><option value="all">All monitors</option><option value="smoke">Smoke</option><option value="regression">Regression</option><option value="fnx">FNX</option><option value="diarization">Diarization</option></select></div><div class="evidence-grid" id="evidence-grid"></div></section>
 
     <section class="panel section"><div class="section-head"><div><h3>Recent workflow history</h3><p>Filtered GitHub Actions execution history</p></div><span class="badge unknown" id="history-count">0 runs</span></div><div class="history-wrap"><table><thead><tr><th>Monitor</th><th>Run</th><th>Event</th><th>Conclusion</th><th>Started</th><th>Duration</th><th>Actor</th><th>Link</th></tr></thead><tbody id="history-body"></tbody></table></div></section>
 
@@ -182,6 +186,8 @@
 
   <div class="music-dock" id="music-dock"><div class="music-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></div><button class="icon-btn" id="music" title="Toggle ambient audio">♪</button><input id="volume" type="range" min="0" max="0.15" step="0.01" value="0.04" title="Ambient volume"></div>
   <dialog id="modal"><div class="modal-head"><h3 id="modal-title">Evidence</h3><button class="icon-btn" id="modal-close">×</button></div><div class="modal-body" id="modal-body"></div></dialog>
+  <dialog id="score-guide" aria-labelledby="score-guide-title"><div class="modal-head"><div><div class="eyebrow">Reference guide</div><h3 id="score-guide-title">How the score system works</h3></div><button class="icon-btn" id="score-guide-close" aria-label="Close score guide">×</button></div><div class="modal-body" id="score-guide-body"></div></dialog>
+  <dialog id="case-detail" aria-labelledby="case-detail-title"><div class="modal-head"><div><div class="eyebrow">Case drill-down</div><h3 id="case-detail-title">Case details</h3></div><button class="icon-btn" id="case-detail-close" aria-label="Close case details">×</button></div><div class="modal-body" id="case-detail-body"></div></dialog>
   <div class="toast" id="toast" role="status"></div>
 
   <script>
@@ -190,7 +196,7 @@
     const esc = (value='') => String(value).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
     const relative = value => { if (!value) return 'Never'; const s = Math.max(0, (Date.now() - new Date(value).getTime()) / 1000); if (s < 60) return `${Math.round(s)}s ago`; if (s < 3600) return `${Math.round(s/60)}m ago`; if (s < 86400) return `${Math.round(s/3600)}h ago`; return `${Math.round(s/86400)}d ago`; };
     const duration = value => value == null ? '—' : value < 60 ? `${Math.round(value)}s` : `${Math.floor(value/60)}m ${Math.round(value%60)}s`;
-    const isStale = m => { const run = m.latest_completed || m.latest; if (!run?.updated_at) return true; return Date.now() - new Date(run.updated_at).getTime() > m.threshold_minutes * 60000; };
+    const isStale = m => { if (m.kind === 'benchmark' || m.threshold_minutes == null) return false; const run = m.latest_completed || m.latest; if (!run?.updated_at) return true; return Date.now() - new Date(run.updated_at).getTime() > m.threshold_minutes * 60000; };
     const conclusion = m => { if (m.currently_running) return 'running'; if (!m.latest_completed) return 'unknown'; if (isStale(m)) return 'stale'; return m.latest_completed.conclusion || 'unknown'; };
     const label = c => ({success:'Healthy', failure:'Failed', stale:'Stale', running:'Running', cancelled:'Cancelled', timed_out:'Timed out', skipped:'Skipped', unknown:'Unknown'}[c] || c);
     const color = c => getComputedStyle(document.documentElement).getPropertyValue(c === 'success' ? '--success' : c === 'failure' ? '--danger' : c === 'stale' || c === 'cancelled' || c === 'timed_out' ? '--warning' : c === 'running' ? '--accent' : '--unknown').trim();
@@ -215,7 +221,7 @@
     }
 
     function render(){
-      const monitors = Object.values(state.data.monitors);
+      const monitors = Object.values(state.data.monitors).filter(m=>m.kind!=='benchmark');
       const states = monitors.map(conclusion);
       const overall = states.includes('failure') ? 'failure' : states.includes('stale') || states.includes('timed_out') ? 'stale' : states.includes('running') ? 'running' : states.every(s=>s==='success') ? 'success' : 'unknown';
       $('overall').textContent=label(overall); $('overall').className=`overall-value ${overall}`;
@@ -225,7 +231,7 @@
         return `<article class="panel monitor-card ${c}"><div class="monitor-head"><div><h3 class="monitor-title">${esc(m.label)}</h3><div class="monitor-sub">Every ${m.expected_interval_minutes} min · stale after ${m.threshold_minutes} min</div></div><span class="badge ${c}">${esc(label(c))}</span></div><div class="metrics"><div class="metric"><span>Last completed</span><strong>${esc(relative(run?.updated_at))}</strong></div><div class="metric"><span>Duration</span><strong>${esc(duration(run?.duration_seconds))}</strong></div><div class="metric"><span>Trigger</span><strong>${esc(run?.event || '—')}</strong></div><div class="metric"><span>Run number</span><strong>#${esc(run?.number || '—')}</strong></div></div><div class="error-box">${esc(error)}</div><div class="card-actions"><a href="${esc(run?.url || m.workflow_url)}" target="_blank" rel="noopener">Open latest run</a><a href="${esc(m.workflow_url)}" target="_blank" rel="noopener">Workflow</a><button data-evidence="${esc(m.key)}">Evidence</button></div></article>`;
       }).join('');
       document.querySelectorAll('[data-evidence]').forEach(b=>b.addEventListener('click',()=>{ $('evidence-monitor').value=b.dataset.evidence; state.evidenceMonitor=b.dataset.evidence; renderEvidence(); document.querySelector('#evidence-grid').scrollIntoView({behavior:'smooth'}); }));
-      renderHistory(); renderEvidence(); renderCharts();
+      renderHistory(); renderEvidence(); renderCharts(); if (window.renderDiarization) window.renderDiarization();
     }
 
     function renderHistory(){
