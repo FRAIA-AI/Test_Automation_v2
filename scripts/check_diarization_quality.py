@@ -9,6 +9,10 @@ from dataclasses import dataclass
 from pathlib import Path
 
 
+DIARIZATION_MINIMUM = 92.0
+CLINICAL_NOTE_MINIMUM = 90.0
+
+
 @dataclass(frozen=True)
 class QualityCheck:
     label: str
@@ -26,13 +30,41 @@ def evaluate(summary: dict[str, object]) -> list[QualityCheck]:
     if not isinstance(diarization, dict) or not isinstance(clinical, dict):
         raise ValueError("evaluation summary is missing required score groups")
     return [
-        QualityCheck("Diarization overall", float(diarization.get("average_overall_score", 0)), 95),
-        QualityCheck("Content retention", float(diarization.get("average_content_retention", 0)), 95),
-        QualityCheck("Overall attribution", float(diarization.get("average_overall_attribution", 0)), 90),
-        QualityCheck("Transcription integrity", float(diarization.get("average_transcription_integrity", 0)), 95),
-        QualityCheck("Clinical fact retention", float(clinical.get("average_fact_retention", 0)), 90),
-        QualityCheck("Clinical note fidelity", float(clinical.get("average_fidelity", 0)), 75),
-        QualityCheck("Clinical hallucination integrity", float(clinical.get("average_hallucination_integrity", 0)), 60),
+        QualityCheck(
+            "Diarization overall",
+            float(diarization.get("average_overall_score", 0)),
+            DIARIZATION_MINIMUM,
+        ),
+        QualityCheck(
+            "Content retention",
+            float(diarization.get("average_content_retention", 0)),
+            DIARIZATION_MINIMUM,
+        ),
+        QualityCheck(
+            "Overall attribution",
+            float(diarization.get("average_overall_attribution", 0)),
+            DIARIZATION_MINIMUM,
+        ),
+        QualityCheck(
+            "Transcription integrity",
+            float(diarization.get("average_transcription_integrity", 0)),
+            DIARIZATION_MINIMUM,
+        ),
+        QualityCheck(
+            "Clinical fact retention",
+            float(clinical.get("average_fact_retention", 0)),
+            CLINICAL_NOTE_MINIMUM,
+        ),
+        QualityCheck(
+            "Clinical note fidelity",
+            float(clinical.get("average_fidelity", 0)),
+            CLINICAL_NOTE_MINIMUM,
+        ),
+        QualityCheck(
+            "Clinical hallucination integrity",
+            float(clinical.get("average_hallucination_integrity", 0)),
+            CLINICAL_NOTE_MINIMUM,
+        ),
     ]
 
 
