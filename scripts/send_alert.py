@@ -16,6 +16,7 @@ from datetime import datetime, timedelta, timezone
 from email.message import EmailMessage
 from pathlib import Path
 from typing import Literal
+from zoneinfo import ZoneInfo
 
 
 Status = Literal["success", "failure"]
@@ -76,10 +77,11 @@ def is_in_alert_window(
     now: datetime,
     start_hour: int,
     end_hour: int,
+    timezone_name: str = "UTC",
 ) -> bool:
-    """Return whether now is inside the configured UTC notification window."""
+    """Return whether now is inside the configured local notification window."""
 
-    hour = now.astimezone(timezone.utc).hour
+    hour = now.astimezone(ZoneInfo(timezone_name)).hour
 
     if start_hour == end_hour:
         return True
@@ -98,6 +100,7 @@ def decide_alert(
     cooldown_minutes: int,
     start_hour_utc: int,
     end_hour_utc: int,
+    timezone_name: str = "UTC",
 ) -> AlertDecision:
     """
     Decide whether to send a failure, reminder, recovery, or no email.
@@ -109,6 +112,7 @@ def decide_alert(
         now,
         start_hour_utc,
         end_hour_utc,
+        timezone_name,
     )
 
     if status == "failure":
@@ -499,13 +503,26 @@ def collect_evidence_files(
     evidence_root: Path | None,
 ) -> list[Path]:
     """
-    Collect screenshots and the newest recorded video.
+    Collect evaluation reports, screenshots, and the newest recorded video.
 
     Stage screenshots are included in execution order.
     """
 
     if evidence_root is None or not evidence_root.exists():
         return []
+
+    evaluation_files = [
+        path
+        for path in (
+            evidence_root
+            / "evaluation"
+            / "evaluation-summary.json",
+            evidence_root
+            / "evaluation"
+            / "evaluation-report.txt",
+        )
+        if path.is_file()
+    ]
 
     stage_screenshots = sorted(
         (
@@ -531,6 +548,7 @@ def collect_evidence_files(
     )
 
     return [
+        *evaluation_files,
         *stage_screenshots,
         *failure_screenshots,
         *videos[:1],
@@ -682,6 +700,11 @@ def build_message(
         else "Unavailable"
     )
 
+    dashboard_url = os.getenv(
+        "MONITOR_DASHBOARD_URL",
+        "",
+    ).strip()
+
     max_attachment_mb = int(
         os.getenv(
             "MAX_EMAIL_ATTACHMENT_MB",
@@ -718,6 +741,11 @@ def build_message(
                 f"GitHub run: {run_url}",
             ]
         )
+
+        if dashboard_url:
+            main_error_text += (
+                f"\nDashboard: {dashboard_url}"
+            )
 
         main_error_bytes = main_error_text.encode(
             "utf-8"
@@ -804,6 +832,15 @@ def build_message(
             [
                 "",
                 "This was a manual email configuration test.",
+            ]
+        )
+
+    if dashboard_url:
+        lines.extend(
+            [
+                "",
+                "Live monitoring dashboard:",
+                dashboard_url,
             ]
         )
 
@@ -1007,17 +1044,22 @@ def main() -> int:
         args.state_file
     )
 
+    timezone_name = os.getenv(
+        "ALERT_TIMEZONE",
+        "UTC",
+    )
+
     start_hour = int(
         os.getenv(
-            "ALERT_START_HOUR_UTC",
-            "4",
+            "ALERT_START_HOUR_LOCAL",
+            os.getenv("ALERT_START_HOUR_UTC", "4"),
         )
     )
 
     end_hour = int(
         os.getenv(
-            "ALERT_END_HOUR_UTC",
-            "17",
+            "ALERT_END_HOUR_LOCAL",
+            os.getenv("ALERT_END_HOUR_UTC", "17"),
         )
     )
 
@@ -1028,6 +1070,7 @@ def main() -> int:
         cooldown_minutes=args.cooldown_minutes,
         start_hour_utc=start_hour,
         end_hour_utc=end_hour,
+        timezone_name=timezone_name,
     )
 
     next_state = AlertState(

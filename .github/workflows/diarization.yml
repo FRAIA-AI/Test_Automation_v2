@@ -166,9 +166,10 @@ jobs:
           MAIL_SENDER_ADDRESS: ${{ secrets.MAIL_SENDER_ADDRESS }}
           MAIL_RECIPIENT_ADDRESS: ${{ secrets.MAIL_RECIPIENT_ADDRESS }}
           MAX_EMAIL_ATTACHMENT_MB: "20"
-          # Benchmark failures are important regardless of the hour.
-          ALERT_START_HOUR_UTC: "0"
-          ALERT_END_HOUR_UTC: "0"
+          MONITOR_DASHBOARD_URL: https://fraia-ai.github.io/Test_Automation_v2/diarization.html
+          ALERT_TIMEZONE: Europe/Berlin
+          ALERT_START_HOUR_LOCAL: "6"
+          ALERT_END_HOUR_LOCAL: "18"
         run: |
           python scripts/send_alert.py \
             --monitor "Peoples Clinic Diarization Benchmark" \

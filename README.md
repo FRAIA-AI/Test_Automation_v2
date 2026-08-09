@@ -106,6 +106,8 @@ The workflow then evaluates all collected transcripts and generated notes with t
 
 The diarization benchmark requires at least 92% for each transcription/diarization aggregate and 90% for each generated clinical-note aggregate. Any lower score fails the quality gate and sends an email for that run; the benchmark does not suppress repeated failed-run emails.
 
+Diarization failure emails are delivered only from 06:00 (inclusive) until 18:00 (exclusive) Central European local time, with daylight-saving changes handled through `Europe/Berlin`. Each email links to the live diarization dashboard and GitHub run, and attaches the complete evaluation summary and text report when available, followed by screenshots and the latest video within the attachment limit.
+
 ---
 
 ## Test suite
