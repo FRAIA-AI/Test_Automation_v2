@@ -46,6 +46,7 @@ MONITORS = {
         "expected_interval_minutes": None,
         "kind": "benchmark",
         "expected_case_count": 25,
+        "schedule_label": "Weekly · Sunday 03:30 UTC",
     },
 }
 
@@ -323,6 +324,7 @@ def monitor_data(key: str, config: dict[str, Any]) -> dict[str, Any]:
         "expected_interval_minutes": config["expected_interval_minutes"],
         "kind": config.get("kind", "monitor"),
         "expected_case_count": config.get("expected_case_count"),
+        "schedule_label": config.get("schedule_label"),
         "latest": history[0] if history else None,
         "latest_completed": next((item for item in history if item["status"] == "completed"), None),
         "main_error": main_error,
@@ -353,6 +355,7 @@ def main() -> None:
                 "expected_interval_minutes": config["expected_interval_minutes"],
                 "kind": config.get("kind", "monitor"),
                 "expected_case_count": config.get("expected_case_count"),
+                "schedule_label": config.get("schedule_label"),
                 "latest": None,
                 "latest_completed": None,
                 "main_error": f"Dashboard data build failed with HTTP {error.code}.",

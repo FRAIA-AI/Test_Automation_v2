@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       case_limit:
-        description: "Number of fixture cases to run (start with 1 or 2)"
+        description: "Number of fixture cases to run (use 1 or 2 for a quick check)"
         required: true
         default: "2"
         type: string
@@ -13,6 +13,9 @@ on:
         required: true
         default: true
         type: boolean
+  schedule:
+    # GitHub cron uses UTC. Weekly full 25-case benchmark.
+    - cron: "30 3 * * 0"
 
 permissions:
   contents: read
@@ -25,7 +28,7 @@ jobs:
   diarization:
     name: Collect diarization evidence and evaluate clinical notes
     runs-on: ubuntu-22.04
-    timeout-minutes: 45
+    timeout-minutes: 55
 
     steps:
       - name: Check out repository
@@ -43,26 +46,95 @@ jobs:
           pip install -r requirements.txt
           playwright install --with-deps chromium
 
+      - name: Restore diarization alert state
+        uses: actions/cache/restore@v4
+        with:
+          path: results/alert-state-diarization.json
+          key: clinic-monitoring-alert-diarization-${{ github.run_id }}
+          restore-keys: |
+            clinic-monitoring-alert-diarization-
+
       - name: Collect diarization and generated-note evidence
+        id: collection
+        continue-on-error: true
         env:
           BASE_APP_URL: https://clinic.peoplesdoctor.ai
           ADMIN_USERNAME: ${{ secrets.ADMIN_USERNAME }}
           ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
           AUTH_COOKIE_NAME: ${{ secrets.AUTH_COOKIE_NAME }}
           DIARIZATION_CASES_DIR: test_data/diarization
-          DIARIZATION_CASE_LIMIT: ${{ inputs.case_limit }}
+          DIARIZATION_CASE_LIMIT: ${{ github.event_name == 'schedule' && '25' || inputs.case_limit }}
+        shell: bash
         run: |
+          mkdir -p results/diarization
+          set +e
+          set -o pipefail
           pytest tests/diarization/test_diarization_batch.py -v \
-            --junitxml=results/diarization-junit.xml
+            --junitxml=results/diarization-junit.xml \
+            2>&1 | tee results/diarization-output.txt
+          TEST_EXIT_CODE=${PIPESTATUS[0]}
+          echo "exit_code=$TEST_EXIT_CODE" >> "$GITHUB_OUTPUT"
+          exit "$TEST_EXIT_CODE"
 
       - name: Evaluate clinical-note fidelity
-        if: ${{ inputs.evaluate_clinical_notes }}
+        id: evaluation
+        if: >-
+          always() &&
+          steps.collection.outputs.exit_code == '0' &&
+          (github.event_name == 'schedule' || inputs.evaluate_clinical_notes)
+        continue-on-error: true
         env:
           DIARIZATION_CASES_DIR: test_data/diarization
-          DIARIZATION_CASE_LIMIT: ${{ inputs.case_limit }}
+          DIARIZATION_CASE_LIMIT: ${{ github.event_name == 'schedule' && '25' || inputs.case_limit }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_EVALUATION_MODEL: gpt-5.6-luna
-        run: python tests/diarization/evaluate_diarization_ai.py
+        shell: bash
+        run: |
+          set +e
+          python tests/diarization/evaluate_diarization_ai.py
+          EVALUATION_EXIT_CODE=$?
+          echo "exit_code=$EVALUATION_EXIT_CODE" >> "$GITHUB_OUTPUT"
+          exit "$EVALUATION_EXIT_CODE"
+
+      - name: Check diarization quality thresholds
+        id: quality
+        if: >-
+          always() &&
+          steps.collection.outputs.exit_code == '0' &&
+          steps.evaluation.outputs.exit_code == '0'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          python scripts/check_diarization_quality.py \
+            --summary results/diarization/evaluation/evaluation-summary.json \
+            --junit results/diarization-quality-junit.xml
+          QUALITY_EXIT_CODE=$?
+          echo "exit_code=$QUALITY_EXIT_CODE" >> "$GITHUB_OUTPUT"
+          exit "$QUALITY_EXIT_CODE"
+
+      - name: Determine diarization monitor status
+        id: monitor
+        if: always()
+        env:
+          REQUIRE_EVALUATION: ${{ github.event_name == 'schedule' || inputs.evaluate_clinical_notes }}
+        shell: bash
+        run: |
+          COLLECTION="${{ steps.collection.outputs.exit_code || '1' }}"
+          EVALUATION="${{ steps.evaluation.outputs.exit_code || '1' }}"
+          QUALITY="${{ steps.quality.outputs.exit_code || '1' }}"
+          if [ "$COLLECTION" = "0" ] && [ "$REQUIRE_EVALUATION" != "true" ]; then
+            echo "monitor_status=success" >> "$GITHUB_OUTPUT"
+          elif [ "$COLLECTION" = "0" ] && [ "$EVALUATION" = "0" ] && [ "$QUALITY" = "0" ]; then
+            echo "monitor_status=success" >> "$GITHUB_OUTPUT"
+          else
+            echo "monitor_status=failure" >> "$GITHUB_OUTPUT"
+          fi
+          if [ "$COLLECTION" != "0" ] || [ "$EVALUATION" != "0" ]; then
+            echo "junit_file=results/diarization-junit.xml" >> "$GITHUB_OUTPUT"
+          else
+            echo "junit_file=results/diarization-quality-junit.xml" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Upload diarization evidence
         if: always()
@@ -72,5 +144,40 @@ jobs:
           path: |
             results/diarization/
             results/diarization-junit.xml
+            results/diarization-quality-junit.xml
+            results/diarization-output.txt
           if-no-files-found: warn
-          retention-days: 14
+          retention-days: 30
+
+      - name: Process diarization email alerts
+        if: always()
+        env:
+          MAIL_SERVER_ADDRESS: ${{ secrets.MAIL_SERVER_ADDRESS }}
+          MAIL_SERVER_PORT: ${{ secrets.MAIL_SERVER_PORT }}
+          MAIL_USERNAME: ${{ secrets.MAIL_USERNAME }}
+          MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
+          MAIL_SENDER_ADDRESS: ${{ secrets.MAIL_SENDER_ADDRESS }}
+          MAIL_RECIPIENT_ADDRESS: ${{ secrets.MAIL_RECIPIENT_ADDRESS }}
+          MAX_EMAIL_ATTACHMENT_MB: "20"
+          # Benchmark failures are important regardless of the hour.
+          ALERT_START_HOUR_UTC: "0"
+          ALERT_END_HOUR_UTC: "0"
+        run: |
+          python scripts/send_alert.py \
+            --monitor "Peoples Clinic Diarization Benchmark" \
+            --status "${{ steps.monitor.outputs.monitor_status || 'failure' }}" \
+            --state-file results/alert-state-diarization.json \
+            --junit-file "${{ steps.monitor.outputs.junit_file || 'results/diarization-junit.xml' }}" \
+            --evidence-root results/diarization \
+            --cooldown-minutes 10080
+
+      - name: Save diarization alert state
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: results/alert-state-diarization.json
+          key: clinic-monitoring-alert-diarization-${{ github.run_id }}
+
+      - name: Mark diarization benchmark as failed
+        if: steps.monitor.outputs.monitor_status != 'success'
+        run: exit 1
