@@ -1,0 +1,153 @@
+[Læge] Hej, kom bare ind og sæt dig.
+[Læge] Jeg hedder Mikkel og er læge her i klinikken.
+[Læge] Hvad kan jeg hjælpe dig med i dag?
+[Patient] Hej.
+[Patient] Øh, altså, jeg har haft ondt i maven i lidt over en uge nu.
+[Patient] Det er ikke sådan konstant hele tiden, men det kommer i bølger, og de sidste to dage synes jeg faktisk, det er blevet værre.
+[Læge] Prøv at pege med én finger på det sted, hvor du mærker det mest.
+[Patient] Det er mest heroppe, sådan midt i maven og lidt mod højre.
+[Patient] Men nogle gange føles det også længere nede.
+[Patient] Det er lidt svært at forklare.
+[Læge] Det er helt fint.
+[Læge] Når smerten kommer, hvordan føles den så?
+[Læge] Er den stikkende, brændende, trykkende, eller mere som kramper?
+[Patient] Mest som kramper, tror jeg.
+[Patient] Altså, det spænder ligesom sammen.
+[Patient] Og så kan jeg få sådan en skarp smerte i nogle sekunder.
+[Patient] Øh, især efter jeg har spist.
+[Læge] Efter alle måltider eller særligt noget bestemt?
+[Læge] Fed mad, stærk mad, kaffe, alkohol?
+[Patient] Jeg har lagt mærke til, at det er værre efter aftensmad.
+[Patient] Jeg spiser ret almindeligt, men i fredags fik vi pizza, og der var det virkelig slemt bagefter.
+[Patient] Jeg drikker også meget kaffe, måske fire eller fem kopper om dagen.
+[Læge] Har du kvalme eller har du kastet op?
+[Patient] Jeg har kvalme, ja.
+[Patient] Ikke sådan så jeg kaster op, men om morgenen kan jeg vågne og føle mig lidt, øh, smådårlig.
+[Patient] Jeg har kun kastet op én gang, det var søndag aften.
+[Læge] Var der blod i opkastet, eller så det meget mørkt ud, næsten som kaffegrums?
+[Patient] Nej, slet ikke.
+[Patient] Det var bare mad og væske.
+[Læge] Hvordan er afføringen?
+[Læge] Har du diarré, forstoppelse, blod, sort afføring eller slim?
+[Patient] Det har skiftet lidt.
+[Patient] To dage havde jeg ret løs mave, og så havde jeg faktisk næsten ikke afføring dagen efter.
+[Patient] Men jeg har ikke set blod.
+[Patient] Den er heller ikke sort.
+[Læge] Har du haft feber?
+[Patient] Ikke hvad jeg ved af.
+[Patient] Min kæreste sagde, at jeg føltes varm i går, men jeg målte 37,6, så det er vel ikke rigtig feber.
+[Læge] Nej, det regnes ikke som egentlig feber.
+[Læge] Har du tabt dig uden at prøve på det?
+[Patient] Måske et kilo eller to, men jeg har også spist mindre, fordi jeg er bange for, at det gør ondt bagefter.
+[Læge] Hvordan er appetitten ellers?
+[Patient] Jeg er egentlig sulten, men når jeg begynder at spise, bliver jeg hurtigt mæt.
+[Patient] Og så tænker jeg, åh nej, nu kommer smerten igen.
+[Læge] Tager du nogen medicin fast?
+[Patient] Kun blodtryksmedicin.
+[Patient] Amlodipin fem milligram én gang dagligt.
+[Patient] Og så tager jeg ibuprofen nogle gange for ryggen.
+[Læge] Hvor ofte tager du ibuprofen?
+[Patient] Øh, måske tre-fire gange om ugen for tiden.
+[Patient] Jeg arbejder på lager, og min lænd er tit øm efter en lang vagt.
+[Læge] Hvor stor dosis?
+[Patient] Fire hundrede milligram, normalt to tabletter på en dag, hvis det er slemt.
+[Læge] Det er vigtigt, fordi ibuprofen kan irritere mavesækken og i nogle tilfælde give mavesår.
+[Læge] Har du tidligere haft mavesår?
+[Patient] Ikke hvad jeg ved af.
+[Læge] Ryger du?
+[Patient] Ja, desværre.
+[Patient] Omkring ti cigaretter om dagen.
+[Patient] Jeg prøvede at stoppe sidste år, men så begyndte jeg igen.
+[Læge] Og alkohol?
+[Patient] Ikke så meget i hverdagen.
+[Patient] Måske et par øl fredag og lørdag.
+[Patient] Nogle weekender mere, men ikke hver uge.
+[Læge] Er der nogen i familien med mavesår, inflammatorisk tarmsygdom, galdesten eller kræft i mave-tarm-systemet?
+[Patient] Min mor har haft galdesten.
+[Patient] Hun fik vist fjernet galdeblæren for mange år siden.
+[Læge] Ja.
+[Patient] Min far har irritabel tyktarm, tror jeg.
+[Læge] Når du siger smerten lidt mod højre, stråler den så om i ryggen eller op mod højre skulder?
+[Patient] Hmm.
+[Patient] Faktisk kan jeg mærke noget i ryggen nogle gange, men jeg tænkte, det bare var min normale ryg.
+[Læge] Nå.
+[Patient] Ikke i skulderen.
+[Læge] Kommer det anfaldsvis efter fed mad og varer måske en halv time eller længere?
+[Patient] Ja, det kan godt vare fyrre minutter eller en time.
+[Læge] Forstået.
+[Patient] Så falder det langsomt igen.
+[Læge] Har du bemærket gulfarvning af øjne eller hud, meget mørk urin eller helt lys afføring?
+[Læge] Jeg vil lige undersøge din mave.
+[Læge] Læg dig på briksen.
+[Læge] Sig til, hvis noget gør ondt.
+[Patient] Ja, okay.
+[Læge] Her under højre ribbenskant?
+[Læge] Tag en dyb indånding.
+[Patient] Av, ja, dér kan jeg godt mærke det.
+[Læge] Okay, slap af igen.
+[Læge] Det er ikke voldsomt, men du er øm i øvre højre del af maven.
+[Patient] Øh, okay.
+[Læge] Jeg kan ikke mærke nogen udfyldning, og maven virker blød.
+[Patient] Mhm.
+[Læge] Det er positivt.
+[Patient] Er det galdeblæren så?
+[Patient] Min mor sagde med det samme, at det sikkert var galdesten.
+[Læge] Det kan være en mulighed, men vi skal ikke konkludere for tidligt.
+[Patient] Okay.
+[Læge] Dine symptomer kan også passe med irritation i mavesækken eller et mavesår, især fordi du bruger ibuprofen og har halsbrand.
+[Patient] Ja.
+[Læge] Der er flere mulige forklaringer.
+[Patient] Okay.
+[Patient] Øh, skal jeg være bekymret?
+[Læge] Der er ikke noget i det, du fortæller eller i undersøgelsen lige nu, som får mig til at tænke, at du skal akut på hospitalet.
+[Patient] Øh, okay.
+[Læge] Men fordi smerterne er blevet værre, og du har ømhed under højre ribben, vil jeg gerne tage nogle blodprøver.
+[Patient] Hvilke blodprøver?
+[Læge] Blandt andet levertal, infektionstal, blodprocent, nyretal og lipase for bugspytkirtlen.
+[Patient] Mhm.
+[Læge] Jeg vil også gerne teste for Helicobacter pylori, som er en bakterie, der kan give mavesår.
+[Patient] Er det en blodprøve?
+[Læge] Helicobacter kan testes på forskellige måder.
+[Læge] Vi kan bruge en afføringsprøve eller en pusteprøve.
+[Patient] Okay.
+[Læge] Jeg vil vælge afføringsprøven herfra, hvis det passer dig.
+[Patient] Ja, fint.
+[Patient] Ikke så glamourøst, men altså, hvis det hjælper.
+[Læge] Det er sjældent den mest populære prøve, nej.
+[Patient] Ja.
+[Læge] Derudover vil jeg gerne bestille en ultralyd af øvre mave for at se på galdeblæren og leveren.
+[Patient] Hvor hurtigt kan det blive?
+[Læge] Først vil jeg bede dig stoppe med ibuprofen.
+[Patient] Øh, okay.
+[Læge] Hvis du har brug for smertestillende til ryggen, så brug paracetamol efter anbefalet dosis i stedet, medmindre du har fået andet at vide tidligere.
+[Patient] Okay.
+[Læge] Og jeg starter dig på omeprazol tyve milligram én gang dagligt om morgenen i en periode.
+[Patient] Mhm.
+[Læge] Men du skal holde pause med det før Helicobacter-testen, hvis laboratoriets vejledning kræver det.
+[Patient] Okay.
+[Læge] Du får instruktionen med.
+[Patient] Ja, okay.
+[Patient] Så jeg skal ikke bare tage den hele tiden uden at tænke over prøven.
+[Læge] Præcis.
+[Læge] Hvis du får stærke vedvarende smerter, høj feber, gentagne opkastninger, blod i opkast eller afføring,
+[Patient] Ja.
+[Læge] sort afføring, bliver gul i huden eller meget dårlig, så skal du kontakte akut hjælp.
+[Patient] Det giver mening.
+[Læge] Er der noget, du er særligt bekymret for, som vi ikke har talt om?
+[Patient] Jeg var mest bange for, om det kunne være kræft, fordi min mave har været så mærkelig.
+[Læge] Jeg forstår godt tanken.
+[Læge] Ud fra din alder, dine symptomer og undersøgelsen er der flere langt mere almindelige forklaringer, som vi undersøger først.
+[Patient] Øh, okay.
+[Læge] Men vi følger selvfølgelig op, især hvis symptomerne ikke går væk eller hvis du fortsætter med at tabe dig.
+[Patient] Det er rart at høre.
+[Læge] Godt.
+[Læge] Så planen er blodprøver i dag, afføringsprøve for Helicobacter, henvisning til ultralyd, pause med ibuprofen og syrehæmmende behandling efter instruktion.
+[Patient] Mhm.
+[Læge] Vi booker en opfølgning om cirka to uger, eller tidligere hvis prøverne kræver det.
+[Patient] Super.
+[Patient] Tak.
+[Patient] Øh, jeg tror faktisk, det var det.
+[Læge] Fint.
+[Læge] Du får det hele skrevet med ud, så du ikke behøver huske det ord for ord.
+[Patient] Perfekt.
+[Patient] Tak for hjælpen.

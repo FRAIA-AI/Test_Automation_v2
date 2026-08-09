@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       case_limit:
-        description: "Number of fixture cases to run (use 1 or 2 for a quick check)"
+        description: "Number of v2 fixture cases to run (1 quick check, 3 full suite)"
         required: true
-        default: "2"
+        default: "3"
         type: string
       evaluate_clinical_notes:
         description: "Run the AI clinical-note evaluation after collection"
@@ -14,7 +14,7 @@ on:
         default: true
         type: boolean
   schedule:
-    # GitHub cron uses UTC. Weekly full 25-case benchmark.
+    # GitHub cron uses UTC. Weekly full three-case v2 benchmark.
     - cron: "30 3 * * 0"
 
 permissions:
@@ -46,6 +46,13 @@ jobs:
           pip install -r requirements.txt
           playwright install --with-deps chromium
 
+      - name: Ensure FFmpeg is available for large audio fixtures
+        run: |
+          if ! command -v ffmpeg >/dev/null 2>&1; then
+            sudo apt-get update
+            sudo apt-get install -y ffmpeg
+          fi
+
       - name: Restore diarization alert state
         uses: actions/cache/restore@v4
         with:
@@ -62,8 +69,8 @@ jobs:
           ADMIN_USERNAME: ${{ secrets.ADMIN_USERNAME }}
           ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
           AUTH_COOKIE_NAME: ${{ secrets.AUTH_COOKIE_NAME }}
-          DIARIZATION_CASES_DIR: test_data/diarization
-          DIARIZATION_CASE_LIMIT: ${{ github.event_name == 'schedule' && '25' || inputs.case_limit }}
+          DIARIZATION_CASES_DIR: test_data/diarization_v2
+          DIARIZATION_CASE_LIMIT: ${{ github.event_name == 'schedule' && '3' || inputs.case_limit }}
         shell: bash
         run: |
           mkdir -p results/diarization
@@ -84,8 +91,8 @@ jobs:
           (github.event_name == 'schedule' || inputs.evaluate_clinical_notes)
         continue-on-error: true
         env:
-          DIARIZATION_CASES_DIR: test_data/diarization
-          DIARIZATION_CASE_LIMIT: ${{ github.event_name == 'schedule' && '25' || inputs.case_limit }}
+          DIARIZATION_CASES_DIR: test_data/diarization_v2
+          DIARIZATION_CASE_LIMIT: ${{ github.event_name == 'schedule' && '3' || inputs.case_limit }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_EVALUATION_MODEL: gpt-5.6-luna
         shell: bash

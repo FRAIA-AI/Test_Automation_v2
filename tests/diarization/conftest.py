@@ -127,7 +127,7 @@ def pytest_terminal_summary(
 
         try:
             return int(
-                case_id.split("_")[-1]
+                case_id.split("_")[1]
             )
         except (ValueError, IndexError):
             return 9999

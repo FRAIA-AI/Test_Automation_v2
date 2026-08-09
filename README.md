@@ -72,7 +72,7 @@ GitHub scheduled workflows use UTC and may start several minutes late during per
 
 ## Diarization & clinical-note benchmark
 
-The repository includes an end-to-end benchmark for consultation audio quality. It runs **25 approximately one-minute audio fixtures** in separate synthetic consultation sessions. Cases include two, three, and four original speakers.
+The active v2 benchmark runs **three Danish consultation audio fixtures** in separate synthetic consultation sessions: one doctor/patient case, one case with a patient relative, and one case with a nurse. The original 25-case corpus remains available in `test_data/diarization` for regression comparison.
 
 People's Clinic intentionally has only two output speaker buckets:
 
@@ -81,7 +81,7 @@ People's Clinic intentionally has only two output speaker buckets:
 | Doctor | **Læge / Doctor** |
 | Patient, parent, child, relative, or other non-doctor | **Patient** |
 
-This means that three- and four-person cases test whether all non-doctor speech remains on the patient side; they do not require identity-level separation between individual family members.
+The product still exposes only two buckets. The evaluator therefore checks doctor speech against **Læge / Doctor** and routes every other source role to **Patient**; it does not require identity-level separation between additional speakers.
 
 Each audio fixture has a matching JSON oracle. The benchmark collects the platform's diarized transcription and generated clinical note, then uses structured AI evaluation against that oracle. Deterministic code calculates the final scores and quality gates.
 
@@ -90,19 +90,19 @@ Each audio fixture has a matching JSON oracle. The benchmark collects the platfo
 | Diarized transcription | Content retention, doctor attribution, patient-side attribution, overall attribution, transcription integrity, and turn counts |
 | Generated clinical note | Clinical fact retention, note fidelity, clinical hallucination integrity, missing facts, and unsupported facts |
 
-Run a fast two-case pipeline check before the full suite:
+Run a fast one-case v2 pipeline check:
 
 ```bash
-DIARIZATION_CASE_LIMIT=2 pytest tests/diarization/test_diarization_batch.py -v
+DIARIZATION_CASES_DIR=test_data/diarization_v2 DIARIZATION_CASE_LIMIT=1 pytest tests/diarization/test_diarization_batch.py -v
 ```
 
-Run all 25 cases:
+Run all three v2 cases:
 
 ```bash
-pytest tests/diarization/test_diarization_batch.py -v
+DIARIZATION_CASES_DIR=test_data/diarization_v2 DIARIZATION_CASE_LIMIT=3 pytest tests/diarization/test_diarization_batch.py -v
 ```
 
-The full benchmark may take more than 30 minutes because it waits for real transcription processing and clinical-note generation. See the [live dashboard guide](https://fraia-ai.github.io/Test_Automation_v2/guide.html) for the score definitions, formula, thresholds, reports, and troubleshooting guidance.
+The workflow then evaluates all collected transcripts and generated notes with the same structured AI scoring, deterministic formulas, quality gates, evidence upload, dashboard ingestion, and alerting used by the earlier suite. See the [live dashboard guide](https://fraia-ai.github.io/Test_Automation_v2/guide.html) for score definitions, formulas, thresholds, reports, and troubleshooting guidance.
 
 ---
 

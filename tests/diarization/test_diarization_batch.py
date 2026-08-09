@@ -85,7 +85,10 @@ def discover_case_ids(cases_dir: Path) -> list[str]:
             for path in cases_dir.glob("case_*")
             if path.is_dir()
         ),
-        key=lambda case_id: int(case_id.removeprefix("case_")),
+        key=lambda case_id: (
+            int(case_id.split("_")[1]),
+            case_id,
+        ),
     )
 
     case_limit = os.environ.get("DIARIZATION_CASE_LIMIT")
@@ -145,21 +148,38 @@ def save_generated_note(
 def load_case(case_id: str) -> dict:
     case_dir = CASES_DIR / case_id
 
-    audio_file = (
-        case_dir
-        / "consultation.webm"
-    )
-
-    oracle_file = (
-        case_dir
-        / "oracle.json"
-    )
-
     if not case_dir.exists():
         pytest.fail(
             f"Case directory does not exist: "
             f"{case_dir}"
         )
+
+    audio_file = next(
+        (
+            case_dir / name
+            for name in (
+                "consultation.webm",
+                "audio.mp3",
+                "audio.wav",
+                "audio.m4a",
+                "audio.ogg",
+            )
+            if (case_dir / name).exists()
+        ),
+        case_dir / "consultation.webm",
+    )
+
+    oracle_file = next(
+        (
+            case_dir / name
+            for name in (
+                "oracle.json",
+                "ground_truth.json",
+            )
+            if (case_dir / name).exists()
+        ),
+        case_dir / "oracle.json",
+    )
 
     if not audio_file.exists():
         pytest.fail(
@@ -178,6 +198,33 @@ def load_case(case_id: str) -> dict:
         encoding="utf-8",
     ) as file:
         oracle = json.load(file)
+
+    # Support the v2 ground-truth schema while keeping the original
+    # 25-case oracle format fully compatible.
+    if "dialogue" not in oracle:
+        oracle["dialogue"] = (
+            oracle.get("turns")
+            or oracle.get("transcript")
+            or []
+        )
+
+    if "speaker_count" not in oracle:
+        oracle["speaker_count"] = oracle.get(
+            "expected_speaker_count"
+        )
+
+    if "speakers" not in oracle:
+        speaker_names = (
+            oracle.get("speaker_word_counts", {}).keys()
+            or {
+                turn.get("speaker", "unknown")
+                for turn in oracle["dialogue"]
+            }
+        )
+        oracle["speakers"] = {
+            str(name): {}
+            for name in speaker_names
+        }
 
     return {
         "case_id": case_id,

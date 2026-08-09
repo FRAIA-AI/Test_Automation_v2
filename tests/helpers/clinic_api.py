@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import base64
+import subprocess
 import time
 from pathlib import Path
 
@@ -20,6 +21,90 @@ class AudioUploadFailed(MonitorFailure):
             phase="audio_upload",
             code="AUDIO_UPLOAD_FAILED",
         )
+
+
+def _audio_mime_type(audio_path: Path) -> str:
+    """Return the API MIME type for supported consultation audio."""
+
+    mime_types = {
+        ".webm": "audio/webm;codecs=opus",
+        ".mp3": "audio/mpeg",
+        ".wav": "audio/wav",
+        ".m4a": "audio/mp4",
+        ".ogg": "audio/ogg",
+    }
+
+    try:
+        return mime_types[audio_path.suffix.lower()]
+    except KeyError as exc:
+        raise AudioUploadFailed(
+            "Unsupported consultation audio format: "
+            f"{audio_path.suffix or '[no extension]'}"
+        ) from exc
+
+
+def _prepare_audio_payload(
+    audio_path: Path,
+) -> tuple[bytes, str]:
+    """Keep JSON uploads below the gateway limit without changing fixtures."""
+
+    audio_bytes = audio_path.read_bytes()
+    encoded_size = 4 * ((len(audio_bytes) + 2) // 3)
+
+    if encoded_size <= 8_000_000:
+        return audio_bytes, _audio_mime_type(audio_path)
+
+    try:
+        conversion = subprocess.run(
+            [
+                "ffmpeg",
+                "-hide_banner",
+                "-loglevel",
+                "error",
+                "-i",
+                str(audio_path),
+                "-vn",
+                "-ac",
+                "1",
+                "-ar",
+                "48000",
+                "-c:a",
+                "libopus",
+                "-b:a",
+                "48k",
+                "-f",
+                "webm",
+                "pipe:1",
+            ],
+            check=False,
+            capture_output=True,
+        )
+    except FileNotFoundError as exc:
+        raise AudioUploadFailed(
+            "Large audio requires FFmpeg for upload compression, "
+            "but ffmpeg was not found on PATH."
+        ) from exc
+
+    if conversion.returncode != 0 or not conversion.stdout:
+        error = conversion.stderr.decode(
+            "utf-8",
+            errors="replace",
+        ).strip()
+        raise AudioUploadFailed(
+            "FFmpeg could not prepare the consultation audio: "
+            f"{error[:1000]}"
+        )
+
+    compressed_size = 4 * (
+        (len(conversion.stdout) + 2) // 3
+    )
+    if compressed_size > 8_000_000:
+        raise AudioUploadFailed(
+            "Compressed audio still exceeds the safe JSON upload size: "
+            f"{compressed_size} base64 bytes."
+        )
+
+    return conversion.stdout, "audio/webm;codecs=opus"
 
 
 def _select_auth_token(cookies: list[dict], exact_name: str) -> str:
@@ -56,7 +141,8 @@ def upload_consultation_audio(
     cookies = context.cookies()
     token = _select_auth_token(cookies, auth_cookie_name)
     cookie_header = "; ".join(f"{cookie['name']}={cookie['value']}" for cookie in cookies)
-    encoded_audio = base64.b64encode(audio_path.read_bytes()).decode("ascii")
+    audio_bytes, mime_type = _prepare_audio_payload(audio_path)
+    encoded_audio = base64.b64encode(audio_bytes).decode("ascii")
     response = context.request.post(
         f"{base_url}/api/live/transcription",
         headers={
@@ -68,7 +154,7 @@ def upload_consultation_audio(
         data={
             "consultation_id": consultation_id,
             "transcription": encoded_audio,
-            "mimeType": "audio/webm;codecs=opus",
+            "mimeType": mime_type,
         },
         timeout=60_000,
     )

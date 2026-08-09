@@ -1,0 +1,219 @@
+[Læge] Hej, velkommen.
+[Læge] I må begge to gerne sætte jer.
+[Læge] Jeg hedder Anne og er læge.
+[Læge] Hvem af jer er Emil?
+[Patient] Det er mig.
+[Pårørende] Ja, det er Emil.
+[Pårørende] Jeg er hans mor, Louise.
+[Læge] Hej Emil, hej Louise.
+[Læge] Emil, jeg vil helst høre fra dig først, og så må din mor selvfølgelig supplere.
+[Læge] Hvad er grunden til, at I er kommet i dag?
+[Patient] Øh, jeg har haft hovedpine ret meget.
+[Patient] Og jeg bliver svimmel nogle gange.
+[Pårørende] Han har også været helt vildt træt.
+[Pårørende] Altså, han kommer hjem fra skole og sover på sofaen, og det plejer han aldrig.
+[Patient] Mor, jeg sover ikke altid.
+[Pårørende] Okay, men du ligger i hvert fald og falder i søvn.
+[Læge] Det er fint, vi tager én ting ad gangen.
+[Læge] Emil, hvor længe har hovedpinen stået på?
+[Patient] Måske tre uger.
+[Patient] Eller fire.
+[Patient] Jeg ved det ikke helt.
+[Pårørende] Det startede efter den der fodboldkamp, tror jeg.
+[Patient] Nej, det var senere.
+[Læge] Kan du huske, om det kom pludseligt én dag, eller om det gradvist blev mere og mere?
+[Patient] Det kom langsomt.
+[Patient] Først havde jeg bare lidt ondt efter skole, og nu kommer det næsten hver dag.
+[Læge] Hvor sidder hovedpinen?
+[Patient] Mest her foran, sådan over øjnene.
+[Patient] Nogle gange i begge sider.
+[Læge] Hvordan føles den?
+[Læge] Dunkende, trykkende eller stikkende?
+[Patient] Trykkende.
+[Patient] Som om nogen strammer noget rundt om hovedet.
+[Pårørende] Han siger tit, at det føles som en hjelm.
+[Patient] Ja, lidt.
+[Læge] Bliver du kvalm af den?
+[Patient] Nogle gange, men jeg kaster ikke op.
+[Læge] Bliver du mere følsom for lys eller lyd?
+[Patient] Lys, ja.
+[Patient] Især skærmen på min computer.
+[Pårørende] Og han sidder altså også foran den skærm til meget sent.
+[Patient] Det gør jeg ikke hver dag.
+[Læge] Hvor mange timer sover du cirka om natten?
+[Patient] På skoledage måske seks timer.
+[Pårørende] Fem til seks.
+[Pårørende] Han går i seng efter midnat.
+[Patient] Okay, nogle gange fem.
+[Læge] Og hvor gammel er du?
+[Patient] Femten.
+[Læge] Så du har sandsynligvis brug for mere søvn end det.
+[Læge] Men vi skal stadig undersøge de andre symptomer.
+[Læge] Fortæl om svimmelheden.
+[Patient] Det sker tit, når jeg rejser mig hurtigt.
+[Patient] Så bliver det sort sådan ude i siderne, og jeg skal lige holde fast i noget.
+[Læge] Er du nogensinde besvimet?
+[Patient] Nej.
+[Pårørende] Han var tæt på én gang i køkkenet.
+[Pårørende] Han blev helt hvid.
+[Patient] Jeg satte mig bare ned.
+[Læge] Har du hjertebanken samtidig?
+[Patient] Lidt måske.
+[Læge] Brystsmerter eller svært ved at trække vejret?
+[Patient] Nej.
+[Læge] Hvordan spiser du i løbet af en almindelig dag?
+[Patient] Øh, jeg springer tit morgenmad over.
+[Patient] Så spiser jeg noget i kantinen.
+[Patient] Og aftensmad hjemme.
+[Pårørende] Han drikker energidrik i stedet for morgenmad.
+[Patient] Ikke i stedet for.
+[Pårørende] Jo, ret ofte.
+[Læge] Hvor mange energidrikke får du på en dag?
+[Patient] En.
+[Patient] Nogle gange to.
+[Læge] Hvor meget vand drikker du?
+[Patient] Det ved jeg ikke.
+[Patient] Ikke så meget måske.
+[Læge] Har du ændret vægt?
+[Patient] Ikke med vilje.
+[Patient] Jeg tror, jeg har tabt to kilo.
+[Pårørende] Næsten tre siden vinter.
+[Patient] Men jeg er også blevet højere.
+[Læge] Har du haft feber, infektion eller været syg for nylig?
+[Patient] Jeg var forkølet for en måned siden, men kun et par dage.
+[Læge] Har du problemer med synet?
+[Læge] Ser du dobbelt, sløret, blink eller sorte pletter?
+[Patient] Nogle gange bliver teksten på tavlen lidt sløret.
+[Pårørende] Han har aldrig fået tjekket syn ordentligt.
+[Patient] Jeg kan godt se.
+[Læge] Det er stadig værd at undersøge.
+[Læge] Har du fået et slag mod hovedet til fodbold eller andet?
+[Patient] Jeg fik en bold i hovedet for måske to måneder siden.
+[Pårørende] Det var den kamp, jeg mente.
+[Patient] Ja, men hovedpinen startede ikke lige efter.
+[Læge] Mistede du bevidstheden, kastede op eller blev forvirret bagefter?
+[Patient] Nej, ikke sådan.
+[Læge] Hvordan går det i skolen?
+[Læge] Er der meget pres eller stress for tiden?
+[Patient] Ja, lidt.
+[Patient] Vi havde prøver, og jeg er bagud i matematik.
+[Patient] Og så træner jeg fodbold fire gange om ugen.
+[Pårørende] Han bliver meget stresset, når han ikke når det hele.
+[Patient] Det gør alle vel.
+[Læge] Måske, men kroppen kan reagere på belastning.
+[Læge] Har du været mere nedtrykt eller bekymret end normalt?
+[Patient] Ikke rigtig.
+[Patient] Bare træt.
+[Læge] Jeg vil gerne undersøge dig.
+[Læge] Først måler vi blodtryk og puls liggende og stående.
+[Læge] Det kan fortælle os noget om svimmelheden.
+[Læge] Lig stille et par minutter.
+[Læge] Så måler jeg nu.
+[Læge] Blodtrykket er 112 over 68, puls 72.
+[Læge] Rejs dig langsomt.
+[Læge] Hvordan føles det?
+[Patient] Lidt svimmel nu faktisk.
+[Pårørende] Kan du se, han bliver bleg?
+[Læge] Nu måler jeg igen.
+[Læge] Blodtrykket falder en smule, og pulsen stiger.
+[Læge] Ikke dramatisk, men det passer med, at væske og regelmæssige måltider kan være en del af forklaringen.
+[Læge] Jeg vil også lave en kort neurologisk undersøgelse.
+[Læge] Følg min finger med øjnene uden at dreje hovedet.
+[Læge] Pupillerne reagerer normalt.
+[Læge] Smil til mig.
+[Læge] Ræk tungen ud.
+[Læge] Løft begge arme og hold dem her.
+[Patient] Sådan?
+[Læge] Pres dine hænder mod mine.
+[Læge] Stå med fødderne samlet og luk øjnene.
+[Pårørende] Pas lige på.
+[Patient] Mor.
+[Læge] Jeg står her ved siden af.
+[Læge] Det ser stabilt ud.
+[Læge] Gå nu lige hen til døren og tilbage på tæer og derefter på hæle.
+[Læge] Det ser normalt ud.
+[Læge] Der er ikke noget i den neurologiske undersøgelse, som bekymrer mig akut.
+[Pårørende] Så det er ikke noget i hjernen?
+[Læge] Lige nu er der ingen alarmsignaler, der peger mod en akut neurologisk sygdom.
+[Læge] Hovedpinen lyder mest som spændingshovedpine, muligvis forværret af for lidt søvn, skærmtid, stress, koffein og uregelmæssige måltider.
+[Patient] Så jeg skal bare sove mere?
+[Læge] Det er en del af behandlingen, men jeg vil også tage nogle blodprøver, fordi du er træt og bliver svimmel.
+[Pårørende] Hvad vil du tjekke?
+[Læge] Blodprocent og jernlagre, infektionstal, stofskifte og blodsukker.
+[Læge] Hos unge kan for eksempel jernmangel give træthed, hovedpine og svimmelhed.
+[Patient] Skal jeg stikkes i armen?
+[Læge] Ja, én blodprøve.
+[Læge] Det tager et øjeblik.
+[Patient] Fedt.
+[Pårørende] Du overlever.
+[Patient] Tak for støtten.
+[Læge] Jeg vil også anbefale en synstest hos optiker, især fordi du oplever sløret syn på afstand.
+[Læge] Og så laver vi en konkret plan for de næste to uger: mindst otte timers søvn, morgenmad hver dag, vandflaske med i skole og markant mindre energidrik.
+[Patient] Nul energidrik?
+[Pårørende] Det ville være dejligt.
+[Læge] Vi behøver ikke gøre det til en kamp.
+[Læge] Start med at halvere og undgå det sent på dagen.
+[Læge] Derudover skal du holde små pauser fra skærmen og fortsat dyrke sport, men ikke presse dig, hvis du bliver svimmel.
+[Patient] Må jeg stadig spille kamp på lørdag?
+[Læge] Hvis du føler dig som normalt, ikke har kraftig hovedpine og ikke bliver svimmel under opvarmning, kan du som udgangspunkt deltage.
+[Læge] Hvis symptomerne bliver tydeligt værre, skal du stoppe.
+[Pårørende] Og hvis han får meget værre hovedpine?
+[Læge] Reagér på pludselig ekstrem hovedpine, gentagne opkastninger, besvimelse, kramper, lammelser, talebesvær, høj feber med nakkestivhed eller hvis han virker svært påvirket.
+[Læge] Så skal han vurderes akut.
+[Læge] Ellers ser jeg jer igen om to til tre uger.
+[Læge] Vi gennemgår blodprøverne og ser, om ændringerne i søvn, væske og koffein har hjulpet.
+[Pårørende] Det lyder godt.
+[Pårørende] Jeg tror også, han har brug for at høre det fra en anden end mig.
+[Patient] Ja ja.
+[Læge] Emil, er der noget, du gerne vil spørge om, uden at din mor svarer først?
+[Patient] Øh... nej, faktisk ikke.
+[Patient] Jeg vil bare gerne have, at hovedpinen stopper.
+[Læge] Det er målet.
+[Læge] Vi tager det systematisk og følger op.
+[Læge] Du får blodprøven taget i dag.
+[Pårørende] Tak for hjælpen.
+[Læge] Selv tak.
+[Læge] I kan gå ud til sygeplejersken, så hjælper hun med prøven.
+[Læge] Inden vi slutter, Emil, vil jeg gerne forstå lidt bedre, hvordan det påvirker din hverdag.
+[Læge] Når hovedpinen kommer i skolen, hvad gør du så?
+[Patient] Jeg prøver mest bare at ignorere den.
+[Pårørende] Han skriver nogle gange til mig, at han vil hentes.
+[Patient] Ikke så tit.
+[Pårørende] Nej, men det er sket tre gange den sidste måned.
+[Læge] Det er nyttigt at vide. Går du hjem, når det sker?
+[Patient] Nogle gange. Andre gange sætter jeg mig bare bagerst i klassen.
+[Læge] Hjælper det at komme væk fra lys og støj?
+[Patient] Ja, faktisk.
+[Pårørende] Han ligger ofte med gardinerne trukket for.
+[Patient] Mor...
+[Læge] Det er okay, Louise. Det kan være relevant. Emil, har du lagt mærke til, om hovedpinen bliver værre på dage, hvor du ikke spiser morgenmad?
+[Patient] Øh... ja, måske.
+[Pårørende] Helt sikkert.
+[Patient] Det ved du jo ikke.
+[Pårørende] Nej, men jeg kan se, at du får det værre de dage.
+[Læge] Det kunne passe med, at lavt væskeindtag og uregelmæssige måltider spiller en rolle.
+[Patient] Så det er ikke nødvendigvis noget farligt?
+[Læge] Nej, ikke ud fra det vi ser nu. Men vi følger det systematisk, fordi symptomerne har stået på i flere uger.
+[Pårørende] Hvad med migræne?
+[Læge] Det er også en mulighed, især fordi han beskriver lysfølsomhed og kvalme.
+[Patient] Men jeg har ikke sådan voldsom dunkende hovedpine.
+[Læge] Nej, og derfor passer det ikke helt klassisk. Symptomer kan godt overlappe.
+[Pårørende] Kan det være synet?
+[Læge] Ja. Hvis han anstrenger øjnene for at se tavlen, kan det udløse hovedpine.
+[Patient] Jeg kan altså godt se tavlen.
+[Læge] Men du sagde, at teksten nogle gange bliver sløret.
+[Patient] Ja, når jeg er træt.
+[Læge] Netop. Derfor er synstesten stadig relevant.
+[Pårørende] Jeg bestiller en tid hos optikeren.
+[Læge] Godt. Jeg vil også gerne have, at I laver en lille hovedpinedagbog.
+[Patient] En hvad?
+[Læge] Bare en simpel note på telefonen.
+[Pårørende] Det kan jeg hjælpe med.
+[Patient] Jeg kan godt selv.
+[Læge] Skriv dato, tidspunkt, hvor længe hovedpinen varer, hvor stærk den er fra nul til ti, og hvad du havde spist og drukket.
+[Læge] Og om du havde sovet dårligt, trænet, haft meget skærmtid eller været stresset.
+[Læge] Så opsummerer jeg: blodprøver i dag, synstest, hovedpinedagbog og fokus på søvn, væske, mad og mindre energidrik.
+[Patient] Okay.
+[Pårørende] Det lyder godt.
+[Læge] Og vi ses igen om to til tre uger.
+[Patient] Ja, fint.

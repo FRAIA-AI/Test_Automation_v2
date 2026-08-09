@@ -45,7 +45,7 @@ MONITORS = {
         "threshold_minutes": None,
         "expected_interval_minutes": None,
         "kind": "benchmark",
-        "expected_case_count": 25,
+        "expected_case_count": 3,
         "schedule_label": "Weekly · Sunday 03:30 UTC",
     },
 }

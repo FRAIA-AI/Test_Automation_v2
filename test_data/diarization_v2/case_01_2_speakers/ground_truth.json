@@ -1,0 +1,1546 @@
+{
+  "case_id": "case_06_2_speakers",
+  "language": "da",
+  "title": "2 speakers — Læge + Patient",
+  "scenario": "Abdominal pain with possible gastric or biliary cause",
+  "expected_speaker_count": 2,
+  "spoken_word_count": 1199,
+  "speaker_word_counts": {
+    "Læge": 644,
+    "Patient": 555
+  },
+  "transcript": [
+    {
+      "speaker": "laege",
+      "text": "Hej, kom bare ind og sæt dig."
+    },
+    {
+      "speaker": "laege",
+      "text": "Jeg hedder Mikkel og er læge her i klinikken."
+    },
+    {
+      "speaker": "laege",
+      "text": "Hvad kan jeg hjælpe dig med i dag?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Hej."
+    },
+    {
+      "speaker": "patient",
+      "text": "Øh, altså, jeg har haft ondt i maven i lidt over en uge nu."
+    },
+    {
+      "speaker": "patient",
+      "text": "Det er ikke sådan konstant hele tiden, men det kommer i bølger, og de sidste to dage synes jeg faktisk, det er blevet værre."
+    },
+    {
+      "speaker": "laege",
+      "text": "Prøv at pege med én finger på det sted, hvor du mærker det mest."
+    },
+    {
+      "speaker": "patient",
+      "text": "Det er mest heroppe, sådan midt i maven og lidt mod højre."
+    },
+    {
+      "speaker": "patient",
+      "text": "Men nogle gange føles det også længere nede."
+    },
+    {
+      "speaker": "patient",
+      "text": "Det er lidt svært at forklare."
+    },
+    {
+      "speaker": "laege",
+      "text": "Det er helt fint."
+    },
+    {
+      "speaker": "laege",
+      "text": "Når smerten kommer, hvordan føles den så?"
+    },
+    {
+      "speaker": "laege",
+      "text": "Er den stikkende, brændende, trykkende, eller mere som kramper?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Mest som kramper, tror jeg."
+    },
+    {
+      "speaker": "patient",
+      "text": "Altså, det spænder ligesom sammen."
+    },
+    {
+      "speaker": "patient",
+      "text": "Og så kan jeg få sådan en skarp smerte i nogle sekunder."
+    },
+    {
+      "speaker": "patient",
+      "text": "Øh, især efter jeg har spist."
+    },
+    {
+      "speaker": "laege",
+      "text": "Efter alle måltider eller særligt noget bestemt?"
+    },
+    {
+      "speaker": "laege",
+      "text": "Fed mad, stærk mad, kaffe, alkohol?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Jeg har lagt mærke til, at det er værre efter aftensmad."
+    },
+    {
+      "speaker": "patient",
+      "text": "Jeg spiser ret almindeligt, men i fredags fik vi pizza, og der var det virkelig slemt bagefter."
+    },
+    {
+      "speaker": "patient",
+      "text": "Jeg drikker også meget kaffe, måske fire eller fem kopper om dagen."
+    },
+    {
+      "speaker": "laege",
+      "text": "Har du kvalme eller har du kastet op?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Jeg har kvalme, ja."
+    },
+    {
+      "speaker": "patient",
+      "text": "Ikke sådan så jeg kaster op, men om morgenen kan jeg vågne og føle mig lidt, øh, smådårlig."
+    },
+    {
+      "speaker": "patient",
+      "text": "Jeg har kun kastet op én gang, det var søndag aften."
+    },
+    {
+      "speaker": "laege",
+      "text": "Var der blod i opkastet, eller så det meget mørkt ud, næsten som kaffegrums?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Nej, slet ikke."
+    },
+    {
+      "speaker": "patient",
+      "text": "Det var bare mad og væske."
+    },
+    {
+      "speaker": "laege",
+      "text": "Hvordan er afføringen?"
+    },
+    {
+      "speaker": "laege",
+      "text": "Har du diarré, forstoppelse, blod, sort afføring eller slim?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Det har skiftet lidt."
+    },
+    {
+      "speaker": "patient",
+      "text": "To dage havde jeg ret løs mave, og så havde jeg faktisk næsten ikke afføring dagen efter."
+    },
+    {
+      "speaker": "patient",
+      "text": "Men jeg har ikke set blod."
+    },
+    {
+      "speaker": "patient",
+      "text": "Den er heller ikke sort."
+    },
+    {
+      "speaker": "laege",
+      "text": "Har du haft feber?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Ikke hvad jeg ved af."
+    },
+    {
+      "speaker": "patient",
+      "text": "Min kæreste sagde, at jeg føltes varm i går, men jeg målte 37,6, så det er vel ikke rigtig feber."
+    },
+    {
+      "speaker": "laege",
+      "text": "Nej, det regnes ikke som egentlig feber."
+    },
+    {
+      "speaker": "laege",
+      "text": "Har du tabt dig uden at prøve på det?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Måske et kilo eller to, men jeg har også spist mindre, fordi jeg er bange for, at det gør ondt bagefter."
+    },
+    {
+      "speaker": "laege",
+      "text": "Hvordan er appetitten ellers?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Jeg er egentlig sulten, men når jeg begynder at spise, bliver jeg hurtigt mæt."
+    },
+    {
+      "speaker": "patient",
+      "text": "Og så tænker jeg, åh nej, nu kommer smerten igen."
+    },
+    {
+      "speaker": "laege",
+      "text": "Tager du nogen medicin fast?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Kun blodtryksmedicin."
+    },
+    {
+      "speaker": "patient",
+      "text": "Amlodipin fem milligram én gang dagligt."
+    },
+    {
+      "speaker": "patient",
+      "text": "Og så tager jeg ibuprofen nogle gange for ryggen."
+    },
+    {
+      "speaker": "laege",
+      "text": "Hvor ofte tager du ibuprofen?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Øh, måske tre-fire gange om ugen for tiden."
+    },
+    {
+      "speaker": "patient",
+      "text": "Jeg arbejder på lager, og min lænd er tit øm efter en lang vagt."
+    },
+    {
+      "speaker": "laege",
+      "text": "Hvor stor dosis?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Fire hundrede milligram, normalt to tabletter på en dag, hvis det er slemt."
+    },
+    {
+      "speaker": "laege",
+      "text": "Det er vigtigt, fordi ibuprofen kan irritere mavesækken og i nogle tilfælde give mavesår."
+    },
+    {
+      "speaker": "laege",
+      "text": "Har du tidligere haft mavesår?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Ikke hvad jeg ved af."
+    },
+    {
+      "speaker": "laege",
+      "text": "Ryger du?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Ja, desværre."
+    },
+    {
+      "speaker": "patient",
+      "text": "Omkring ti cigaretter om dagen."
+    },
+    {
+      "speaker": "patient",
+      "text": "Jeg prøvede at stoppe sidste år, men så begyndte jeg igen."
+    },
+    {
+      "speaker": "laege",
+      "text": "Og alkohol?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Ikke så meget i hverdagen."
+    },
+    {
+      "speaker": "patient",
+      "text": "Måske et par øl fredag og lørdag."
+    },
+    {
+      "speaker": "patient",
+      "text": "Nogle weekender mere, men ikke hver uge."
+    },
+    {
+      "speaker": "laege",
+      "text": "Er der nogen i familien med mavesår, inflammatorisk tarmsygdom, galdesten eller kræft i mave-tarm-systemet?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Min mor har haft galdesten."
+    },
+    {
+      "speaker": "patient",
+      "text": "Hun fik vist fjernet galdeblæren for mange år siden."
+    },
+    {
+      "speaker": "laege",
+      "text": "Ja."
+    },
+    {
+      "speaker": "patient",
+      "text": "Min far har irritabel tyktarm, tror jeg."
+    },
+    {
+      "speaker": "laege",
+      "text": "Når du siger smerten lidt mod højre, stråler den så om i ryggen eller op mod højre skulder?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Hmm."
+    },
+    {
+      "speaker": "patient",
+      "text": "Faktisk kan jeg mærke noget i ryggen nogle gange, men jeg tænkte, det bare var min normale ryg."
+    },
+    {
+      "speaker": "laege",
+      "text": "Nå."
+    },
+    {
+      "speaker": "patient",
+      "text": "Ikke i skulderen."
+    },
+    {
+      "speaker": "laege",
+      "text": "Kommer det anfaldsvis efter fed mad og varer måske en halv time eller længere?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Ja, det kan godt vare fyrre minutter eller en time."
+    },
+    {
+      "speaker": "laege",
+      "text": "Forstået."
+    },
+    {
+      "speaker": "patient",
+      "text": "Så falder det langsomt igen."
+    },
+    {
+      "speaker": "laege",
+      "text": "Har du bemærket gulfarvning af øjne eller hud, meget mørk urin eller helt lys afføring?"
+    },
+    {
+      "speaker": "laege",
+      "text": "Jeg vil lige undersøge din mave."
+    },
+    {
+      "speaker": "laege",
+      "text": "Læg dig på briksen."
+    },
+    {
+      "speaker": "laege",
+      "text": "Sig til, hvis noget gør ondt."
+    },
+    {
+      "speaker": "patient",
+      "text": "Ja, okay."
+    },
+    {
+      "speaker": "laege",
+      "text": "Her under højre ribbenskant?"
+    },
+    {
+      "speaker": "laege",
+      "text": "Tag en dyb indånding."
+    },
+    {
+      "speaker": "patient",
+      "text": "Av, ja, dér kan jeg godt mærke det."
+    },
+    {
+      "speaker": "laege",
+      "text": "Okay, slap af igen."
+    },
+    {
+      "speaker": "laege",
+      "text": "Det er ikke voldsomt, men du er øm i øvre højre del af maven."
+    },
+    {
+      "speaker": "patient",
+      "text": "Øh, okay."
+    },
+    {
+      "speaker": "laege",
+      "text": "Jeg kan ikke mærke nogen udfyldning, og maven virker blød."
+    },
+    {
+      "speaker": "patient",
+      "text": "Mhm."
+    },
+    {
+      "speaker": "laege",
+      "text": "Det er positivt."
+    },
+    {
+      "speaker": "patient",
+      "text": "Er det galdeblæren så?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Min mor sagde med det samme, at det sikkert var galdesten."
+    },
+    {
+      "speaker": "laege",
+      "text": "Det kan være en mulighed, men vi skal ikke konkludere for tidligt."
+    },
+    {
+      "speaker": "patient",
+      "text": "Okay."
+    },
+    {
+      "speaker": "laege",
+      "text": "Dine symptomer kan også passe med irritation i mavesækken eller et mavesår, især fordi du bruger ibuprofen og har halsbrand."
+    },
+    {
+      "speaker": "patient",
+      "text": "Ja."
+    },
+    {
+      "speaker": "laege",
+      "text": "Der er flere mulige forklaringer."
+    },
+    {
+      "speaker": "patient",
+      "text": "Okay."
+    },
+    {
+      "speaker": "patient",
+      "text": "Øh, skal jeg være bekymret?"
+    },
+    {
+      "speaker": "laege",
+      "text": "Der er ikke noget i det, du fortæller eller i undersøgelsen lige nu, som får mig til at tænke, at du skal akut på hospitalet."
+    },
+    {
+      "speaker": "patient",
+      "text": "Øh, okay."
+    },
+    {
+      "speaker": "laege",
+      "text": "Men fordi smerterne er blevet værre, og du har ømhed under højre ribben, vil jeg gerne tage nogle blodprøver."
+    },
+    {
+      "speaker": "patient",
+      "text": "Hvilke blodprøver?"
+    },
+    {
+      "speaker": "laege",
+      "text": "Blandt andet levertal, infektionstal, blodprocent, nyretal og lipase for bugspytkirtlen."
+    },
+    {
+      "speaker": "patient",
+      "text": "Mhm."
+    },
+    {
+      "speaker": "laege",
+      "text": "Jeg vil også gerne teste for Helicobacter pylori, som er en bakterie, der kan give mavesår."
+    },
+    {
+      "speaker": "patient",
+      "text": "Er det en blodprøve?"
+    },
+    {
+      "speaker": "laege",
+      "text": "Helicobacter kan testes på forskellige måder."
+    },
+    {
+      "speaker": "laege",
+      "text": "Vi kan bruge en afføringsprøve eller en pusteprøve."
+    },
+    {
+      "speaker": "patient",
+      "text": "Okay."
+    },
+    {
+      "speaker": "laege",
+      "text": "Jeg vil vælge afføringsprøven herfra, hvis det passer dig."
+    },
+    {
+      "speaker": "patient",
+      "text": "Ja, fint."
+    },
+    {
+      "speaker": "patient",
+      "text": "Ikke så glamourøst, men altså, hvis det hjælper."
+    },
+    {
+      "speaker": "laege",
+      "text": "Det er sjældent den mest populære prøve, nej."
+    },
+    {
+      "speaker": "patient",
+      "text": "Ja."
+    },
+    {
+      "speaker": "laege",
+      "text": "Derudover vil jeg gerne bestille en ultralyd af øvre mave for at se på galdeblæren og leveren."
+    },
+    {
+      "speaker": "patient",
+      "text": "Hvor hurtigt kan det blive?"
+    },
+    {
+      "speaker": "laege",
+      "text": "Først vil jeg bede dig stoppe med ibuprofen."
+    },
+    {
+      "speaker": "patient",
+      "text": "Øh, okay."
+    },
+    {
+      "speaker": "laege",
+      "text": "Hvis du har brug for smertestillende til ryggen, så brug paracetamol efter anbefalet dosis i stedet, medmindre du har fået andet at vide tidligere."
+    },
+    {
+      "speaker": "patient",
+      "text": "Okay."
+    },
+    {
+      "speaker": "laege",
+      "text": "Og jeg starter dig på omeprazol tyve milligram én gang dagligt om morgenen i en periode."
+    },
+    {
+      "speaker": "patient",
+      "text": "Mhm."
+    },
+    {
+      "speaker": "laege",
+      "text": "Men du skal holde pause med det før Helicobacter-testen, hvis laboratoriets vejledning kræver det."
+    },
+    {
+      "speaker": "patient",
+      "text": "Okay."
+    },
+    {
+      "speaker": "laege",
+      "text": "Du får instruktionen med."
+    },
+    {
+      "speaker": "patient",
+      "text": "Ja, okay."
+    },
+    {
+      "speaker": "patient",
+      "text": "Så jeg skal ikke bare tage den hele tiden uden at tænke over prøven."
+    },
+    {
+      "speaker": "laege",
+      "text": "Præcis."
+    },
+    {
+      "speaker": "laege",
+      "text": "Hvis du får stærke vedvarende smerter, høj feber, gentagne opkastninger, blod i opkast eller afføring,"
+    },
+    {
+      "speaker": "patient",
+      "text": "Ja."
+    },
+    {
+      "speaker": "laege",
+      "text": "sort afføring, bliver gul i huden eller meget dårlig, så skal du kontakte akut hjælp."
+    },
+    {
+      "speaker": "patient",
+      "text": "Det giver mening."
+    },
+    {
+      "speaker": "laege",
+      "text": "Er der noget, du er særligt bekymret for, som vi ikke har talt om?"
+    },
+    {
+      "speaker": "patient",
+      "text": "Jeg var mest bange for, om det kunne være kræft, fordi min mave har været så mærkelig."
+    },
+    {
+      "speaker": "laege",
+      "text": "Jeg forstår godt tanken."
+    },
+    {
+      "speaker": "laege",
+      "text": "Ud fra din alder, dine symptomer og undersøgelsen er der flere langt mere almindelige forklaringer, som vi undersøger først."
+    },
+    {
+      "speaker": "patient",
+      "text": "Øh, okay."
+    },
+    {
+      "speaker": "laege",
+      "text": "Men vi følger selvfølgelig op, især hvis symptomerne ikke går væk eller hvis du fortsætter med at tabe dig."
+    },
+    {
+      "speaker": "patient",
+      "text": "Det er rart at høre."
+    },
+    {
+      "speaker": "laege",
+      "text": "Godt."
+    },
+    {
+      "speaker": "laege",
+      "text": "Så planen er blodprøver i dag, afføringsprøve for Helicobacter, henvisning til ultralyd, pause med ibuprofen og syrehæmmende behandling efter instruktion."
+    },
+    {
+      "speaker": "patient",
+      "text": "Mhm."
+    },
+    {
+      "speaker": "laege",
+      "text": "Vi booker en opfølgning om cirka to uger, eller tidligere hvis prøverne kræver det."
+    },
+    {
+      "speaker": "patient",
+      "text": "Super."
+    },
+    {
+      "speaker": "patient",
+      "text": "Tak."
+    },
+    {
+      "speaker": "patient",
+      "text": "Øh, jeg tror faktisk, det var det."
+    },
+    {
+      "speaker": "laege",
+      "text": "Fint."
+    },
+    {
+      "speaker": "laege",
+      "text": "Du får det hele skrevet med ud, så du ikke behøver huske det ord for ord."
+    },
+    {
+      "speaker": "patient",
+      "text": "Perfekt."
+    },
+    {
+      "speaker": "patient",
+      "text": "Tak for hjælpen."
+    }
+  ],
+  "turns": [
+    {
+      "turn_id": 1,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Hej, kom bare ind og sæt dig."
+    },
+    {
+      "turn_id": 2,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Jeg hedder Mikkel og er læge her i klinikken."
+    },
+    {
+      "turn_id": 3,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Hvad kan jeg hjælpe dig med i dag?"
+    },
+    {
+      "turn_id": 4,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Hej."
+    },
+    {
+      "turn_id": 5,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Øh, altså, jeg har haft ondt i maven i lidt over en uge nu."
+    },
+    {
+      "turn_id": 6,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Det er ikke sådan konstant hele tiden, men det kommer i bølger, og de sidste to dage synes jeg faktisk, det er blevet værre."
+    },
+    {
+      "turn_id": 7,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Prøv at pege med én finger på det sted, hvor du mærker det mest."
+    },
+    {
+      "turn_id": 8,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Det er mest heroppe, sådan midt i maven og lidt mod højre."
+    },
+    {
+      "turn_id": 9,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Men nogle gange føles det også længere nede."
+    },
+    {
+      "turn_id": 10,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Det er lidt svært at forklare."
+    },
+    {
+      "turn_id": 11,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Det er helt fint."
+    },
+    {
+      "turn_id": 12,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Når smerten kommer, hvordan føles den så?"
+    },
+    {
+      "turn_id": 13,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Er den stikkende, brændende, trykkende, eller mere som kramper?"
+    },
+    {
+      "turn_id": 14,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Mest som kramper, tror jeg."
+    },
+    {
+      "turn_id": 15,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Altså, det spænder ligesom sammen."
+    },
+    {
+      "turn_id": 16,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Og så kan jeg få sådan en skarp smerte i nogle sekunder."
+    },
+    {
+      "turn_id": 17,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Øh, især efter jeg har spist."
+    },
+    {
+      "turn_id": 18,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Efter alle måltider eller særligt noget bestemt?"
+    },
+    {
+      "turn_id": 19,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Fed mad, stærk mad, kaffe, alkohol?"
+    },
+    {
+      "turn_id": 20,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Jeg har lagt mærke til, at det er værre efter aftensmad."
+    },
+    {
+      "turn_id": 21,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Jeg spiser ret almindeligt, men i fredags fik vi pizza, og der var det virkelig slemt bagefter."
+    },
+    {
+      "turn_id": 22,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Jeg drikker også meget kaffe, måske fire eller fem kopper om dagen."
+    },
+    {
+      "turn_id": 23,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Har du kvalme eller har du kastet op?"
+    },
+    {
+      "turn_id": 24,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Jeg har kvalme, ja."
+    },
+    {
+      "turn_id": 25,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Ikke sådan så jeg kaster op, men om morgenen kan jeg vågne og føle mig lidt, øh, smådårlig."
+    },
+    {
+      "turn_id": 26,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Jeg har kun kastet op én gang, det var søndag aften."
+    },
+    {
+      "turn_id": 27,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Var der blod i opkastet, eller så det meget mørkt ud, næsten som kaffegrums?"
+    },
+    {
+      "turn_id": 28,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Nej, slet ikke."
+    },
+    {
+      "turn_id": 29,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Det var bare mad og væske."
+    },
+    {
+      "turn_id": 30,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Hvordan er afføringen?"
+    },
+    {
+      "turn_id": 31,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Har du diarré, forstoppelse, blod, sort afføring eller slim?"
+    },
+    {
+      "turn_id": 32,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Det har skiftet lidt."
+    },
+    {
+      "turn_id": 33,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "To dage havde jeg ret løs mave, og så havde jeg faktisk næsten ikke afføring dagen efter."
+    },
+    {
+      "turn_id": 34,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Men jeg har ikke set blod."
+    },
+    {
+      "turn_id": 35,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Den er heller ikke sort."
+    },
+    {
+      "turn_id": 36,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Har du haft feber?"
+    },
+    {
+      "turn_id": 37,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Ikke hvad jeg ved af."
+    },
+    {
+      "turn_id": 38,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Min kæreste sagde, at jeg føltes varm i går, men jeg målte 37,6, så det er vel ikke rigtig feber."
+    },
+    {
+      "turn_id": 39,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Nej, det regnes ikke som egentlig feber."
+    },
+    {
+      "turn_id": 40,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Har du tabt dig uden at prøve på det?"
+    },
+    {
+      "turn_id": 41,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Måske et kilo eller to, men jeg har også spist mindre, fordi jeg er bange for, at det gør ondt bagefter."
+    },
+    {
+      "turn_id": 42,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Hvordan er appetitten ellers?"
+    },
+    {
+      "turn_id": 43,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Jeg er egentlig sulten, men når jeg begynder at spise, bliver jeg hurtigt mæt."
+    },
+    {
+      "turn_id": 44,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Og så tænker jeg, åh nej, nu kommer smerten igen."
+    },
+    {
+      "turn_id": 45,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Tager du nogen medicin fast?"
+    },
+    {
+      "turn_id": 46,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Kun blodtryksmedicin."
+    },
+    {
+      "turn_id": 47,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Amlodipin fem milligram én gang dagligt."
+    },
+    {
+      "turn_id": 48,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Og så tager jeg ibuprofen nogle gange for ryggen."
+    },
+    {
+      "turn_id": 49,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Hvor ofte tager du ibuprofen?"
+    },
+    {
+      "turn_id": 50,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Øh, måske tre-fire gange om ugen for tiden."
+    },
+    {
+      "turn_id": 51,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Jeg arbejder på lager, og min lænd er tit øm efter en lang vagt."
+    },
+    {
+      "turn_id": 52,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Hvor stor dosis?"
+    },
+    {
+      "turn_id": 53,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Fire hundrede milligram, normalt to tabletter på en dag, hvis det er slemt."
+    },
+    {
+      "turn_id": 54,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Det er vigtigt, fordi ibuprofen kan irritere mavesækken og i nogle tilfælde give mavesår."
+    },
+    {
+      "turn_id": 55,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Har du tidligere haft mavesår?"
+    },
+    {
+      "turn_id": 56,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Ikke hvad jeg ved af."
+    },
+    {
+      "turn_id": 57,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Ryger du?"
+    },
+    {
+      "turn_id": 58,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Ja, desværre."
+    },
+    {
+      "turn_id": 59,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Omkring ti cigaretter om dagen."
+    },
+    {
+      "turn_id": 60,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Jeg prøvede at stoppe sidste år, men så begyndte jeg igen."
+    },
+    {
+      "turn_id": 61,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Og alkohol?"
+    },
+    {
+      "turn_id": 62,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Ikke så meget i hverdagen."
+    },
+    {
+      "turn_id": 63,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Måske et par øl fredag og lørdag."
+    },
+    {
+      "turn_id": 64,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Nogle weekender mere, men ikke hver uge."
+    },
+    {
+      "turn_id": 65,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Er der nogen i familien med mavesår, inflammatorisk tarmsygdom, galdesten eller kræft i mave-tarm-systemet?"
+    },
+    {
+      "turn_id": 66,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Min mor har haft galdesten."
+    },
+    {
+      "turn_id": 67,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Hun fik vist fjernet galdeblæren for mange år siden."
+    },
+    {
+      "turn_id": 68,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Ja."
+    },
+    {
+      "turn_id": 69,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Min far har irritabel tyktarm, tror jeg."
+    },
+    {
+      "turn_id": 70,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Når du siger smerten lidt mod højre, stråler den så om i ryggen eller op mod højre skulder?"
+    },
+    {
+      "turn_id": 71,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Hmm."
+    },
+    {
+      "turn_id": 72,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Faktisk kan jeg mærke noget i ryggen nogle gange, men jeg tænkte, det bare var min normale ryg."
+    },
+    {
+      "turn_id": 73,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Nå."
+    },
+    {
+      "turn_id": 74,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Ikke i skulderen."
+    },
+    {
+      "turn_id": 75,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Kommer det anfaldsvis efter fed mad og varer måske en halv time eller længere?"
+    },
+    {
+      "turn_id": 76,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Ja, det kan godt vare fyrre minutter eller en time."
+    },
+    {
+      "turn_id": 77,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Forstået."
+    },
+    {
+      "turn_id": 78,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Så falder det langsomt igen."
+    },
+    {
+      "turn_id": 79,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Har du bemærket gulfarvning af øjne eller hud, meget mørk urin eller helt lys afføring?"
+    },
+    {
+      "turn_id": 80,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Jeg vil lige undersøge din mave."
+    },
+    {
+      "turn_id": 81,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Læg dig på briksen."
+    },
+    {
+      "turn_id": 82,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Sig til, hvis noget gør ondt."
+    },
+    {
+      "turn_id": 83,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Ja, okay."
+    },
+    {
+      "turn_id": 84,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Her under højre ribbenskant?"
+    },
+    {
+      "turn_id": 85,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Tag en dyb indånding."
+    },
+    {
+      "turn_id": 86,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Av, ja, dér kan jeg godt mærke det."
+    },
+    {
+      "turn_id": 87,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Okay, slap af igen."
+    },
+    {
+      "turn_id": 88,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Det er ikke voldsomt, men du er øm i øvre højre del af maven."
+    },
+    {
+      "turn_id": 89,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Øh, okay."
+    },
+    {
+      "turn_id": 90,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Jeg kan ikke mærke nogen udfyldning, og maven virker blød."
+    },
+    {
+      "turn_id": 91,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Mhm."
+    },
+    {
+      "turn_id": 92,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Det er positivt."
+    },
+    {
+      "turn_id": 93,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Er det galdeblæren så?"
+    },
+    {
+      "turn_id": 94,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Min mor sagde med det samme, at det sikkert var galdesten."
+    },
+    {
+      "turn_id": 95,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Det kan være en mulighed, men vi skal ikke konkludere for tidligt."
+    },
+    {
+      "turn_id": 96,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Okay."
+    },
+    {
+      "turn_id": 97,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Dine symptomer kan også passe med irritation i mavesækken eller et mavesår, især fordi du bruger ibuprofen og har halsbrand."
+    },
+    {
+      "turn_id": 98,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Ja."
+    },
+    {
+      "turn_id": 99,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Der er flere mulige forklaringer."
+    },
+    {
+      "turn_id": 100,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Okay."
+    },
+    {
+      "turn_id": 101,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Øh, skal jeg være bekymret?"
+    },
+    {
+      "turn_id": 102,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Der er ikke noget i det, du fortæller eller i undersøgelsen lige nu, som får mig til at tænke, at du skal akut på hospitalet."
+    },
+    {
+      "turn_id": 103,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Øh, okay."
+    },
+    {
+      "turn_id": 104,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Men fordi smerterne er blevet værre, og du har ømhed under højre ribben, vil jeg gerne tage nogle blodprøver."
+    },
+    {
+      "turn_id": 105,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Hvilke blodprøver?"
+    },
+    {
+      "turn_id": 106,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Blandt andet levertal, infektionstal, blodprocent, nyretal og lipase for bugspytkirtlen."
+    },
+    {
+      "turn_id": 107,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Mhm."
+    },
+    {
+      "turn_id": 108,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Jeg vil også gerne teste for Helicobacter pylori, som er en bakterie, der kan give mavesår."
+    },
+    {
+      "turn_id": 109,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Er det en blodprøve?"
+    },
+    {
+      "turn_id": 110,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Helicobacter kan testes på forskellige måder."
+    },
+    {
+      "turn_id": 111,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Vi kan bruge en afføringsprøve eller en pusteprøve."
+    },
+    {
+      "turn_id": 112,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Okay."
+    },
+    {
+      "turn_id": 113,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Jeg vil vælge afføringsprøven herfra, hvis det passer dig."
+    },
+    {
+      "turn_id": 114,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Ja, fint."
+    },
+    {
+      "turn_id": 115,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Ikke så glamourøst, men altså, hvis det hjælper."
+    },
+    {
+      "turn_id": 116,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Det er sjældent den mest populære prøve, nej."
+    },
+    {
+      "turn_id": 117,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Ja."
+    },
+    {
+      "turn_id": 118,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Derudover vil jeg gerne bestille en ultralyd af øvre mave for at se på galdeblæren og leveren."
+    },
+    {
+      "turn_id": 119,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Hvor hurtigt kan det blive?"
+    },
+    {
+      "turn_id": 120,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Først vil jeg bede dig stoppe med ibuprofen."
+    },
+    {
+      "turn_id": 121,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Øh, okay."
+    },
+    {
+      "turn_id": 122,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Hvis du har brug for smertestillende til ryggen, så brug paracetamol efter anbefalet dosis i stedet, medmindre du har fået andet at vide tidligere."
+    },
+    {
+      "turn_id": 123,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Okay."
+    },
+    {
+      "turn_id": 124,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Og jeg starter dig på omeprazol tyve milligram én gang dagligt om morgenen i en periode."
+    },
+    {
+      "turn_id": 125,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Mhm."
+    },
+    {
+      "turn_id": 126,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Men du skal holde pause med det før Helicobacter-testen, hvis laboratoriets vejledning kræver det."
+    },
+    {
+      "turn_id": 127,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Okay."
+    },
+    {
+      "turn_id": 128,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Du får instruktionen med."
+    },
+    {
+      "turn_id": 129,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Ja, okay."
+    },
+    {
+      "turn_id": 130,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Så jeg skal ikke bare tage den hele tiden uden at tænke over prøven."
+    },
+    {
+      "turn_id": 131,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Præcis."
+    },
+    {
+      "turn_id": 132,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Hvis du får stærke vedvarende smerter, høj feber, gentagne opkastninger, blod i opkast eller afføring,"
+    },
+    {
+      "turn_id": 133,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Ja."
+    },
+    {
+      "turn_id": 134,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "sort afføring, bliver gul i huden eller meget dårlig, så skal du kontakte akut hjælp."
+    },
+    {
+      "turn_id": 135,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Det giver mening."
+    },
+    {
+      "turn_id": 136,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Er der noget, du er særligt bekymret for, som vi ikke har talt om?"
+    },
+    {
+      "turn_id": 137,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Jeg var mest bange for, om det kunne være kræft, fordi min mave har været så mærkelig."
+    },
+    {
+      "turn_id": 138,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Jeg forstår godt tanken."
+    },
+    {
+      "turn_id": 139,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Ud fra din alder, dine symptomer og undersøgelsen er der flere langt mere almindelige forklaringer, som vi undersøger først."
+    },
+    {
+      "turn_id": 140,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Øh, okay."
+    },
+    {
+      "turn_id": 141,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Men vi følger selvfølgelig op, især hvis symptomerne ikke går væk eller hvis du fortsætter med at tabe dig."
+    },
+    {
+      "turn_id": 142,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Det er rart at høre."
+    },
+    {
+      "turn_id": 143,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Godt."
+    },
+    {
+      "turn_id": 144,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Så planen er blodprøver i dag, afføringsprøve for Helicobacter, henvisning til ultralyd, pause med ibuprofen og syrehæmmende behandling efter instruktion."
+    },
+    {
+      "turn_id": 145,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Mhm."
+    },
+    {
+      "turn_id": 146,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Vi booker en opfølgning om cirka to uger, eller tidligere hvis prøverne kræver det."
+    },
+    {
+      "turn_id": 147,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Super."
+    },
+    {
+      "turn_id": 148,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Tak."
+    },
+    {
+      "turn_id": 149,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Øh, jeg tror faktisk, det var det."
+    },
+    {
+      "turn_id": 150,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Fint."
+    },
+    {
+      "turn_id": 151,
+      "speaker": "Læge",
+      "tag": "[Læge]",
+      "text": "Du får det hele skrevet med ud, så du ikke behøver huske det ord for ord."
+    },
+    {
+      "turn_id": 152,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Perfekt."
+    },
+    {
+      "turn_id": 153,
+      "speaker": "Patient",
+      "tag": "[Patient]",
+      "text": "Tak for hjælpen."
+    }
+  ]
+}
