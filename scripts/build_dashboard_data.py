@@ -6,6 +6,7 @@ import json
 import os
 import shutil
 import urllib.error
+import urllib.parse
 import urllib.request
 import zipfile
 from datetime import UTC, datetime
@@ -64,6 +65,30 @@ def api_json(path: str) -> dict[str, Any]:
 
 
 def download(url: str, destination: Path) -> None:
+    class ArtifactRedirectHandler(urllib.request.HTTPRedirectHandler):
+        """Do not forward GitHub credentials to signed blob-storage URLs."""
+
+        def redirect_request(
+            self,
+            request: urllib.request.Request,
+            file_pointer: Any,
+            code: int,
+            message: str,
+            headers: Any,
+            new_url: str,
+        ) -> urllib.request.Request | None:
+            redirected = super().redirect_request(
+                request, file_pointer, code, message, headers, new_url
+            )
+            if redirected and (
+                urllib.parse.urlsplit(request.full_url).netloc
+                != urllib.parse.urlsplit(new_url).netloc
+            ):
+                redirected.remove_header("Authorization")
+                redirected.remove_header("Accept")
+                redirected.remove_header("X-GitHub-Api-Version")
+            return redirected
+
     request = urllib.request.Request(
         url,
         headers={
@@ -74,7 +99,8 @@ def download(url: str, destination: Path) -> None:
         },
     )
     destination.parent.mkdir(parents=True, exist_ok=True)
-    with urllib.request.urlopen(request, timeout=120) as response:
+    opener = urllib.request.build_opener(ArtifactRedirectHandler())
+    with opener.open(request, timeout=120) as response:
         destination.write_bytes(response.read())
 
 
