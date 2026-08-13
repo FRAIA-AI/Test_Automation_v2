@@ -7,7 +7,7 @@ import subprocess
 import time
 from pathlib import Path
 
-from playwright.sync_api import BrowserContext
+from playwright.sync_api import BrowserContext, TimeoutError as PlaywrightTimeoutError
 
 from tests.helpers.models import FailureCategory, MonitorFailure
 from tests.helpers.oracle import assert_contains_any
@@ -178,12 +178,24 @@ def wait_for_processed_transcription(
     token = _select_auth_token(context.cookies(), auth_cookie_name)
     deadline = time.monotonic() + timeout_ms / 1000
     last_state: dict = {}
+    request_timeout_count = 0
+    last_request_timeout = ""
     while time.monotonic() < deadline:
-        response = context.request.get(
-            f"{base_url}/api/live?consultation_id={consultation_id}",
-            headers={"Authorization": f"Bearer {token}"},
-            timeout=30_000,
-        )
+        remaining_ms = max(1, int((deadline - time.monotonic()) * 1000))
+        try:
+            response = context.request.get(
+                f"{base_url}/api/live?consultation_id={consultation_id}",
+                headers={"Authorization": f"Bearer {token}"},
+                timeout=min(30_000, remaining_ms),
+            )
+        except PlaywrightTimeoutError as exc:
+            # Retry transient API stalls within the original overall deadline.
+            # A persistently unavailable API still fails below.
+            request_timeout_count += 1
+            last_request_timeout = str(exc)
+            if time.monotonic() < deadline:
+                time.sleep(1)
+            continue
         if not response.ok:
             raise AudioUploadFailed(
                 f"Consultation-state API returned HTTP {response.status}: "
@@ -210,5 +222,7 @@ def wait_for_processed_transcription(
         f"{last_state.get('processedChunkCount')!r}, "
         f"realtimeTranscription={last_state.get('realtimeTranscription')!r}, "
         "realtimeDiarizedTranscription="
-        f"{last_state.get('realtimeDiarizedTranscription')!r}."
+        f"{last_state.get('realtimeDiarizedTranscription')!r}, "
+        f"requestTimeouts={request_timeout_count}, "
+        f"lastRequestTimeout={last_request_timeout!r}."
     )
